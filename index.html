@@ -1,0 +1,2638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WTF: What the Fertility</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  :root {
+    --mauve: #C9A0A0;
+    --mauve-light: #E8D0D0;
+    --mauve-pale: #F5ECEC;
+    --sage: #8FAF8F;
+    --sage-light: #C4D9C4;
+    --sage-pale: #EBF2EB;
+    --cream: #FAF7F2;
+    --plum: #7B4F6E;
+    --terracotta: #C4714A;
+    --text-dark: #2D1F2B;
+    --text-mid: #6B5363;
+    --text-light: #9E8A96;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    min-height: 100vh;
+  }
+
+  /* ---- LOGIN SCREEN ---- */
+  #login-screen {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--mauve-pale) 0%, var(--cream) 50%, var(--sage-pale) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  #login-screen::before {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,160,160,0.2) 0%, transparent 70%);
+    top: -200px;
+    right: -100px;
+  }
+
+  #login-screen::after {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(143,175,143,0.15) 0%, transparent 70%);
+    bottom: -100px;
+    left: -50px;
+  }
+
+  .login-card {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 56px 48px;
+    width: 420px;
+    box-shadow: 0 8px 48px rgba(45,31,43,0.08), 0 2px 8px rgba(45,31,43,0.04);
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .logo-area {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .logo-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--mauve) 0%, var(--plum) 100%);
+    color: white;
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    padding: 12px 20px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+  }
+
+  .logo-tagline {
+    font-size: 13px;
+    color: var(--text-light);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .login-card h2 {
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  .login-card p {
+    font-size: 14px;
+    color: var(--text-light);
+    text-align: center;
+    margin-bottom: 32px;
+    line-height: 1.5;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  .form-group label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-mid);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1.5px solid var(--mauve-light);
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    color: var(--text-dark);
+    background: var(--cream);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  .form-group input:focus {
+    border-color: var(--mauve);
+    box-shadow: 0 0 0 3px rgba(201,160,160,0.15);
+  }
+
+  .btn-primary {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--mauve) 0%, var(--plum) 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: opacity 0.2s, transform 0.1s;
+    letter-spacing: 0.3px;
+  }
+
+  .btn-primary:hover { opacity: 0.92; transform: translateY(-1px); }
+  .btn-primary:active { transform: translateY(0); }
+
+  .btn-google {
+    width: 100%;
+    padding: 14px 16px;
+    background: var(--white);
+    color: var(--text-dark);
+    border: 1.5px solid var(--mauve-light);
+    border-radius: 12px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.2s;
+  }
+  .btn-google:hover { border-color: var(--mauve); box-shadow: 0 2px 8px rgba(45,31,43,0.08); transform: translateY(-1px); }
+
+  .login-footer {
+    text-align: center;
+    margin-top: 24px;
+    font-size: 13px;
+    color: var(--text-light);
+  }
+
+  .login-footer a {
+    color: var(--plum);
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  /* ---- APP SHELL ---- */
+  #app {
+    display: none;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  header {
+    background: var(--white);
+    border-bottom: 1px solid var(--mauve-light);
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-logo {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--plum);
+    letter-spacing: -0.3px;
+  }
+
+  .header-logo span {
+    font-weight: 400;
+    font-style: italic;
+    color: var(--mauve);
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .day-badge {
+    background: linear-gradient(135deg, var(--mauve-pale), var(--sage-pale));
+    border: 1px solid var(--mauve-light);
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--plum);
+  }
+
+  .avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--mauve) 0%, var(--plum) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  /* ---- TABS ---- */
+  .tab-bar {
+    background: var(--white);
+    padding: 0 32px;
+    display: flex;
+    gap: 4px;
+    border-bottom: 1px solid var(--mauve-light);
+  }
+
+  .tab-btn {
+    padding: 16px 24px;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: -1px;
+    letter-spacing: 0.2px;
+  }
+
+  .tab-btn:hover { color: var(--plum); }
+
+  .tab-btn.active {
+    color: var(--plum);
+    border-bottom-color: var(--plum);
+  }
+
+  /* ---- MAIN CONTENT ---- */
+  .tab-content {
+    display: none;
+    flex: 1;
+    padding: 32px;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .tab-content.active { display: block; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ---- LOG YOUR JOURNEY ---- */
+  .day-header {
+    margin-bottom: 28px;
+  }
+
+  .day-header h1 {
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+  }
+
+  .day-header h1 em {
+    color: var(--mauve);
+    font-style: italic;
+  }
+
+  .day-header p {
+    color: var(--text-light);
+    font-size: 14px;
+    font-weight: 300;
+  }
+
+  .day-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .day-nav-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1.5px solid var(--mauve-light);
+    background: var(--white);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-mid);
+    font-size: 16px;
+    transition: all 0.2s;
+  }
+
+  .day-nav-btn:hover {
+    border-color: var(--mauve);
+    color: var(--plum);
+    background: var(--mauve-pale);
+  }
+
+  .day-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .day-pill {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1.5px solid var(--mauve-light);
+    background: var(--white);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-mid);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .day-pill:hover, .day-pill.active {
+    background: var(--plum);
+    border-color: var(--plum);
+    color: white;
+  }
+
+  /* Top section */
+  .section-top {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 32px;
+    margin-bottom: 24px;
+    border: 1px solid var(--mauve-light);
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--mauve);
+    margin-bottom: 16px;
+  }
+
+  .section-top h2 {
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin-bottom: 16px;
+  }
+
+  .expect-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .expect-card {
+    background: var(--mauve-pale);
+    border-radius: 12px;
+    padding: 16px;
+    border-left: 3px solid var(--mauve);
+  }
+
+  .expect-card h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--plum);
+    margin-bottom: 4px;
+  }
+
+  .expect-card p {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--mauve-light);
+    margin: 24px 0;
+  }
+
+  .questions-section h3 {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin-bottom: 14px;
+  }
+
+  .question-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .question-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--text-mid);
+    line-height: 1.5;
+  }
+
+  .question-list li::before {
+    content: '?';
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    border-radius: 50%;
+    background: var(--sage-pale);
+    border: 1.5px solid var(--sage-light);
+    color: var(--sage);
+    font-size: 11px;
+    font-weight: 700;
+    margin-top: 1px;
+  }
+
+  /* Bottom section - journal */
+  .section-bottom {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 32px;
+    border: 1px solid var(--sage-light);
+  }
+
+  .section-bottom .section-label {
+    color: var(--sage);
+  }
+
+  .section-bottom h2 {
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin-bottom: 24px;
+  }
+
+  .journal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .journal-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .journal-field.full { grid-column: 1 / -1; }
+
+  .journal-field label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-mid);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .journal-field input,
+  .journal-field select,
+  .journal-field textarea {
+    padding: 12px 14px;
+    border: 1.5px solid var(--sage-light);
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--text-dark);
+    background: var(--sage-pale);
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    resize: none;
+  }
+
+  .journal-field input:focus,
+  .journal-field select:focus,
+  .journal-field textarea:focus {
+    border-color: var(--sage);
+    box-shadow: 0 0 0 3px rgba(143,175,143,0.15);
+  }
+
+  .mood-selector {
+    display: flex;
+    gap: 8px;
+  }
+
+  .mood-btn {
+    flex: 1;
+    padding: 10px;
+    border: 1.5px solid var(--sage-light);
+    border-radius: 10px;
+    background: var(--sage-pale);
+    font-size: 20px;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: center;
+  }
+
+  .mood-btn:hover, .mood-btn.selected {
+    border-color: var(--sage);
+    background: white;
+    transform: scale(1.05);
+  }
+
+  .btn-save {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--sage) 0%, #5A7A5A 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: opacity 0.2s, transform 0.1s;
+  }
+
+  .btn-save:hover { opacity: 0.9; transform: translateY(-1px); }
+
+  /* ---- WHAT OTHERS ARE SAYING ---- */
+  .community-header {
+    margin-bottom: 28px;
+  }
+
+  .community-header h1 {
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+  }
+
+  .community-header h1 em { color: var(--mauve); font-style: italic; }
+
+  .community-header p {
+    color: var(--text-light);
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 4px;
+  }
+
+  .last-updated {
+    font-size: 12px;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .live-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--sage);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .themes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .theme-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 24px;
+    border: 1px solid var(--mauve-light);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+
+  .theme-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(45,31,43,0.08);
+  }
+
+  .theme-card.featured {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, var(--mauve-pale) 0%, var(--cream) 100%);
+    border-color: var(--mauve);
+  }
+
+  .theme-tag {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+  }
+
+  .tag-emotions { background: var(--mauve-pale); color: var(--plum); }
+  .tag-practical { background: var(--sage-pale); color: #3D6B3D; }
+  .tag-medical { background: #EEF0FB; color: #4A5ABA; }
+  .tag-community { background: #FFF3EC; color: var(--terracotta); }
+  .tag-trending { background: linear-gradient(135deg, var(--mauve-pale), var(--sage-pale)); color: var(--plum); }
+
+  .theme-card h3 {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+  }
+
+  .theme-card p {
+    font-size: 13px;
+    color: var(--text-mid);
+    line-height: 1.6;
+    font-weight: 300;
+    margin-bottom: 16px;
+  }
+
+  .theme-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 12px;
+    color: var(--text-light);
+  }
+
+  .theme-meta span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .quote-preview {
+    background: var(--white);
+    border-left: 3px solid var(--mauve);
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px;
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--text-mid);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  /* Toast */
+  .toast {
+    position: fixed;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: var(--text-dark);
+    color: white;
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: transform 0.3s ease;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .toast.show { transform: translateX(-50%) translateY(0); }
+  .toast::before { content: '✓'; color: var(--sage-light); font-weight: 700; }
+
+  /* Medication protocol */
+  .protocol-setup {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 32px;
+    margin-bottom: 24px;
+    border: 1.5px solid var(--terracotta);
+    border-opacity: 0.3;
+    border-color: #E8C4B0;
+  }
+
+  .protocol-setup .section-label { color: var(--terracotta); }
+
+  .protocol-category {
+    margin-bottom: 24px;
+  }
+
+  .protocol-category:last-child { margin-bottom: 0; }
+
+  .protocol-category h4 {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .med-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .med-checkbox {
+    display: none;
+  }
+
+  .med-label {
+    padding: 7px 14px;
+    border-radius: 20px;
+    border: 1.5px solid var(--mauve-light);
+    background: var(--white);
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-mid);
+    cursor: pointer;
+    transition: all 0.15s;
+    user-select: none;
+  }
+
+  .med-checkbox:checked + .med-label {
+    background: var(--plum);
+    border-color: var(--plum);
+    color: white;
+    font-weight: 500;
+  }
+
+  .med-label:hover {
+    border-color: var(--mauve);
+    color: var(--plum);
+  }
+
+  .protocol-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 24px;
+  }
+
+  .btn-save-protocol {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--mauve) 0%, var(--plum) 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .btn-save-protocol:hover { opacity: 0.9; }
+
+  .edit-protocol-link {
+    font-size: 13px;
+    color: var(--text-light);
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .edit-protocol-link:hover { color: var(--plum); }
+
+  /* Daily med logging */
+  .med-log-section {
+    margin-bottom: 20px;
+  }
+
+  .med-log-section h4 {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-light);
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--mauve-light);
+  }
+
+  .med-log-item {
+    background: var(--mauve-pale);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+
+  .med-log-item-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--plum);
+    margin-bottom: 10px;
+  }
+
+  .med-log-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .med-log-fields .journal-field label {
+    font-size: 11px;
+  }
+
+  .med-log-fields input, .med-log-fields textarea {
+    padding: 9px 12px;
+    border: 1.5px solid var(--mauve-light);
+    border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    color: var(--text-dark);
+    background: var(--white);
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+
+  .med-log-fields input:focus, .med-log-fields textarea:focus {
+    border-color: var(--mauve);
+  }
+
+  .med-log-fields .full { grid-column: 1 / -1; }
+
+  /* Spreadsheet med tracker */
+  .med-spreadsheet-wrap {
+    overflow-x: auto;
+    margin-bottom: 24px;
+    border-radius: 12px;
+    border: 1px solid var(--mauve-light);
+  }
+
+  .med-spreadsheet {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    min-width: 600px;
+  }
+
+  .med-spreadsheet th {
+    background: var(--mauve-pale);
+    color: var(--text-mid);
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 10px 14px;
+    text-align: center;
+    border-bottom: 1px solid var(--mauve-light);
+    border-right: 1px solid var(--mauve-light);
+    white-space: nowrap;
+  }
+
+  .med-spreadsheet th.med-name-header {
+    text-align: left;
+    min-width: 160px;
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    background: var(--mauve-pale);
+  }
+
+  .med-spreadsheet th.today-header {
+    background: var(--plum);
+    color: white;
+  }
+
+  .med-spreadsheet td {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--mauve-light);
+    border-right: 1px solid var(--mauve-light);
+    vertical-align: middle;
+  }
+
+  .med-spreadsheet td.med-name-cell {
+    font-weight: 500;
+    color: var(--text-dark);
+    background: var(--cream);
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    border-right: 2px solid var(--mauve-light);
+  }
+
+  .med-spreadsheet td.med-category-cell {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-light);
+    background: var(--cream);
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    padding: 6px 10px;
+    border-right: 2px solid var(--mauve-light);
+  }
+
+  .med-spreadsheet tr.category-row td {
+    background: var(--cream);
+    border-bottom: 1px solid var(--mauve-light);
+  }
+
+  .med-spreadsheet td.today-cell {
+    background: #FAF0FA;
+  }
+
+  .med-spreadsheet td.past-cell {
+    background: var(--white);
+  }
+
+  .spreadsheet-input {
+    width: 100%;
+    padding: 5px 8px;
+    border: 1.5px solid transparent;
+    border-radius: 6px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 12px;
+    color: var(--text-dark);
+    background: transparent;
+    outline: none;
+    transition: border-color 0.15s, background 0.15s;
+    min-width: 70px;
+  }
+
+  .spreadsheet-input:focus {
+    border-color: var(--mauve);
+    background: var(--white);
+  }
+
+  .past-value {
+    font-size: 12px;
+    color: var(--text-light);
+    text-align: center;
+    padding: 4px;
+  }
+
+  .section-top-h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+  }
+
+
+  /* ---- DIVYA'S JOURNEY TAB ---- */
+  .journey-header {
+    margin-bottom: 24px;
+  }
+  .journey-header h1 {
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+  }
+  .journey-header p {
+    font-size: 13px;
+    color: var(--text-light);
+    font-weight: 300;
+  }
+  .view-toggle {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+  .view-toggle-btn {
+    padding: 8px 18px;
+    border-radius: 20px;
+    border: 1.5px solid var(--mauve-light);
+    background: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-mid);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .view-toggle-btn.active {
+    background: var(--plum);
+    border-color: var(--plum);
+    color: white;
+    font-weight: 500;
+  }
+  /* Data table */
+  .journey-table-wrap {
+    overflow-x: auto;
+    border-radius: 16px;
+    border: 1px solid var(--mauve-light);
+    margin-bottom: 28px;
+  }
+  .journey-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    min-width: 620px;
+  }
+  .journey-table th {
+    background: var(--mauve-pale);
+    color: var(--text-mid);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 10px 14px;
+    text-align: center;
+    border-bottom: 1px solid var(--mauve-light);
+    border-right: 1px solid var(--mauve-light);
+    white-space: nowrap;
+  }
+  .journey-table th.jt-label { text-align: left; min-width: 150px; }
+  .journey-table td {
+    padding: 9px 14px;
+    border-bottom: 1px solid var(--mauve-light);
+    border-right: 1px solid var(--mauve-light);
+    text-align: center;
+    font-size: 13px;
+    color: var(--text-dark);
+  }
+  .journey-table td.jt-label {
+    text-align: left;
+    font-weight: 500;
+    color: var(--text-dark);
+    background: var(--cream);
+  }
+  .journey-table tr.jt-section-row td {
+    background: var(--mauve-pale);
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-light);
+    padding: 6px 14px;
+    text-align: left;
+  }
+  .journey-table tr:last-child td { border-bottom: none; }
+  /* Chart */
+  #divya-chart-wrap {
+    background: var(--white);
+    border-radius: 16px;
+    border: 1px solid var(--mauve-light);
+    padding: 24px;
+    margin-bottom: 28px;
+  }
+  #divya-chart-wrap canvas { width: 100% !important; }
+  /* Follicle visualization */
+  .follicle-section {
+    background: var(--white);
+    border-radius: 16px;
+    border: 1px solid var(--mauve-light);
+    padding: 24px;
+    margin-bottom: 28px;
+  }
+  .follicle-section h3 {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+  }
+  .follicle-section p {
+    font-size: 12px;
+    color: var(--text-light);
+    margin-bottom: 20px;
+  }
+  .follicle-day-nav {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .follicle-day-btn {
+    padding: 6px 14px;
+    border-radius: 16px;
+    border: 1.5px solid var(--mauve-light);
+    background: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    color: var(--text-mid);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .follicle-day-btn.active {
+    background: var(--plum);
+    border-color: var(--plum);
+    color: white;
+    font-weight: 500;
+  }
+  .follicle-canvas-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .follicle-ovary {
+    background: var(--cream);
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+  }
+  .follicle-ovary h4 {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-light);
+    margin-bottom: 12px;
+  }
+  .follicle-ovary canvas {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+  }
+  .follicle-legend {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    margin-top: 16px;
+    font-size: 11px;
+    color: var(--text-light);
+    flex-wrap: wrap;
+  }
+  .follicle-legend span { display: flex; align-items: center; gap: 4px; }
+  .jt-trigger { background: #FFF5F0; font-size: 12px; color: var(--terracotta); font-weight: 500; }
+  .jt-surgery { background: #F5ECEC; font-size: 12px; color: var(--plum); font-weight: 600; }
+  .jt-range { font-size: 11px; color: var(--text-light); font-style: italic; }
+  .e2-in-range { color: #8FAF8F; font-weight: 600; }
+  .e2-low { color: #C4714A; font-weight: 600; }
+  .legend-dot {
+    width: 10px; height: 10px; border-radius: 50%; display: inline-block;
+  }
+
+  @media (max-width: 600px) {
+    .follicle-canvas-wrap { grid-template-columns: 1fr; }
+  }
+
+    .expect-grid, .journal-grid, .themes-grid { grid-template-columns: 1fr; }
+    .theme-card.featured { grid-column: auto; }
+    .tab-content { padding: 20px 16px; }
+    header { padding: 0 16px; }
+  }
+
+/* --- Unified Font System --- */
+html, body, button, input, select, textarea, table, th, td {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont,
+               'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.day-header h1 {
+  font-weight: 600;
+}
+
+button {
+  font-weight: 500;
+}
+
+/* --- Log: Ultrasound & Bloodwork + Feels --- */
+.section-subcard {
+  border: 1px solid var(--mauve-light);
+  border-radius: 16px;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.7);
+}
+
+.subcard-header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.subcard-title {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.toggle {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size: 13px;
+  color: var(--text-mid);
+  user-select:none;
+}
+
+.toggle input { transform: translateY(1px); }
+
+.feel-selector{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.feel-btn{
+  border: 1.5px solid var(--mauve-light);
+  background: var(--white);
+  color: var(--text-dark);
+  border-radius: 14px;
+  padding: 10px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all .15s ease;
+  min-width: 112px;
+  text-align:center;
+}
+
+.feel-btn:hover{
+  background: var(--mauve-pale);
+  border-color: var(--mauve);
+}
+
+.feel-btn.selected{
+  background: var(--plum);
+  border-color: var(--plum);
+  color: white;
+}
+
+.feel-btn:disabled{
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.upload-label{
+  display:block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-mid);
+  margin-bottom: 8px;
+}
+
+.image-previews{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top: 10px;
+}
+
+.image-previews img{
+  width: 110px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid var(--mauve-light);
+}
+
+/* --- Divya: Timeline banner --- */
+.timeline-banner{
+  border: 1px solid var(--mauve-light);
+  background: rgba(255,255,255,0.65);
+  border-radius: 16px;
+  padding: 14px 16px;
+}
+
+.timeline-title{
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.timeline-list{
+  margin: 0;
+  padding-left: 18px;
+  color: var(--text-mid);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.med-label-cell{
+  font-weight: 600;
+  color: var(--text-mid);
+  background: rgba(255,255,255,0.5);
+}
+
+.cell-input{
+  width: 100%;
+  padding: 10px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--mauve-light);
+  outline: none;
+  font-size: 13px;
+  background: rgba(255,255,255,0.9);
+}
+
+.cell-input:focus{
+  border-color: var(--mauve);
+  box-shadow: 0 0 0 3px rgba(160, 110, 140, 0.15);
+}
+
+
+/* --- Make Ultrasound & Bloodwork section match other tracking sections --- */
+.section-subcard{
+  border: 1px solid var(--mauve-light);
+  border-radius: 18px;
+  padding: 18px 18px;
+  background: rgba(255,255,255,0.55);
+}
+
+.subcard-title{
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+}
+
+
+.timeline-line{
+  color: var(--text-mid);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+
+/* --- Day segment summary line --- */
+.timeline-line{
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="logo-area">
+      <div class="logo-badge">WTF</div>
+      <div class="logo-tagline">What the Fertility</div>
+    </div>
+    <h2>Welcome back</h2>
+    <p>Your journey, your pace.<br>We're here every step of the way.</p>
+    <button class="btn-google" onclick="loginWithGoogle()">
+      <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.875 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z" fill="#34A853"/><path d="M3.964 10.707A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.707V4.961H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.039l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.961L3.964 7.293C4.672 5.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+      Continue with Google
+    </button>
+    <div id="auth-error" style="color:#C4714A;font-size:13px;text-align:center;margin-top:12px;display:none;"></div>
+    <div class="login-footer">Sign in or create an account — Google handles the rest.</div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <header>
+    <div class="header-logo">WTF <span>What the Fertility</span></div>
+    <div class="header-right">
+      <div class="day-badge">🌸 Day 5 of Stims</div>
+      <div class="avatar" title="Sign out" onclick="logout()">D</div>
+    </div>
+  </header>
+
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="switchTab('journey', this)">Log Your Journey</button>
+    <button class="tab-btn" onclick="switchTab('community', this)">What Others Are Saying</button>
+    <button class="tab-btn" onclick="switchTab('divya', this)">Divya's Journey</button>
+  </div>
+
+  <!-- LOG YOUR JOURNEY -->
+  <div class="tab-content active" id="tab-journey">
+
+    <div class="day-header">
+      <h1 id="log-day-title-h1">Day 1 of Stimulation</h1>
+      <p>Friday, December 13, 2024 · Egg Freezing Cycle #1</p>
+    </div>
+
+    <div class="day-nav">
+      <button class="day-nav-btn">←</button>
+      <div class="day-pills">
+      <div class="day-pills">
+        <div class="day-pill active" data-day="1">Day 1</div>
+        <div class="day-pill" data-day="2">Day 2</div>
+        <div class="day-pill" data-day="3">Day 3</div>
+        <div class="day-pill" data-day="4">Day 4</div>
+        <div class="day-pill" data-day="5">Day 5</div>
+        <div class="day-pill" data-day="6">Day 6</div>
+        <div class="day-pill" data-day="7">Day 7+</div>
+      </div>
+</div>
+      <button class="day-nav-btn">→</button>
+    </div>
+
+
+    
+    <div class="timeline-banner" style="margin-top:-6px;margin-bottom:18px;">
+      <div id="log-segment-line" class="timeline-line"></div>
+    </div>
+
+
+      <div class="divider"></div>
+
+      <div class="questions-section">
+        <h3>Questions to ask your doctor or nurse today</h3>
+        <ul class="question-list">
+          <li>How many follicles do I have, and what sizes are they?</li>
+          <li>Is my estrogen level where you'd expect it to be at Day 5?</li>
+          <li>Are we on track for retrieval this week, or might we need more time?</li>
+          <li>Should I adjust my medication dosage at all?</li>
+          <li>Are there any symptoms I should call about immediately?</li>
+          <li>What should I eat and avoid right now?</li>
+        </ul>
+      </div>
+
+    <!-- PROTOCOL SETUP (shown on Day 1 and when editing) -->
+    <div class="protocol-setup" id="protocol-setup">
+      <div class="section-label">Your Medication Protocol</div>
+      <h2 class="section-top-h2">Set up your protocol</h2>
+      <p style="font-size:13px;color:var(--text-light);margin-bottom:24px;font-weight:300;">Select all medications you've been prescribed. You can update this anytime.</p>
+
+      <div class="protocol-category">
+        <h4>Stimulation Medications</h4>
+        <div class="med-checkboxes">
+          <input type="checkbox" class="med-checkbox" id="med-gonalf" name="stim" value="Gonal-F"><label class="med-label" for="med-gonalf">Gonal-F</label>
+          <input type="checkbox" class="med-checkbox" id="med-follistim" name="stim" value="Follistim"><label class="med-label" for="med-follistim">Follistim</label>
+          <input type="checkbox" class="med-checkbox" id="med-menopur" name="stim" value="Menopur"><label class="med-label" for="med-menopur">Menopur</label>
+          <input type="checkbox" class="med-checkbox" id="med-bravelle" name="stim" value="Bravelle"><label class="med-label" for="med-bravelle">Bravelle</label>
+          <input type="checkbox" class="med-checkbox" id="med-repronex" name="stim" value="Repronex"><label class="med-label" for="med-repronex">Repronex</label>
+        </div>
+      </div>
+
+      <div class="protocol-category">
+        <h4>Suppression Medications</h4>
+        <div class="med-checkboxes">
+          <input type="checkbox" class="med-checkbox" id="med-lupron" name="suppression" value="Lupron"><label class="med-label" for="med-lupron">Lupron</label>
+          <input type="checkbox" class="med-checkbox" id="med-ganirelix" name="suppression" value="Ganirelix"><label class="med-label" for="med-ganirelix">Ganirelix</label>
+          <input type="checkbox" class="med-checkbox" id="med-cetrotide" name="suppression" value="Cetrotide"><label class="med-label" for="med-cetrotide">Cetrotide</label>
+          <input type="checkbox" class="med-checkbox" id="med-bcp" name="suppression" value="Birth Control Pill"><label class="med-label" for="med-bcp">Birth Control Pill</label>
+        </div>
+      </div>
+
+      <div class="protocol-category">
+        <h4>Trigger Shot</h4>
+        <div class="med-checkboxes">
+          <input type="checkbox" class="med-checkbox" id="med-pregnyl" name="trigger" value="Pregnyl (hCG)"><label class="med-label" for="med-pregnyl">Pregnyl (hCG)</label>
+          <input type="checkbox" class="med-checkbox" id="med-novarel" name="trigger" value="Novarel (hCG)"><label class="med-label" for="med-novarel">Novarel (hCG)</label>
+          <input type="checkbox" class="med-checkbox" id="med-ovidrel" name="trigger" value="Ovidrel"><label class="med-label" for="med-ovidrel">Ovidrel</label>
+          <input type="checkbox" class="med-checkbox" id="med-lupron-trigger" name="trigger" value="Lupron Trigger"><label class="med-label" for="med-lupron-trigger">Lupron Trigger</label>
+        </div>
+      </div>
+
+      <div class="protocol-category">
+        <h4>Supportive Medications</h4>
+        <div class="med-checkboxes">
+          <input type="checkbox" class="med-checkbox" id="med-aspirin" name="supportive" value="Low-dose Aspirin"><label class="med-label" for="med-aspirin">Low-dose Aspirin</label>
+          <input type="checkbox" class="med-checkbox" id="med-dhea" name="supportive" value="DHEA"><label class="med-label" for="med-dhea">DHEA</label>
+          <input type="checkbox" class="med-checkbox" id="med-coq10" name="supportive" value="CoQ10"><label class="med-label" for="med-coq10">CoQ10</label>
+          <input type="checkbox" class="med-checkbox" id="med-estrogen" name="supportive" value="Estrogen Priming"><label class="med-label" for="med-estrogen">Estrogen Priming</label>
+          <input type="checkbox" class="med-checkbox" id="med-progesterone" name="supportive" value="Progesterone"><label class="med-label" for="med-progesterone">Progesterone</label>
+          <input type="checkbox" class="med-checkbox" id="med-prenatal" name="supportive" value="Prenatal Vitamins"><label class="med-label" for="med-prenatal">Prenatal Vitamins</label>
+        </div>
+      </div>
+
+      <div class="protocol-actions">
+        <button class="btn-save-protocol" onclick="saveProtocol()">Save my protocol →</button>
+      </div>
+    </div>
+
+    <!-- BOTTOM SECTION -->
+    <div class="section-bottom" id="daily-log">
+      <div class="section-label" style="display:flex;align-items:center;justify-content:space-between;">
+        <span>Track Your Day</span>
+        <span class="edit-protocol-link" onclick="editProtocol()">Edit medications</span>
+      </div>
+      <h2>Daily Medication Tracking</h2>
+
+      <!-- Medication daily log - dynamically populated -->
+      <!-- Ultrasound & Bloodwork -->
+      <div class="section-subcard" style="margin-top:14px;">
+        <div class="subcard-header">
+          <div class="subcard-title">Ultrasound &amp; bloodwork</div>
+          <label class="toggle">
+            <input type="checkbox" id="had-ultrasound" onchange="handleUltrasoundToggle(this.checked)">
+            <span>Had ultrasound &amp; bloodwork today</span>
+          </label>
+        </div>
+
+        <div id="ultrasound-block" style="display:none;">
+          <!-- Monitoring spreadsheet - dynamically populated -->
+          <div id="monitoring-daily-log" style="margin-top:12px;"></div>
+
+          <div class="upload-row" style="margin-top:14px;">
+            <label class="upload-label">Upload ultrasound images (optional)</label>
+            <input id="ultrasound-images" type="file" accept="image/*" multiple onchange="handleUltrasoundImages(event)">
+            <div id="ultrasound-previews" class="image-previews"></div>
+          </div>
+        
+<div id="med-daily-log"></div>
+
+      
+      </div>
+      </div>
+
+      <div class="journal-grid" style="margin-top:14px;">
+        <div class="journal-field">
+          <label>Overall mood</label>
+          <div class="feel-selector" id="feel-selector">
+            <!-- populated by JS -->
+          </div>
+          <div class="helper-text" style="margin-top:6px;">Tip: choose <strong>No change</strong> if nothing shifted today.</div>
+        </div>
+
+        <div class="journal-field full">
+          <label>Notes for today</label>
+          <textarea rows="4" placeholder="How are you really feeling? Any symptoms, wins, worries, or questions for tomorrow's appointment..."></textarea>
+        </div>
+      </div>
+
+      <button class="btn-save" onclick="saveEntry()">Save today's entry ✓</button>
+    </div>
+  </div>
+
+  <!-- WHAT OTHERS ARE SAYING -->
+  <div class="tab-content" id="tab-community">
+    <div class="community-header">
+      <h1>What <em>Others</em> Are Saying</h1>
+      <p>Themes and insights from real conversations in the fertility community</p>
+      <div class="last-updated">
+        <div class="live-dot"></div>
+        Summaries updated weekly · Sourced from r/IVF, r/eggfreezing, r/fertility
+      </div>
+    </div>
+
+    <div class="themes-grid">
+      <div class="theme-card featured">
+        <span class="theme-tag tag-trending">🔥 Trending this week</span>
+        <h3>"Is the bloating supposed to be this bad?" — Managing discomfort during stims</h3>
+        <p>Hundreds of posts this week about stimulation bloating. The community consensus: it's real, it's normal, and it peaks around days 5–8. Common tips shared include loose clothing, walking (not intense exercise), and electrolyte drinks like Pedialyte or coconut water. Many found that tracking it daily helped them feel more in control.</p>
+        <div class="quote-preview">"Day 6 here — I look 4 months pregnant. My doctor said my follicle count is great so I'm trying to see the bloat as a good sign lol"</div>
+        <div class="theme-meta">
+          <span>💬 247 posts analyzed</span>
+          <span>📅 Updated Dec 10</span>
+        </div>
+      </div>
+
+      <div class="theme-card">
+        <span class="theme-tag tag-emotions">💜 Emotions</span>
+        <h3>The emotional rollercoaster nobody warned you about</h3>
+        <p>A recurring theme: people feel blindsided by the emotional intensity of the process — not just the hormones, but the hope and anxiety of waiting for results. Partners and support systems come up constantly.</p>
+        <div class="quote-preview">"I cried at a Subaru commercial. I'm not even a dog person."</div>
+        <div class="theme-meta">
+          <span>💬 183 posts analyzed</span>
+        </div>
+      </div>
+
+      <div class="theme-card">
+        <span class="theme-tag tag-practical">🌿 Practical tips</span>
+        <h3>What actually helped with the injections</h3>
+        <p>Ice before, room temperature meds, slow injection, distraction. The community has hacks. Menopur burning is the most discussed — pinching skin tightly and injecting slowly came up most.</p>
+        <div class="theme-meta">
+          <span>💬 129 posts analyzed</span>
+        </div>
+      </div>
+
+      <div class="theme-card">
+        <span class="theme-tag tag-medical">🩺 Medical</span>
+        <h3>Understanding your follicle counts: what's "good enough"?</h3>
+        <p>Anxiety around follicle numbers is universal. The community shares wide ranges and reminds each other that quality matters as much as quantity — and that one good egg can be enough.</p>
+        <div class="theme-meta">
+          <span>💬 201 posts analyzed</span>
+        </div>
+      </div>
+
+      <div class="theme-card">
+        <span class="theme-tag tag-community">🤝 Community</span>
+        <h3>Going through this alone vs. with a partner — both are hard</h3>
+        <p>Single women freezing eggs share unique challenges around doing injections solo and processing it emotionally without a built-in support person. Those with partners describe communication struggles. Both groups found community here invaluable.</p>
+        <div class="theme-meta">
+          <span>💬 97 posts analyzed</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIVYA'S JOURNEY TAB -->
+  <div class="tab-content" id="tab-divya">
+    <div class="journey-header">
+      <h1>Divya's <em>Journey</em></h1>
+      <p>Egg Freezing Cycle · RMANY · March 4–13, 2024 · 10 days of stimulation</p>
+    </div>
+
+    <div class="view-toggle">
+      <button class="view-toggle-btn active" id="btn-spreadsheet" onclick="showDivyaView('spreadsheet')">Spreadsheet</button>
+      <button class="view-toggle-btn" id="btn-chart" onclick="showDivyaView('chart')">Line Chart</button>
+      <button class="view-toggle-btn" id="btn-follicles" onclick="showDivyaView('follicles')">Follicle Growth</button>
+    </div>
+
+    <!-- SPREADSHEET VIEW -->
+    <div id="divya-view-spreadsheet">
+
+      <!-- Section toggle pills -->
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px;">
+        <button class="follicle-day-btn active" onclick="showSheet('meds',this)">Medications</button>
+        <button class="follicle-day-btn" onclick="showSheet('hormones',this)">Hormones & Labs</button>
+        <button class="follicle-day-btn" onclick="showSheet('follicles',this)">Follicle Data</button>
+        <button class="follicle-day-btn" onclick="showSheet('symptoms',this)">Symptoms & Notes</button>
+      </div>
+
+      <!-- MEDICATIONS -->
+      <div class="journey-table-wrap sheet-view" id="sheet-meds">
+        <table class="journey-table">
+          <thead><tr>
+            <th class="jt-label">Medication</th>
+            <th>D1<br><span style="font-weight:300;text-transform:none;letter-spacing:0">Mar 4</span></th>
+            <th>D2<br><span style="font-weight:300;text-transform:none;letter-spacing:0">Mar 5</span></th>
+            <th>D3<br><span style="font-weight:300;text-transform:none;letter-spacing:0">Mar 6</span></th>
+            <th>D4<br><span style="font-weight:300;text-transform:none;letter-spacing:0">Mar 7</span></th>
+            <th>D5<br><span style="font-weight:300;text-transform:none;letter-spacing:0">Mar 8</span></th>
+            <th>D6<br><span style="font-weight:300;text-transform:none;letter-spacing:0">Mar 9</span></th>
+            <th>D7<br><span style="font-weight:300;text-transform:none;letter-spacing:0">Mar 10</span></th>
+            <th>D8<br><span style="font-weight:300;text-transform:none;letter-spacing:0">Mar 11</span></th>
+            <th>D9<br><span style="font-weight:300;text-transform:none;letter-spacing:0">Mar 12</span></th>
+            <th>D10<br><span style="font-weight:300;text-transform:none;letter-spacing:0">Mar 13</span></th>
+            <th>D11<br><span style="font-weight:300;text-transform:none;letter-spacing:0">Mar 14</span></th>
+          </tr></thead>
+          <tbody>
+            <tr>
+              <td class="jt-label">Gonal-F</td>
+              <td>200 IU</td><td>200 IU</td><td>150 IU</td><td>150 IU</td><td>150 IU</td><td>150 IU</td><td>225 IU</td><td>225 IU</td><td>225 IU</td>
+              <td class="jt-trigger">Trigger shot ⚡<br><small>40U + 1.2mL hCG</small></td>
+              <td class="jt-surgery">Surgery Day</td>
+            </tr>
+            <tr>
+              <td class="jt-label">Menopur</td>
+              <td>—</td><td>—</td><td>1 vial</td><td>1 vial</td><td>2 vials</td><td>2 vials</td><td>2 vials</td><td>2 vials</td><td>2 vials</td><td>3 vials</td><td>—</td>
+            </tr>
+            <tr>
+              <td class="jt-label">Cetrotide</td>
+              <td>—</td><td>—</td><td>—</td><td>—</td><td>250 mcg</td><td>250 mcg</td><td>250 mcg</td><td>250 mcg</td><td>250 mcg</td><td>250 mcg</td><td>—</td>
+            </tr>
+            <tr class="jt-section-row"><td colspan="12">Monitoring</td></tr>
+            <tr>
+              <td class="jt-label">Ultrasound &amp; bloodwork?</td>
+              <td>✅</td><td>—</td><td>✅</td><td>—</td><td>✅</td><td>—</td><td>✅</td><td>—</td><td>✅</td><td>✅</td><td>✅</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- HORMONES & LABS -->
+      <div class="journey-table-wrap sheet-view" id="sheet-hormones" style="display:none;">
+        <table class="journey-table">
+          <thead><tr>
+            <th class="jt-label">Lab Value</th>
+            <th>D1 Mar 4</th><th>D3 Mar 6</th><th>D5 Mar 8</th><th>D7 Mar 10</th><th>D9 Mar 12</th><th>D10 Mar 13</th><th>D11 Mar 14</th><th>D14 Mar 17</th>
+          </tr></thead>
+          <tbody>
+            <tr class="jt-section-row"><td colspan="9">Estradiol (E2) pg/mL</td></tr>
+            <tr>
+              <td class="jt-label">E2 Level</td>
+              <td>31</td><td>82.84</td><td>328.6</td><td>673.2</td><td>1,464</td><td>1,992</td><td>2,988</td><td>2,851</td>
+            </tr>
+            <tr>
+              <td class="jt-label">E2 Expected Range</td>
+              <td class="jt-range">25–75</td><td class="jt-range">100–200</td><td class="jt-range">400–800</td><td class="jt-range">1000–1600</td><td class="jt-range">1600–2400</td><td class="jt-range">2000–3000</td><td class="jt-range">2000–3000</td><td>—</td>
+            </tr>
+            <tr class="jt-section-row"><td colspan="9">Other Labs</td></tr>
+            <tr><td class="jt-label">FSH</td><td>6.78</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+            <tr><td class="jt-label">LH</td><td>5.24</td><td>—</td><td>—</td><td>—</td><td>—</td><td>43.43</td><td>—</td><td>—</td></tr>
+            <tr><td class="jt-label">P4 (Progesterone)</td><td>0.4</td><td>0.3</td><td>0.4</td><td>0.9</td><td>0.9</td><td>1.2</td><td>1.5</td><td>—</td></tr>
+            <tr><td class="jt-label">Beta HCG</td><td>&lt;0.100</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>72.23</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- FOLLICLE DATA -->
+      <div class="journey-table-wrap sheet-view" id="sheet-follicles" style="display:none;">
+        <table class="journey-table">
+          <thead><tr>
+            <th class="jt-label">Metric</th>
+            <th>D1 Mar 4</th><th>D3 Mar 6</th><th>D5 Mar 8</th><th>D7 Mar 10</th><th>D9 Mar 12</th><th>D10 Mar 13</th>
+          </tr></thead>
+          <tbody>
+            <tr class="jt-section-row"><td colspan="7">Uterine Lining</td></tr>
+            <tr><td class="jt-label">Lining thickness</td><td>3.28 mm</td><td>5.14 mm</td><td>5.48 mm</td><td>8.47 mm</td><td>8.72 mm</td><td>9.07 mm</td></tr>
+            <tr><td class="jt-label">Lining quality</td><td>Good</td><td>Good</td><td>Good</td><td>Good</td><td>Good</td><td>Good</td></tr>
+            <tr class="jt-section-row"><td colspan="7">Right Ovary</td></tr>
+            <tr><td class="jt-label">RT follicles (mm)</td>
+              <td>28.67, 15.62</td><td>—</td><td>9.60, 9.10, 8.69</td><td>11.95, 11.93, 11.30, 8.95</td>
+              <td>13.85, 13.82, 13.78, 12.24, 11.61, 11.14, 10.47, 10.27</td>
+              <td>19.84, 19.71, 19.36, 19.11, 18.13, 16.23, 15.72</td>
+            </tr>
+            <tr><td class="jt-label">RT count</td><td>2</td><td>—</td><td>3</td><td>4</td><td>8</td><td>7</td></tr>
+            <tr class="jt-section-row"><td colspan="7">Left Ovary</td></tr>
+            <tr><td class="jt-label">LT follicles (mm)</td>
+              <td>28.27, 13.54</td><td>9.07</td><td>12.60, 11.39</td><td>16.41, 15.69, 14.98, 11.64</td>
+              <td>18.37, 18.10, 16.61, 13.62, 12.16, 10.64</td>
+              <td>20.58, 18.23, 18.01, 17.75, 16.84, 15.98, 15.72</td>
+            </tr>
+            <tr><td class="jt-label">LT count</td><td>2</td><td>1</td><td>2</td><td>4</td><td>6</td><td>7</td></tr>
+            <tr class="jt-section-row"><td colspan="7">Summary</td></tr>
+            <tr><td class="jt-label">Total follicles</td><td>4 (13R, 12L at baseline AFC)</td><td>1</td><td>5</td><td>8</td><td>14</td><td>14</td></tr>
+            <tr><td class="jt-label">Avg largest (mm)</td><td>21.5</td><td>9.1</td><td>11.0</td><td>14.2</td><td>16.1</td><td>19.4</td></tr>
+            <tr><td class="jt-label">Notes</td>
+              <td>AFC: 13R, 12L</td><td>—</td><td>—</td>
+              <td>LT growing faster; LT biggest 15mm, RT biggest 11mm</td>
+              <td>RT catching up; LT has 2 follicles &gt;18mm</td>
+              <td>Both sides mature</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- SYMPTOMS & NOTES -->
+      <div class="journey-table-wrap sheet-view" id="sheet-symptoms" style="display:none;">
+        <table class="journey-table">
+          <thead><tr>
+            <th class="jt-label">Day</th>
+            <th style="min-width:260px;text-align:left;">Symptoms & Notes</th>
+          </tr></thead>
+          <tbody>
+            <tr><td class="jt-label">Day 2 · Mar 5</td><td style="text-align:left">Sleepy</td></tr>
+            <tr><td class="jt-label">Day 3 · Mar 6</td><td style="text-align:left">Sleepy, feeling a little bloated</td></tr>
+            <tr><td class="jt-label">Day 5 · Mar 8</td><td style="text-align:left">Morning — sleepy, emotional (crying from gratitude). Sensitive after 6pm with lots of work and appointments to catch up on</td></tr>
+            <tr><td class="jt-label">Day 6 · Mar 9</td><td style="text-align:left">Tired. Felt a little cramping (realized hadn't had water all day until 6pm)</td></tr>
+            <tr><td class="jt-label">Day 7 · Mar 10</td><td style="text-align:left">Really gassy waking up. Feeling a little bloated in the morning, more full in the stomach area in the afternoon</td></tr>
+            <tr><td class="jt-label">Day 8 · Mar 11</td><td style="text-align:left">Feeling fuller in the stomach area. SO sleepy in the mornings</td></tr>
+            <tr><td class="jt-label">Day 9 · Mar 12</td><td style="text-align:left">Feeling bloated and tired. Cried after the last shot — feeling very emotional</td></tr>
+            <tr><td class="jt-label">Day 10 · Mar 13</td><td style="text-align:left">Tired, sleepy, headache. Exhausted in the afternoon (lack of sleep). Feeling better in the evening after a walk in the sun</td></tr>
+            <tr><td class="jt-label" style="background:#FFF5F0">Day 11 · Mar 14 — Trigger</td><td style="text-align:left;background:#FFF5F0">Trigger shot day! Gonal-F 40U + 1.2mL of 5K hCG. Diarrhea in the morning. Feeling much more energetic</td></tr>
+            <tr><td class="jt-label jt-surgery">Day 12 · Mar 15 — Surgery</td><td style="text-align:left;background:#F5ECEC">So sleepy, slept on and off all day</td></tr>
+            <tr><td class="jt-label">Day 13 · Mar 16</td><td style="text-align:left">Bleeding/spotting. Took Tylenol and was able to be up and about all day</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <!-- CHART VIEW -->
+    <div id="divya-view-chart" style="display:none;">
+      <div id="divya-chart-wrap">
+        <canvas id="divyaChart" height="300"></canvas>
+      </div>
+    </div>
+
+    <!-- FOLLICLE VISUALIZATION -->
+    <div id="divya-view-follicles" style="display:none;">
+      <div class="follicle-section">
+        <h3>Follicle Growth Over Time</h3>
+        <p>Each circle represents a measured follicle — sized proportionally to its diameter in mm. Select a day to compare.</p>
+        <div class="follicle-day-nav" id="follicle-day-nav"></div>
+        <div class="follicle-canvas-wrap">
+          <div class="follicle-ovary">
+            <h4>Right Ovary</h4>
+            <canvas id="rt-canvas" width="200" height="200"></canvas>
+          </div>
+          <div class="follicle-ovary">
+            <h4>Left Ovary</h4>
+            <canvas id="lt-canvas" width="200" height="200"></canvas>
+          </div>
+        </div>
+        <div class="follicle-legend">
+          <span><span class="legend-dot" style="background:#C9A0A0"></span> &lt;10mm (antral)</span>
+          <span><span class="legend-dot" style="background:#8FAF8F"></span> 10–14mm (growing)</span>
+          <span><span class="legend-dot" style="background:#7B4F6E"></span> 15–17mm (maturing)</span>
+          <span><span class="legend-dot" style="background:#C4714A"></span> 18mm+ (mature)</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast">Today's entry saved!</div>
+
+<script>
+  // Supabase setup
+  const SUPABASE_URL = 'https://agsxcnxfsawplkieochk.supabase.co';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFnc3hjbnhmc2F3cGxraWVvY2hrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzE2MTA5NDUsImV4cCI6MjA4NzE4Njk0NX0.PGQMJv7fdRraBhatDIWp3s6qnksLxxDmPVsxr1bSOuw';
+  const { createClient } = supabase;
+  const sb = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  // Check auth state on load
+  async function init() {
+    // Handle the token from Google redirect URL
+    const hashParams = new URLSearchParams(window.location.hash.substring(1));
+    const accessToken = hashParams.get('access_token');
+    if (accessToken) {
+      const { data, error } = await sb.auth.setSession({
+        access_token: accessToken,
+        refresh_token: hashParams.get('refresh_token')
+      });
+      if (data.session) {
+        window.history.replaceState(null, '', window.location.pathname);
+        showApp(data.session.user);
+        return;
+      }
+    }
+
+    // Check existing session
+    const { data: { session } } = await sb.auth.getSession();
+    if (session) {
+      showApp(session.user);
+      return;
+    }
+
+    // Listen for future auth changes
+    sb.auth.onAuthStateChange((event, session) => {
+      if (event === 'SIGNED_IN' && session) {
+        showApp(session.user);
+      } else if (event === 'SIGNED_OUT') {
+        showLogin();
+      }
+    });
+  }
+
+  function showApp(user) {
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('app').style.display = 'flex';
+    document.getElementById('app').style.flexDirection = 'column';
+    // Set avatar initial from user name or email
+    const name = user.user_metadata?.full_name || user.email || 'U';
+    document.querySelector('.avatar').textContent = name[0].toUpperCase();
+    initProtocol();
+  }
+
+  function showLogin() {
+    document.getElementById('login-screen').style.display = 'flex';
+    document.getElementById('app').style.display = 'none';
+  }
+
+  async function loginWithGoogle() {
+    const { error } = await sb.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        redirectTo: 'https://chimerical-creponne-d7e75d.netlify.app'
+      }
+    });
+    if (error) {
+      const el = document.getElementById('auth-error');
+      el.textContent = error.message;
+      el.style.display = 'block';
+    }
+  }
+
+  async function logout() {
+    await sb.auth.signOut();
+    showLogin();
+  }
+
+  function switchTab(tab, btn) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + tab).classList.add('active');
+  }
+
+  // Medication protocol
+  const MED_CATEGORIES = {
+    'Stimulation': ['Gonal-F','Follistim','Menopur','Bravelle','Repronex'],
+    'Suppression': ['Lupron','Ganirelix','Cetrotide','Birth Control Pill'],
+    'Trigger Shot': ['Pregnyl (hCG)','Novarel (hCG)','Ovidrel','Lupron Trigger'],
+    'Supportive': ['Low-dose Aspirin','DHEA','CoQ10','Estrogen Priming','Progesterone','Prenatal Vitamins']
+  };
+
+  let userProtocol = JSON.parse(localStorage.getItem('wtf_protocol') || 'null');
+
+  function initProtocol() {
+    if (userProtocol && userProtocol.length > 0) {
+      document.getElementById('protocol-setup').style.display = 'none';
+      document.getElementById('daily-log').style.display = 'block';
+      renderMedDailyLog();
+    } else {
+      document.getElementById('protocol-setup').style.display = 'block';
+      document.getElementById('daily-log').style.display = 'none';
+    }
+  }
+
+  function saveProtocol() {
+    const checked = Array.from(document.querySelectorAll('.med-checkbox:checked')).map(cb => ({
+      name: cb.value,
+      category: cb.name
+    }));
+    if (checked.length === 0) {
+      alert('Please select at least one medication.');
+      return;
+    }
+    userProtocol = checked;
+    localStorage.setItem('wtf_protocol', JSON.stringify(userProtocol));
+    document.getElementById('protocol-setup').style.display = 'none';
+    document.getElementById('daily-log').style.display = 'block';
+    renderMedDailyLog();
+    const toast = document.getElementById('toast');
+    toast.textContent = 'Protocol saved!';
+    toast.classList.add('show');
+    setTimeout(() => { toast.classList.remove('show'); toast.textContent = "Today\'s entry saved!"; }, 2500);
+  }
+
+  function editProtocol() {
+    // Re-check previously selected meds
+    if (userProtocol) {
+      userProtocol.forEach(med => {
+        const cb = Array.from(document.querySelectorAll('.med-checkbox')).find(c => c.value === med.name);
+        if (cb) cb.checked = true;
+      });
+    }
+    document.getElementById('protocol-setup').style.display = 'block';
+    document.getElementById('daily-log').style.display = 'none';
+    document.getElementById('protocol-setup').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function renderMedDailyLog() {
+    if (!userProtocol || userProtocol.length === 0) return;
+
+    const currentDay = 5; // In a real app this would be dynamic
+    const daysToShow = 4; // how many past days to show
+    const startDay = Math.max(1, currentDay - daysToShow + 1);
+
+    // Build day columns: past days + today
+    const dayColumns = [];
+    for (let d = startDay; d <= currentDay; d++) {
+      dayColumns.push(d);
+    }
+
+    const categoryLabels = {
+      stim: 'Stimulation Medications',
+      suppression: 'Suppression Medications',
+      trigger: 'Trigger Shot',
+      supportive: 'Supportive Medications'
+    };
+
+    // Group meds by category
+    const categories = {};
+    userProtocol.forEach(med => {
+      if (!categories[med.category]) categories[med.category] = [];
+      categories[med.category].push(med.name);
+    });
+
+    // Fake past data for demo
+    const pastData = {};
+    userProtocol.forEach(med => {
+      pastData[med.name] = {};
+      dayColumns.forEach(d => {
+        if (d < currentDay) {
+          pastData[med.name][d] = {
+            dose: med.name.includes('Gonal') ? '150 IU' :
+                  med.name.includes('Menopur') ? '75 IU' :
+                  med.name.includes('Ganirelix') ? '0.25mg' :
+                  med.name.includes('Aspirin') ? '81mg' : '—',
+            time: '9:00 PM'
+          };
+        }
+      });
+    });
+
+    // Build table
+    let html = '<div class="med-spreadsheet-wrap"><table class="med-spreadsheet"><thead><tr>';
+    html += '<th class="med-name-header">Medication</th>';
+    dayColumns.forEach(d => {
+      const isToday = d === currentDay;
+      html += `<th colspan="2" class="${isToday ? 'today-header' : ''}">Day ${d}${isToday ? ' (today)' : ''}</th>`;
+    });
+    html += '</tr><tr><th class="med-name-header"></th>';
+    dayColumns.forEach(d => {
+      const isToday = d === currentDay;
+      html += `<th class="${isToday ? 'today-header' : ''}">Dose</th><th class="${isToday ? 'today-header' : ''}">Time</th>`;
+    });
+    html += '</tr></thead><tbody>';
+
+    Object.entries(categories).forEach(([cat, meds]) => {
+      // Category row
+      html += `<tr class="category-row"><td class="med-category-cell">${categoryLabels[cat] || cat}</td>`;
+      dayColumns.forEach(d => {
+        html += '<td colspan="2" style="background:var(--cream);"></td>';
+      });
+      html += '</tr>';
+
+      meds.forEach(med => {
+        html += `<tr><td class="med-name-cell">${med}</td>`;
+        dayColumns.forEach(d => {
+          const isToday = d === currentDay;
+          const past = pastData[med.name] && pastData[med.name][d];
+          if (isToday) {
+            html += `<td class="today-cell"><input class="spreadsheet-input" type="text" placeholder="dose"></td>`;
+            html += `<td class="today-cell"><input class="spreadsheet-input" type="time"></td>`;
+          } else {
+            html += `<td class="past-cell"><div class="past-value">${past ? past.dose : '—'}</div></td>`;
+            html += `<td class="past-cell"><div class="past-value">${past ? past.time : '—'}</div></td>`;
+          }
+        });
+        html += '</tr>';
+      });
+    });
+
+    html += '</tbody></table></div>';
+    document.getElementById('med-daily-log').innerHTML = html;
+  }
+
+  // --- Log Your Journey: Ultrasound/Bloodwork + Feels ---
+  const FEELS = [
+    "No change",
+    "Calm",
+    "Anxious",
+    "Irritable",
+    "Sensitive",
+    "Motivated",
+    "Overwhelmed",
+    "Tired",
+    "Energized",
+    "Hopeful",
+    "Stressed",
+    "Sad",
+    "Happy",
+    "Confident",
+    "Foggy",
+    "Restless"
+  ];
+
+  let selectedFeel = null;
+
+  function renderFeels() {
+    const wrap = document.getElementById("feel-selector");
+    if (!wrap) return;
+    wrap.innerHTML = "";
+    FEELS.forEach(label => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "feel-btn" + (label === selectedFeel ? " selected" : "");
+      btn.textContent = label;
+      btn.dataset.value = label;
+      btn.onclick = () => selectFeel(label);
+      wrap.appendChild(btn);
+    });
+    applyNoChangeLock();
+  }
+
+  function selectFeel(value) {
+    selectedFeel = value;
+    renderFeels();
+  }
+
+  function applyNoChangeLock() {
+    const wrap = document.getElementById("feel-selector");
+    if (!wrap) return;
+    const noChangeSelected = selectedFeel === "No change";
+    wrap.querySelectorAll(".feel-btn").forEach(btn => {
+      const isNoChange = btn.dataset.value === "No change";
+      if (!isNoChange) btn.disabled = noChangeSelected;
+    });
+  }
+
+  function handleUltrasoundToggle(isChecked) {
+    const block = document.getElementById("ultrasound-block");
+    if (!block) return;
+    block.style.display = isChecked ? "block" : "none";
+    if (isChecked) renderMonitoringDailyLog();
+  }
+
+  function handleUltrasoundImages(event) {
+    const files = Array.from(event.target.files || []);
+    const previewWrap = document.getElementById("ultrasound-previews");
+    if (!previewWrap) return;
+    previewWrap.innerHTML = "";
+    files.slice(0, 12).forEach(file => {
+      const img = document.createElement("img");
+      img.alt = file.name;
+      img.src = URL.createObjectURL(file);
+      previewWrap.appendChild(img);
+    });
+  }
+
+  function renderMonitoringDailyLog() {
+    const container = document.getElementById("monitoring-daily-log");
+    if (!container) return;
+
+    const currentDay = (window.CURRENT_DAY || 5); // driven by selected day
+    const daysToShow = 4;
+    const startDay = Math.max(1, currentDay - daysToShow + 1);
+
+    const dayColumns = [];
+    for (let d = startDay; d <= currentDay; d++) dayColumns.push(d);
+
+    const metrics = [
+      { key: "follicles", label: "Follicle count" },
+      { key: "e2", label: "Estradiol (E2) pg/mL" },
+      { key: "lh", label: "LH (optional)" },
+      { key: "p4", label: "Progesterone (optional)" }
+    ];
+
+    // demo past data
+    const past = {
+      follicles: { 2: "—", 3: "—", 4: "—" },
+      e2: { 2: "—", 3: "—", 4: "—" },
+      lh: { 2: "—", 3: "—", 4: "—" },
+      p4: { 2: "—", 3: "—", 4: "—" }
+    };
+
+    let t = '<div class="med-spreadsheet-wrap"><table class="med-spreadsheet"><thead><tr>';
+    t += '<th class="med-name-header">Monitoring</th>';
+    dayColumns.forEach(d => {
+      const isToday = d === currentDay;
+      t += `<th class="${isToday ? 'today-header' : ''}">Day ${d}${isToday ? ' (today)' : ''}</th>`;
+    });
+    t += '</tr></thead><tbody>';
+
+    metrics.forEach(m => {
+      t += `<tr><td class="med-label-cell">${m.label}</td>`;
+      dayColumns.forEach(d => {
+        const isToday = d === currentDay;
+        if (isToday) {
+          t += `<td class="today-cell"><input class="cell-input" type="text" placeholder="—" data-metric="${m.key}" data-day="${d}"></td>`;
+        } else {
+          const val = (past[m.key] && past[m.key][d]) ? past[m.key][d] : "—";
+          t += `<td>${val}</td>`;
+        }
+      });
+      t += '</tr>';
+    });
+
+    t += '</tbody></table></div>';
+    container.innerHTML = t;
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    renderFeels();
+  });
+
+  function selectMood(btn) {
+    document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+  }
+
+  function saveEntry() {
+    const toast = document.getElementById('toast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2500);
+  }
+
+  document.querySelectorAll('.day-pill').forEach(pill => {
+    pill.addEventListener('click', function() {
+      document.querySelectorAll('.day-pill').forEach(p => p.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+
+  // ---- DIVYA'S JOURNEY ----
+  const DIVYA_DATA = {
+    labels: ['Day 1\nMar 4', 'Day 3\nMar 6', 'Day 5\nMar 8', 'Day 7\nMar 10', 'Day 9\nMar 12', 'Day 10\nMar 13'],
+    lining: [3.28, 5.14, 5.48, 8.47, 8.72, 9.07],
+    rtLargest: [null, null, 9.60, 11.95, 13.85, 19.84],
+    ltLargest: [null, 9.07, 12.60, 16.41, 18.37, 20.58],
+    avgLargest: [null, 9.1, 11.0, 14.2, 16.1, 19.4],
+    e2: [31, 82.84, 328.6, 673.2, 1464, 1992],
+    folliclesByDay: {
+      0: { rt: [28.67, 15.62], lt: [28.27, 13.54], label: 'Day 1 · Mar 4' },
+      1: { rt: [], lt: [9.07], label: 'Day 3 · Mar 6' },
+      2: { rt: [9.60, 9.10, 8.69], lt: [12.60, 11.39], label: 'Day 5 · Mar 8' },
+      3: { rt: [11.95, 11.93, 11.30, 8.95], lt: [16.41, 15.69, 14.98, 11.64], label: 'Day 7 · Mar 10' },
+      4: { rt: [13.85, 13.82, 13.78, 12.24, 11.61, 11.14, 10.47, 10.27], lt: [18.37, 18.10, 16.61, 13.62, 12.16, 10.64], label: 'Day 9 · Mar 12' },
+      5: { rt: [19.84, 19.71, 19.36, 19.11, 18.13, 16.23, 15.72], lt: [20.58, 18.23, 18.01, 17.75, 16.84, 15.98, 15.72], label: 'Day 10 · Mar 13' }
+    }
+  };
+
+  let divyaChart = null;
+  let currentFollicleDay = 5;
+
+  function showSheet(sheet, btn) {
+    document.querySelectorAll('.sheet-view').forEach(el => el.style.display = 'none');
+    document.getElementById('sheet-' + sheet).style.display = 'block';
+    btn.closest('div').querySelectorAll('.follicle-day-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  function showDivyaView(view) {
+    ['spreadsheet', 'chart', 'follicles'].forEach(v => {
+      document.getElementById('divya-view-' + v).style.display = v === view ? 'block' : 'none';
+      document.getElementById('btn-' + v).classList.toggle('active', v === view);
+    });
+    if (view === 'chart') renderDivyaChart();
+    if (view === 'follicles') initFollicleViz();
+  }
+
+  let currentChartType = 'follicles';
+
+  function switchChartType(type, btn) {
+    currentChartType = type;
+    btn.closest('div').querySelectorAll('.follicle-day-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderDivyaChart();
+  }
+
+  function renderDivyaChart() {
+    if (divyaChart) { divyaChart.destroy(); divyaChart = null; }
+    const ctx = document.getElementById('divyaChart').getContext('2d');
+    const labels = ['Day 1 (Mar 4)', 'Day 3 (Mar 6)', 'Day 5 (Mar 8)', 'Day 7 (Mar 10)', 'Day 9 (Mar 12)', 'Day 10 (Mar 13)'];
+    // Add chart type toggle
+    const chartWrap = document.getElementById('divya-chart-wrap');
+    if (!document.getElementById('ct-follicles')) {
+      const toggle = document.createElement('div');
+      toggle.style.cssText = 'display:flex;gap:8px;margin-bottom:16px;';
+      const b1 = document.createElement('button');
+      b1.id = 'ct-follicles'; b1.className = 'follicle-day-btn active';
+      b1.textContent = 'Follicle Growth';
+      b1.onclick = function() { switchChartType('follicles', b1); };
+      const b2 = document.createElement('button');
+      b2.id = 'ct-e2'; b2.className = 'follicle-day-btn';
+      b2.textContent = 'E2 Level';
+      b2.onclick = function() { switchChartType('e2', b2); };
+      toggle.appendChild(b1); toggle.appendChild(b2);
+      chartWrap.insertBefore(toggle, chartWrap.firstChild);
+    }
+    divyaChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels,
+        datasets: currentChartType === 'follicles' ? [
+          {
+            label: 'Avg Largest Follicle (mm)',
+            data: DIVYA_DATA.avgLargest,
+            borderColor: '#7B4F6E',
+            backgroundColor: 'rgba(123,79,110,0.08)',
+            borderWidth: 2.5,
+            pointBackgroundColor: '#7B4F6E',
+            pointRadius: 5,
+            tension: 0.35,
+            fill: true,
+            spanGaps: true
+          },
+          {
+            label: 'RT Ovary Largest (mm)',
+            data: DIVYA_DATA.rtLargest,
+            borderColor: '#C9A0A0',
+            backgroundColor: 'transparent',
+            borderWidth: 2,
+            pointBackgroundColor: '#C9A0A0',
+            pointRadius: 4,
+            tension: 0.35,
+            borderDash: [4, 3],
+            spanGaps: true
+          },
+          {
+            label: 'LT Ovary Largest (mm)',
+            data: DIVYA_DATA.ltLargest,
+            borderColor: '#8FAF8F',
+            backgroundColor: 'transparent',
+            borderWidth: 2,
+            pointBackgroundColor: '#8FAF8F',
+            pointRadius: 4,
+            tension: 0.35,
+            borderDash: [4, 3],
+            spanGaps: true
+          },
+          {
+            label: 'Endometrial Lining (mm)',
+            data: DIVYA_DATA.lining,
+            borderColor: '#C4714A',
+            backgroundColor: 'transparent',
+            borderWidth: 2,
+            pointBackgroundColor: '#C4714A',
+            pointRadius: 4,
+            tension: 0.35
+          }
+        ] : [
+          {
+            label: 'E2 (Estradiol) pg/mL',
+            data: DIVYA_DATA.e2,
+            borderColor: '#7B4F6E',
+            backgroundColor: 'rgba(123,79,110,0.08)',
+            borderWidth: 2.5,
+            pointBackgroundColor: '#7B4F6E',
+            pointRadius: 5,
+            tension: 0.35,
+            fill: true
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: { font: { family: 'DM Sans', size: 12 }, color: '#6B5363', padding: 16, usePointStyle: true }
+          },
+          tooltip: {
+            callbacks: {
+              label: ctx => ` ${ctx.dataset.label}: ${ctx.parsed.y !== null ? ctx.parsed.y + (currentChartType === 'e2' ? ' pg/mL' : ' mm') : '—'}`
+            }
+          }
+        },
+        scales: {
+          x: { grid: { color: '#F5ECEC' }, ticks: { font: { family: 'DM Sans', size: 11 }, color: '#9E8A96' } },
+          y: {
+            grid: { color: '#F5ECEC' },
+            ticks: { font: { family: 'DM Sans', size: 11 }, color: '#9E8A96', callback: v => v + (currentChartType === 'e2' ? '' : ' mm') },
+            title: { display: true, text: currentChartType === 'e2' ? 'E2 pg/mL' : 'Size (mm)', font: { family: 'DM Sans', size: 11 }, color: '#9E8A96' }
+          }
+        }
+      }
+    });
+  }
+
+  function initFollicleViz() {
+    // Build day nav buttons
+    const nav = document.getElementById('follicle-day-nav');
+    if (nav.children.length === 0) {
+      Object.entries(DIVYA_DATA.folliclesByDay).forEach(([idx, d]) => {
+        const btn = document.createElement('button');
+        btn.className = 'follicle-day-btn' + (parseInt(idx) === currentFollicleDay ? ' active' : '');
+        btn.textContent = d.label;
+        btn.onclick = () => {
+          currentFollicleDay = parseInt(idx);
+          document.querySelectorAll('.follicle-day-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          drawFollicles();
+        };
+        nav.appendChild(btn);
+      });
+    }
+    drawFollicles();
+  }
+
+  function follicleColor(mm) {
+    if (mm >= 18) return '#C4714A';
+    if (mm >= 15) return '#7B4F6E';
+    if (mm >= 10) return '#8FAF8F';
+    return '#C9A0A0';
+  }
+
+  function drawFollicles() {
+    const dayData = DIVYA_DATA.folliclesByDay[currentFollicleDay];
+    drawOvary('rt-canvas', dayData.rt);
+    drawOvary('lt-canvas', dayData.lt);
+  }
+
+  function drawOvary(canvasId, follicles) {
+    const canvas = document.getElementById(canvasId);
+    const ctx = canvas.getContext('2d');
+    const W = canvas.width, H = canvas.height;
+    ctx.clearRect(0, 0, W, H);
+
+    // Draw ovary outline
+    ctx.beginPath();
+    ctx.ellipse(W/2, H/2, W/2 - 8, H/2 - 8, 0, 0, Math.PI * 2);
+    ctx.strokeStyle = '#E8D0D0';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+    ctx.fillStyle = '#FAF7F2';
+    ctx.fill();
+
+    if (follicles.length === 0) {
+      ctx.font = '11px DM Sans';
+      ctx.fillStyle = '#9E8A96';
+      ctx.textAlign = 'center';
+      ctx.fillText('No data', W/2, H/2 + 4);
+      return;
+    }
+
+    // Scale follicles to fit — max size is 28mm (baseline ovary)
+    const maxMm = 28;
+    const maxR = 28; // max radius in px
+    const minR = 6;
+
+    // Place follicles in a simple packed layout
+    const placed = [];
+    const maxFit = Math.min(follicles.length, 9);
+    const sorted = [...follicles].sort((a, b) => b - a).slice(0, maxFit);
+
+    // Grid-style placement attempt
+    const cx = W / 2, cy = H / 2;
+    const positions = [
+      [cx, cy],
+      [cx - 35, cy - 25], [cx + 35, cy - 25],
+      [cx - 35, cy + 30], [cx + 35, cy + 30],
+      [cx, cy - 45], [cx, cy + 45],
+      [cx - 55, cy], [cx + 55, cy]
+    ];
+
+    sorted.forEach((mm, i) => {
+      const r = Math.max(minR, Math.round(minR + (mm / maxMm) * (maxR - minR)));
+      const [px, py] = positions[i] || [cx + (Math.random() - 0.5) * 60, cy + (Math.random() - 0.5) * 60];
+
+      // Draw follicle bubble
+      const gradient = ctx.createRadialGradient(px - r * 0.3, py - r * 0.3, r * 0.1, px, py, r);
+      gradient.addColorStop(0, 'rgba(255,255,255,0.6)');
+      gradient.addColorStop(1, follicleColor(mm) + 'CC');
+
+      ctx.beginPath();
+      ctx.arc(px, py, r, 0, Math.PI * 2);
+      ctx.fillStyle = gradient;
+      ctx.fill();
+      ctx.strokeStyle = follicleColor(mm);
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      // Label
+      if (r >= 10) {
+        ctx.font = `bold ${Math.max(8, r/2)}px DM Sans`;
+        ctx.fillStyle = '#fff';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(mm.toFixed(0), px, py);
+      }
+    });
+  }
+
+  init();
+
+  // --- Day selection + content updates (Log tab + Divya tab) ---
+  const STIM_TIMELINE = [
+    { range: [1,2], label: "Days 1–2: Baseline ultrasound + bloodwork, start stims" },
+    { range: [3,5], label: "Days 3–5: Continue stims, monitoring begins" },
+    { range: [6,8], label: "Days 6–8: More monitoring, possible dose adjustments" },
+    { range: [9,11], label: "Days 9–11: Trigger shot window" },
+    { range: [12,13], label: "Retrieval + 1–2 days after: Recovery + results" }
+  ];
+
+  const DAY_CONTENT = {
+    "1": {
+      expectTitle: "You’re getting your baseline — and starting strong.",
+      expectBody: "Today is about baseline ultrasound + bloodwork, then starting stimulation meds. Focus on staying hydrated and getting your routine set up.",
+      questions: [
+        "Are my baseline labs/ultrasound in the expected range to start stims?",
+        "What time should I take my meds each day?",
+        "When is my next monitoring appointment?"
+      ]
+    },
+    "2": {
+      expectTitle: "Settling into stims — keep it consistent.",
+      expectBody: "Continue stims. Consistency matters more than perfection. Note any early side effects and keep injection timing steady.",
+      questions: [
+        "Should we adjust anything based on how I’m tolerating meds?",
+        "What symptoms are normal vs. worth calling about?",
+        "Do you expect monitoring to start tomorrow or day 3?"
+      ]
+    },
+    "3": {
+      expectTitle: "Monitoring begins — data starts to guide the plan.",
+      expectBody: "You’ll likely start monitoring (ultrasound + bloodwork) around this window. The goal is to track follicle growth and hormone response.",
+      questions: [
+        "How many follicles are developing and what sizes?",
+        "Is my E2 rising as expected?",
+        "Any dose adjustments needed yet?"
+      ]
+    },
+    "7": {
+      expectTitle: "More monitoring — dose tweaks are common.",
+      expectBody: "This is the phase where monitoring becomes frequent and dose adjustments can happen. Your job is to show up + track how you feel.",
+      questions: [
+        "Are we on track with growth rates?",
+        "Do we need to change dosing based on labs?",
+        "When do you anticipate starting/continuing antagonist (if applicable)?"
+      ]
+    },
+    "10": {
+      expectTitle: "Trigger window — timing gets precise.",
+      expectBody: "You’re in the trigger window. Timing can be exact; confirm trigger instructions and retrieval timing.",
+      questions: [
+        "When exactly do I trigger and with what dose?",
+        "When is retrieval scheduled relative to trigger?",
+        "What should I do the day before retrieval?"
+      ]
+    }
+  };
+
+  function timelineForDay(day){
+    const d = Number(day);
+    const seg = STIM_TIMELINE.find(s => d >= s.range[0] && d <= s.range[1]);
+    return seg ? seg.label : "";
+  }
+
+  function contentForDay(day){
+    // Fallback to nearest defined content by bucket
+    const d = Number(day);
+    if (DAY_CONTENT[String(d)]) return DAY_CONTENT[String(d)];
+
+    if (d >= 1 && d <= 2) return DAY_CONTENT["1"];
+    if (d >= 3 && d <= 5) return DAY_CONTENT["3"];
+    if (d >= 6 && d <= 8) return DAY_CONTENT["7"];
+    if (d >= 9 && d <= 11) return DAY_CONTENT["10"];
+    return {
+      expectTitle: "Recovery + results — be gentle with yourself.",
+      expectBody: "You’re in retrieval/recovery territory. Prioritize rest, hydration, and follow your clinic’s instructions.",
+      questions: [
+        "When will I get fertilization and embryo updates (if applicable)?",
+        "What symptoms after retrieval are normal vs urgent?",
+        "When can I resume exercise and normal activities?"
+      ]
+    };
+  }
+
+  // --- Per-tab state: Log Your Journey ---
+  const logState = { selectedDay: 1 };
+
+  function updateLogSegmentSummary(day){
+    const seg = timelineForDay(day); // returns "Days X–Y: ..."
+    const segEl = document.getElementById("log-segment-line");
+    if (segEl) segEl.textContent = seg;
+  }
+
+  function updateLogDayUI(day){
+    logState.selectedDay = Number(day);
+
+    const logTab = document.getElementById("tab-journey");
+    if (!logTab) return;
+
+    // Title
+    const titleH1 = logTab.querySelector("#log-day-title-h1");
+    if (titleH1) titleH1.textContent = `Day ${logState.selectedDay} of Stimulation`;
+
+    // What to expect + questions (scoped to Log tab)
+    const c = contentForDay(logState.selectedDay);
+    const et = logTab.querySelector("#what-to-expect-title");
+    const eb = logTab.querySelector("#what-to-expect-body");
+    if (et) et.textContent = c.expectTitle;
+    if (eb) eb.textContent = c.expectBody;
+
+    const qList = logTab.querySelector("#questions-list");
+    if (qList){
+      qList.innerHTML = "";
+      (c.questions || []).forEach(q => {
+        const li = document.createElement("li");
+        li.textContent = q;
+        qList.appendChild(li);
+      });
+    }
+
+    // Shift tracking tables (Log tab only)
+    window.CURRENT_DAY = logState.selectedDay;
+    if (typeof renderMedDailyLog === "function") renderMedDailyLog();
+    if (logTab.querySelector("#had-ultrasound")?.checked && typeof renderMonitoringDailyLog === "function") renderMonitoringDailyLog();
+
+    // Segment summary line
+    updateLogSegmentSummary(logState.selectedDay);
+
+    // Active pill styling (Log tab only)
+    logTab.querySelectorAll(".day-pill[data-day]").forEach(el => {
+      const isActive = Number(el.getAttribute("data-day")) === logState.selectedDay;
+      el.classList.toggle("active", isActive);
+      el.classList.toggle("selected", isActive);
+    });
+  }
+
+  // Wire Log day pills only (no cross-tab effects)
+  document.addEventListener("click", (e) => {
+    const logTab = document.getElementById("tab-journey");
+    if (!logTab || !logTab.classList.contains("active")) return;
+    const target = e.target.closest("#tab-journey .day-pill[data-day]");
+    if (!target) return;
+    const day = target.getAttribute("data-day");
+    if (!day) return;
+    updateLogDayUI(day);
+  });
+
+  // Initialize Log tab day-dependent sections
+  document.addEventListener("DOMContentLoaded", () => {
+    // Mood: start with nothing selected
+    selectedFeel = null;
+    renderFeels();
+
+    // Always start Log tab at Day 1
+    updateLogDayUI(1);
+  });
+
+</script>
+</body>
+</html>
