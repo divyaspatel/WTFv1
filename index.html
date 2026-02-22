@@ -1,34 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Nunito:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WTF: What the Fertility</title>
+<title>WTF: what the fertility</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
   :root {
-    --mauve: #C9A0A0;
-    --mauve-light: #E8D0D0;
-    --mauve-pale: #F5ECEC;
-    --sage: #8FAF8F;
-    --sage-light: #C4D9C4;
-    --sage-pale: #EBF2EB;
-    --cream: #FAF7F2;
+    /* New warm girlfriend palette */
+    --bg: #FDF6EE;
+    --bg2: #FFF9F4;
+    --bubble-her: #FFF0E6;
+    --bubble-her-border: #F5D5BE;
+    --bubble-me: #E8F0E8;
+    --bubble-me-border: #C2D9C2;
+    --terracotta: #D4714A;
+    --terracotta-light: #F5D5BE;
+    --sage: #6A9E7A;
+    --sage-light: #C2D9C2;
+    --sage-pale: #EAF3EA;
     --plum: #7B4F6E;
-    --terracotta: #C4714A;
-    --text-dark: #2D1F2B;
-    --text-mid: #6B5363;
-    --text-light: #9E8A96;
+    --plum-light: #E8D8E5;
+    --cream: #FDF6EE;
+    --mauve: #C9A0A0;
+    --mauve-light: #EDD8D8;
+    --mauve-pale: #FAF0F0;
+    --text-dark: #2C1A0E;
+    --text-mid: #6B4D3A;
+    --text-light: #A0836E;
     --white: #FFFFFF;
+    --chat-bg: #F5EDE3;
+    --timestamp: #B89880;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
   body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
+    font-family: 'Nunito', sans-serif;
+    background: var(--bg);
+    background-image: radial-gradient(circle at 20% 50%, rgba(212,113,74,0.03) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 20%, rgba(106,158,122,0.03) 0%, transparent 50%);
     color: var(--text-dark);
     min-height: 100vh;
   }
@@ -39,7 +52,7 @@
     min-height: 100vh;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--mauve-pale) 0%, var(--cream) 50%, var(--sage-pale) 100%);
+    background: linear-gradient(160deg, #FFF5EC 0%, #FDF6EE 40%, #EEF5EE 100%);
     position: relative;
     overflow: hidden;
   }
@@ -89,7 +102,7 @@
 
   .logo-badge {
     display: inline-block;
-    background: linear-gradient(135deg, var(--mauve) 0%, var(--plum) 100%);
+    background: linear-gradient(135deg, var(--terracotta) 0%, #B85A36 100%);
     color: white;
     font-size: 28px;
     font-weight: 600;
@@ -142,7 +155,7 @@
     padding: 14px 16px;
     border: 1.5px solid var(--mauve-light);
     border-radius: 12px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Nunito', sans-serif;
     font-size: 15px;
     color: var(--text-dark);
     background: var(--cream);
@@ -151,18 +164,18 @@
   }
 
   .form-group input:focus {
-    border-color: var(--mauve);
+    border-color: var(--sage);
     box-shadow: 0 0 0 3px rgba(201,160,160,0.15);
   }
 
   .btn-primary {
     width: 100%;
     padding: 16px;
-    background: linear-gradient(135deg, var(--mauve) 0%, var(--plum) 100%);
+    background: linear-gradient(135deg, var(--terracotta) 0%, #B85A36 100%);
     color: white;
     border: none;
     border-radius: 12px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Nunito', sans-serif;
     font-size: 15px;
     font-weight: 500;
     cursor: pointer;
@@ -181,7 +194,7 @@
     color: var(--text-dark);
     border: 1.5px solid var(--mauve-light);
     border-radius: 12px;
-    font-family: "DM Sans", sans-serif;
+    font-family: "Nunito", sans-serif;
     font-size: 15px;
     font-weight: 500;
     cursor: pointer;
@@ -192,7 +205,7 @@
     gap: 10px;
     transition: all 0.2s;
   }
-  .btn-google:hover { border-color: var(--mauve); box-shadow: 0 2px 8px rgba(45,31,43,0.08); transform: translateY(-1px); }
+  .btn-google:hover { border-color: var(--sage); box-shadow: 0 2px 8px rgba(45,31,43,0.08); transform: translateY(-1px); }
 
   .login-footer {
     text-align: center;
@@ -202,7 +215,7 @@
   }
 
   .login-footer a {
-    color: var(--plum);
+    color: var(--terracotta);
     text-decoration: none;
     font-weight: 500;
   }
@@ -216,8 +229,8 @@
 
   header {
     background: var(--white);
-    border-bottom: 1px solid var(--mauve-light);
-    padding: 0 32px;
+    border-bottom: 1.5px solid var(--terracotta-light);
+    padding: 0 28px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -225,19 +238,26 @@
     position: sticky;
     top: 0;
     z-index: 100;
+    box-shadow: 0 1px 8px rgba(212,113,74,0.06);
   }
 
   .header-logo {
-    font-size: 20px;
-    font-weight: 600;
-    color: var(--plum);
+    font-family: 'Lora', serif;
+    font-size: 22px;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--terracotta);
     letter-spacing: -0.3px;
   }
 
   .header-logo span {
-    font-weight: 400;
-    font-style: italic;
-    color: var(--mauve);
+    font-weight: 300;
+    font-style: normal;
+    color: var(--text-mid);
+    font-family: 'Nunito', sans-serif;
+    font-size: 13px;
+    display: block;
+    letter-spacing: 0.02em;
   }
 
   .header-right {
@@ -247,20 +267,21 @@
   }
 
   .day-badge {
-    background: linear-gradient(135deg, var(--mauve-pale), var(--sage-pale));
-    border: 1px solid var(--mauve-light);
+    background: var(--bubble-her);
+    border: 1px solid var(--terracotta-light);
     border-radius: 20px;
     padding: 6px 14px;
     font-size: 13px;
-    font-weight: 500;
-    color: var(--plum);
+    font-weight: 600;
+    color: var(--terracotta);
+    font-family: 'Nunito', sans-serif;
   }
 
   .avatar {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--mauve) 0%, var(--plum) 100%);
+    background: linear-gradient(135deg, var(--terracotta) 0%, #B85A36 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -273,32 +294,35 @@
   /* ---- TABS ---- */
   .tab-bar {
     background: var(--white);
-    padding: 0 32px;
+    padding: 0 20px;
     display: flex;
     gap: 4px;
-    border-bottom: 1px solid var(--mauve-light);
+    border-bottom: 1.5px solid var(--terracotta-light);
+    box-shadow: 0 2px 12px rgba(212,113,74,0.07);
   }
 
   .tab-btn {
-    padding: 16px 24px;
+    padding: 15px 20px;
     background: none;
     border: none;
     border-bottom: 3px solid transparent;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
+    font-family: 'Nunito', sans-serif;
+    font-size: 13.5px;
+    font-weight: 600;
     color: var(--text-light);
     cursor: pointer;
     transition: all 0.2s;
-    margin-bottom: -1px;
-    letter-spacing: 0.2px;
+    margin-bottom: -1.5px;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
   }
 
-  .tab-btn:hover { color: var(--plum); }
+  .tab-btn:hover { color: var(--terracotta); }
 
   .tab-btn.active {
-    color: var(--plum);
-    border-bottom-color: var(--plum);
+    color: var(--terracotta);
+    border-bottom-color: var(--terracotta);
+    font-weight: 700;
   }
 
   /* ---- MAIN CONTENT ---- */
@@ -332,7 +356,7 @@
   }
 
   .day-header h1 em {
-    color: var(--mauve);
+    color: var(--sage);
     font-style: italic;
   }
 
@@ -365,8 +389,8 @@
   }
 
   .day-nav-btn:hover {
-    border-color: var(--mauve);
-    color: var(--plum);
+    border-color: var(--sage);
+    color: var(--terracotta);
     background: var(--mauve-pale);
   }
 
@@ -389,8 +413,8 @@
   }
 
   .day-pill:hover, .day-pill.active {
-    background: var(--plum);
-    border-color: var(--plum);
+    background: var(--terracotta);
+    border-color: var(--terracotta);
     color: white;
   }
 
@@ -400,7 +424,7 @@
     border-radius: 20px;
     padding: 32px;
     margin-bottom: 24px;
-    border: 1px solid var(--mauve-light);
+    border: 1px solid var(--terracotta-light);
   }
 
   .section-label {
@@ -408,7 +432,7 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: var(--mauve);
+    color: var(--sage);
     margin-bottom: 16px;
   }
 
@@ -430,13 +454,13 @@
     background: var(--mauve-pale);
     border-radius: 12px;
     padding: 16px;
-    border-left: 3px solid var(--mauve);
+    border-left: 3px solid var(--sage);
   }
 
   .expect-card h4 {
     font-size: 13px;
     font-weight: 600;
-    color: var(--plum);
+    color: var(--terracotta);
     margin-bottom: 4px;
   }
 
@@ -541,7 +565,7 @@
     padding: 12px 14px;
     border: 1.5px solid var(--sage-light);
     border-radius: 10px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Nunito', sans-serif;
     font-size: 14px;
     color: var(--text-dark);
     background: var(--sage-pale);
@@ -587,7 +611,7 @@
     color: white;
     border: none;
     border-radius: 12px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Nunito', sans-serif;
     font-size: 15px;
     font-weight: 500;
     cursor: pointer;
@@ -609,7 +633,7 @@
     margin-bottom: 6px;
   }
 
-  .community-header h1 em { color: var(--mauve); font-style: italic; }
+  .community-header h1 em { color: var(--sage); font-style: italic; }
 
   .community-header p {
     color: var(--text-light);
@@ -650,7 +674,7 @@
     background: var(--white);
     border-radius: 20px;
     padding: 24px;
-    border: 1px solid var(--mauve-light);
+    border: 1px solid var(--terracotta-light);
     transition: transform 0.2s, box-shadow 0.2s;
     cursor: pointer;
   }
@@ -662,8 +686,8 @@
 
   .theme-card.featured {
     grid-column: 1 / -1;
-    background: linear-gradient(135deg, var(--mauve-pale) 0%, var(--cream) 100%);
-    border-color: var(--mauve);
+    background: linear-gradient(135deg, var(--bubble-her) 0%, var(--bg) 100%);
+    border-color: var(--sage);
   }
 
   .theme-tag {
@@ -677,11 +701,11 @@
     margin-bottom: 12px;
   }
 
-  .tag-emotions { background: var(--mauve-pale); color: var(--plum); }
+  .tag-emotions { background: var(--mauve-pale); color: var(--terracotta); }
   .tag-practical { background: var(--sage-pale); color: #3D6B3D; }
   .tag-medical { background: #EEF0FB; color: #4A5ABA; }
   .tag-community { background: #FFF3EC; color: var(--terracotta); }
-  .tag-trending { background: linear-gradient(135deg, var(--mauve-pale), var(--sage-pale)); color: var(--plum); }
+  .tag-trending { background: linear-gradient(135deg, var(--mauve-pale), var(--sage-pale)); color: var(--terracotta); }
 
   .theme-card h3 {
     font-size: 18px;
@@ -714,7 +738,7 @@
 
   .quote-preview {
     background: var(--white);
-    border-left: 3px solid var(--mauve);
+    border-left: 3px solid var(--sage);
     border-radius: 0 8px 8px 0;
     padding: 10px 14px;
     margin-top: 12px;
@@ -798,15 +822,15 @@
   }
 
   .med-checkbox:checked + .med-label {
-    background: var(--plum);
-    border-color: var(--plum);
+    background: var(--terracotta);
+    border-color: var(--terracotta);
     color: white;
     font-weight: 500;
   }
 
   .med-label:hover {
-    border-color: var(--mauve);
-    color: var(--plum);
+    border-color: var(--sage);
+    color: var(--terracotta);
   }
 
   .protocol-actions {
@@ -818,11 +842,11 @@
 
   .btn-save-protocol {
     padding: 12px 24px;
-    background: linear-gradient(135deg, var(--mauve) 0%, var(--plum) 100%);
+    background: linear-gradient(135deg, var(--terracotta) 0%, #B85A36 100%);
     color: white;
     border: none;
     border-radius: 10px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Nunito', sans-serif;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
@@ -839,7 +863,7 @@
     text-underline-offset: 2px;
   }
 
-  .edit-protocol-link:hover { color: var(--plum); }
+  .edit-protocol-link:hover { color: var(--terracotta); }
 
   /* Daily med logging */
   .med-log-section {
@@ -854,7 +878,7 @@
     color: var(--text-light);
     margin-bottom: 12px;
     padding-bottom: 8px;
-    border-bottom: 1px solid var(--mauve-light);
+    border-bottom: 1px solid var(--terracotta-light);
   }
 
   .med-log-item {
@@ -867,7 +891,7 @@
   .med-log-item-name {
     font-size: 14px;
     font-weight: 600;
-    color: var(--plum);
+    color: var(--terracotta);
     margin-bottom: 10px;
   }
 
@@ -885,7 +909,7 @@
     padding: 9px 12px;
     border: 1.5px solid var(--mauve-light);
     border-radius: 8px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Nunito', sans-serif;
     font-size: 13px;
     color: var(--text-dark);
     background: var(--white);
@@ -895,7 +919,7 @@
   }
 
   .med-log-fields input:focus, .med-log-fields textarea:focus {
-    border-color: var(--mauve);
+    border-color: var(--sage);
   }
 
   .med-log-fields .full { grid-column: 1 / -1; }
@@ -905,7 +929,7 @@
     overflow-x: auto;
     margin-bottom: 24px;
     border-radius: 12px;
-    border: 1px solid var(--mauve-light);
+    border: 1px solid var(--terracotta-light);
   }
 
   .med-spreadsheet {
@@ -924,7 +948,7 @@
     letter-spacing: 0.5px;
     padding: 10px 14px;
     text-align: center;
-    border-bottom: 1px solid var(--mauve-light);
+    border-bottom: 1px solid var(--terracotta-light);
     border-right: 1px solid var(--mauve-light);
     white-space: nowrap;
   }
@@ -939,13 +963,13 @@
   }
 
   .med-spreadsheet th.today-header {
-    background: var(--plum);
+    background: var(--terracotta);
     color: white;
   }
 
   .med-spreadsheet td {
     padding: 8px 10px;
-    border-bottom: 1px solid var(--mauve-light);
+    border-bottom: 1px solid var(--terracotta-light);
     border-right: 1px solid var(--mauve-light);
     vertical-align: middle;
   }
@@ -976,7 +1000,7 @@
 
   .med-spreadsheet tr.category-row td {
     background: var(--cream);
-    border-bottom: 1px solid var(--mauve-light);
+    border-bottom: 1px solid var(--terracotta-light);
   }
 
   .med-spreadsheet td.today-cell {
@@ -992,7 +1016,7 @@
     padding: 5px 8px;
     border: 1.5px solid transparent;
     border-radius: 6px;
-    font-family: "DM Sans", sans-serif;
+    font-family: "Nunito", sans-serif;
     font-size: 12px;
     color: var(--text-dark);
     background: transparent;
@@ -1002,7 +1026,7 @@
   }
 
   .spreadsheet-input:focus {
-    border-color: var(--mauve);
+    border-color: var(--sage);
     background: var(--white);
   }
 
@@ -1014,7 +1038,7 @@
   }
 
   .section-top-h2 {
-    font-family: "Playfair Display", serif;
+    font-family: 'Lora', serif;
     font-size: 22px;
     font-weight: 400;
     color: var(--text-dark);
@@ -1026,9 +1050,166 @@
   .journey-header {
     margin-bottom: 24px;
   }
+  /* ---- CHAT BUBBLE ELEMENTS ---- */
+  .chat-intro {
+    max-width: 680px;
+    margin: 0 auto 32px;
+    padding: 0 4px;
+  }
+
+  .chat-date-divider {
+    text-align: center;
+    font-size: 11.5px;
+    color: var(--timestamp);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 20px 0 16px;
+    position: relative;
+  }
+
+  .chat-date-divider::before,
+  .chat-date-divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 28%;
+    height: 1px;
+    background: var(--terracotta-light);
+  }
+  .chat-date-divider::before { left: 0; }
+  .chat-date-divider::after { right: 0; }
+
+  .chat-bubble-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .chat-bubble-row.from-divya {
+    flex-direction: row;
+  }
+
+  .chat-bubble-row.from-user {
+    flex-direction: row-reverse;
+  }
+
+  .chat-avatar-small {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--terracotta) 0%, #B85A36 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    flex-shrink: 0;
+    color: white;
+    font-family: 'Lora', serif;
+    font-style: italic;
+  }
+
+  .chat-bubble {
+    max-width: 78%;
+    padding: 12px 16px;
+    border-radius: 18px;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--text-dark);
+    position: relative;
+  }
+
+  .chat-bubble.her {
+    background: var(--bubble-her);
+    border: 1.5px solid var(--bubble-her-border);
+    border-bottom-left-radius: 4px;
+  }
+
+  .chat-bubble.me {
+    background: var(--bubble-me);
+    border: 1.5px solid var(--bubble-me-border);
+    border-bottom-right-radius: 4px;
+    text-align: right;
+  }
+
+  .chat-bubble .sender-name {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--terracotta);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  .chat-timestamp {
+    font-size: 10.5px;
+    color: var(--timestamp);
+    margin-top: 3px;
+    display: block;
+    text-align: right;
+  }
+
+  .chat-bubble.her .chat-timestamp { text-align: left; }
+
+  .chat-section-label {
+    font-family: 'Lora', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--text-dark);
+    font-weight: 400;
+    margin: 28px 0 12px;
+    padding-left: 4px;
+  }
+
+  .info-card {
+    background: var(--white);
+    border: 1.5px solid var(--terracotta-light);
+    border-radius: 16px;
+    padding: 18px 20px;
+    margin-bottom: 10px;
+    max-width: 78%;
+  }
+
+  .info-card-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--terracotta);
+    margin-bottom: 8px;
+  }
+
+  .info-card-title {
+    font-family: 'Lora', serif;
+    font-size: 16px;
+    font-style: italic;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+  }
+
+  .info-card p {
+    font-size: 13.5px;
+    color: var(--text-mid);
+    line-height: 1.55;
+  }
+
+  /* ---- JOURNEY HEADER (updated) ---- */
+  .journey-header {
+    text-align: center;
+    margin-bottom: 28px;
+    padding: 28px 24px 20px;
+    background: linear-gradient(160deg, #FFF5EC, var(--bg));
+    border-radius: 20px;
+    border: 1.5px solid var(--terracotta-light);
+  }
+
   .journey-header h1 {
+    font-family: 'Lora', serif;
     font-size: 28px;
     font-weight: 400;
+    font-style: italic;
     color: var(--text-dark);
     margin-bottom: 4px;
   }
@@ -1047,7 +1228,7 @@
     border-radius: 20px;
     border: 1.5px solid var(--mauve-light);
     background: var(--white);
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Nunito', sans-serif;
     font-size: 13px;
     font-weight: 400;
     color: var(--text-mid);
@@ -1055,8 +1236,8 @@
     transition: all 0.15s;
   }
   .view-toggle-btn.active {
-    background: var(--plum);
-    border-color: var(--plum);
+    background: var(--terracotta);
+    border-color: var(--terracotta);
     color: white;
     font-weight: 500;
   }
@@ -1064,7 +1245,7 @@
   .journey-table-wrap {
     overflow-x: auto;
     border-radius: 16px;
-    border: 1px solid var(--mauve-light);
+    border: 1px solid var(--terracotta-light);
     margin-bottom: 28px;
   }
   .journey-table {
@@ -1082,14 +1263,14 @@
     letter-spacing: 0.5px;
     padding: 10px 14px;
     text-align: center;
-    border-bottom: 1px solid var(--mauve-light);
+    border-bottom: 1px solid var(--terracotta-light);
     border-right: 1px solid var(--mauve-light);
     white-space: nowrap;
   }
   .journey-table th.jt-label { text-align: left; min-width: 150px; }
   .journey-table td {
     padding: 9px 14px;
-    border-bottom: 1px solid var(--mauve-light);
+    border-bottom: 1px solid var(--terracotta-light);
     border-right: 1px solid var(--mauve-light);
     text-align: center;
     font-size: 13px;
@@ -1116,7 +1297,7 @@
   #divya-chart-wrap {
     background: var(--white);
     border-radius: 16px;
-    border: 1px solid var(--mauve-light);
+    border: 1px solid var(--terracotta-light);
     padding: 24px;
     margin-bottom: 28px;
   }
@@ -1125,7 +1306,7 @@
   .follicle-section {
     background: var(--white);
     border-radius: 16px;
-    border: 1px solid var(--mauve-light);
+    border: 1px solid var(--terracotta-light);
     padding: 24px;
     margin-bottom: 28px;
   }
@@ -1151,15 +1332,15 @@
     border-radius: 16px;
     border: 1.5px solid var(--mauve-light);
     background: var(--white);
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Nunito', sans-serif;
     font-size: 12px;
     color: var(--text-mid);
     cursor: pointer;
     transition: all 0.15s;
   }
   .follicle-day-btn.active {
-    background: var(--plum);
-    border-color: var(--plum);
+    background: var(--terracotta);
+    border-color: var(--terracotta);
     color: white;
     font-weight: 500;
   }
@@ -1198,7 +1379,7 @@
   }
   .follicle-legend span { display: flex; align-items: center; gap: 4px; }
   .jt-trigger { background: #FFF5F0; font-size: 12px; color: var(--terracotta); font-weight: 500; }
-  .jt-surgery { background: #F5ECEC; font-size: 12px; color: var(--plum); font-weight: 600; }
+  .jt-surgery { background: #F5ECEC; font-size: 12px; color: var(--terracotta); font-weight: 600; }
   .jt-range { font-size: 11px; color: var(--text-light); font-style: italic; }
   .e2-in-range { color: #8FAF8F; font-weight: 600; }
   .e2-low { color: #C4714A; font-weight: 600; }
@@ -1208,36 +1389,15 @@
 
   @media (max-width: 600px) {
     .follicle-canvas-wrap { grid-template-columns: 1fr; }
-  }
-
     .expect-grid, .journal-grid, .themes-grid { grid-template-columns: 1fr; }
     .theme-card.featured { grid-column: auto; }
     .tab-content { padding: 20px 16px; }
     header { padding: 0 16px; }
   }
 
-/* --- Unified Font System --- */
-html, body, button, input, select, textarea, table, th, td {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont,
-               'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
-}
-
-h1, h2, h3, h4, h5 {
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-
-.day-header h1 {
-  font-weight: 600;
-}
-
-button {
-  font-weight: 500;
-}
-
 /* --- Log: Ultrasound & Bloodwork + Feels --- */
 .section-subcard {
-  border: 1px solid var(--mauve-light);
+  border: 1px solid var(--terracotta-light);
   border-radius: 16px;
   padding: 14px 16px;
   background: rgba(255,255,255,0.7);
@@ -1288,12 +1448,12 @@ button {
 
 .feel-btn:hover{
   background: var(--mauve-pale);
-  border-color: var(--mauve);
+  border-color: var(--sage);
 }
 
 .feel-btn.selected{
-  background: var(--plum);
-  border-color: var(--plum);
+  background: var(--terracotta);
+  border-color: var(--terracotta);
   color: white;
 }
 
@@ -1322,12 +1482,12 @@ button {
   height: 80px;
   object-fit: cover;
   border-radius: 12px;
-  border: 1px solid var(--mauve-light);
+  border: 1px solid var(--terracotta-light);
 }
 
 /* --- Divya: Timeline banner --- */
 .timeline-banner{
-  border: 1px solid var(--mauve-light);
+  border: 1px solid var(--terracotta-light);
   background: rgba(255,255,255,0.65);
   border-radius: 16px;
   padding: 14px 16px;
@@ -1357,21 +1517,21 @@ button {
   width: 100%;
   padding: 10px 10px;
   border-radius: 10px;
-  border: 1px solid var(--mauve-light);
+  border: 1px solid var(--terracotta-light);
   outline: none;
   font-size: 13px;
   background: rgba(255,255,255,0.9);
 }
 
 .cell-input:focus{
-  border-color: var(--mauve);
+  border-color: var(--sage);
   box-shadow: 0 0 0 3px rgba(160, 110, 140, 0.15);
 }
 
 
 /* --- Make Ultrasound & Bloodwork section match other tracking sections --- */
 .section-subcard{
-  border: 1px solid var(--mauve-light);
+  border: 1px solid var(--terracotta-light);
   border-radius: 18px;
   padding: 18px 18px;
   background: rgba(255,255,255,0.55);
@@ -1399,6 +1559,127 @@ button {
   color: var(--text-dark);
 }
 
+
+  /* ---- WARM LOG JOURNEY STYLING ---- */
+  .day-header h1 {
+    font-family: 'Lora', serif;
+    font-size: 26px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+  }
+
+  .day-header p {
+    font-size: 13px;
+    color: var(--text-light);
+  }
+
+  .section-top {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 28px;
+    margin-bottom: 20px;
+    border: 1.5px solid var(--terracotta-light);
+    box-shadow: 0 2px 12px rgba(212,113,74,0.05);
+  }
+
+  .section-bottom {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 28px;
+    border: 1.5px solid var(--sage-light);
+    box-shadow: 0 2px 12px rgba(106,158,122,0.05);
+  }
+
+  .questions-section h3 {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 17px;
+    color: var(--text-dark);
+    margin-bottom: 14px;
+  }
+
+  .protocol-setup h2.section-top-h2 {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .section-bottom h2 {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 20px;
+    color: var(--text-dark);
+    margin-bottom: 20px;
+  }
+
+  /* ---- WARM COMMUNITY CARDS ---- */
+  .theme-card h3 {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+
+  .community-header h1 {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 28px;
+  }
+
+  .community-header h1 em {
+    color: var(--terracotta);
+    font-style: italic;
+  }
+
+  /* ---- HEADER POLISH ---- */
+  .header-logo {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--terracotta);
+    letter-spacing: -0.2px;
+    line-height: 1.1;
+  }
+
+  .header-logo span {
+    font-family: 'Nunito', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    color: var(--text-light);
+    display: block;
+    letter-spacing: 0.02em;
+  }
+
+  /* ---- JOURNEY TABLE WARM ---- */
+  .journey-header h1 {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 26px;
+    color: var(--text-dark);
+  }
+
+  /* ---- SECTION LABELS ---- */
+  .section-label {
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--terracotta);
+    margin-bottom: 12px;
+  }
+
 </style>
 </head>
 <body>
@@ -1408,7 +1689,7 @@ button {
   <div class="login-card">
     <div class="logo-area">
       <div class="logo-badge">WTF</div>
-      <div class="logo-tagline">What the Fertility</div>
+      <div class="logo-tagline">what the fertility</div>
     </div>
     <h2>Welcome back</h2>
     <p>Your journey, your pace.<br>We're here every step of the way.</p>
@@ -1424,7 +1705,7 @@ button {
 <!-- APP -->
 <div id="app">
   <header>
-    <div class="header-logo">WTF <span>What the Fertility</span></div>
+    <div class="header-logo">WTF <span>what the fertility</span></div>
     <div class="header-right">
       <div class="day-badge">🌸 Day 5 of Stims</div>
       <div class="avatar" title="Sign out" onclick="logout()">D</div>
@@ -1432,17 +1713,27 @@ button {
   </header>
 
   <div class="tab-bar">
-    <button class="tab-btn active" onclick="switchTab('journey', this)">Log Your Journey</button>
+    <button class="tab-btn active" onclick="switchTab('divya', this)">✨ Start Here — Divya's Story</button>
+    <button class="tab-btn" onclick="switchTab('journey', this)">My Journey</button>
     <button class="tab-btn" onclick="switchTab('community', this)">What Others Are Saying</button>
-    <button class="tab-btn" onclick="switchTab('divya', this)">Divya's Journey</button>
   </div>
 
   <!-- LOG YOUR JOURNEY -->
-  <div class="tab-content active" id="tab-journey">
+  <div class="tab-content" id="tab-journey">
+
+    <div class="chat-intro" style="margin-bottom:20px;">
+      <div class="chat-date-divider">Your Journey</div>
+      <div class="chat-bubble-row from-divya" style="margin-bottom:0;">
+        <div class="chat-avatar-small">💬</div>
+        <div class="chat-bubble her" style="font-size:13.5px;">
+          Track your cycle day by day — medications, monitoring results, how you're feeling. This is your space. 🌸
+        </div>
+      </div>
+    </div>
 
     <div class="day-header">
       <h1 id="log-day-title-h1">Day 1 of Stimulation</h1>
-      <p>Friday, December 13, 2024 · Egg Freezing Cycle #1</p>
+      <p>Egg Freezing Cycle #1</p>
     </div>
 
     <div class="day-nav">
@@ -1592,12 +1883,24 @@ button {
 
   <!-- WHAT OTHERS ARE SAYING -->
   <div class="tab-content" id="tab-community">
-    <div class="community-header">
+
+    <div class="chat-intro" style="margin-bottom:24px;">
+      <div class="chat-date-divider">from the community</div>
+      <div class="chat-bubble-row from-divya">
+        <div class="chat-avatar-small">D</div>
+        <div class="chat-bubble her" style="font-size:13.5px;">
+          <span class="sender-name">Divya</span>
+          The stuff I wish I'd found sooner — real posts from real women going through this. I pull from Reddit weekly so it's always fresh. 💛
+          <span class="chat-timestamp">Updated weekly · r/IVF · r/eggfreezing · r/fertility</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="community-header" style="margin-bottom:20px;">
       <h1>What <em>Others</em> Are Saying</h1>
-      <p>Themes and insights from real conversations in the fertility community</p>
       <div class="last-updated">
         <div class="live-dot"></div>
-        Summaries updated weekly · Sourced from r/IVF, r/eggfreezing, r/fertility
+        Summaries updated weekly · sourced from the community
       </div>
     </div>
 
@@ -1653,10 +1956,65 @@ button {
   </div>
 
   <!-- DIVYA'S JOURNEY TAB -->
-  <div class="tab-content" id="tab-divya">
-    <div class="journey-header">
-      <h1>Divya's <em>Journey</em></h1>
-      <p>Egg Freezing Cycle · RMANY · March 4–13, 2024 · 10 days of stimulation</p>
+  <div class="tab-content active" id="tab-divya">
+
+    <!-- CHAT-STYLE INTRO -->
+    <div class="chat-intro">
+      <div class="chat-date-divider">March 2024 · Egg Freezing Cycle</div>
+
+      <div class="chat-bubble-row from-divya">
+        <div class="chat-avatar-small">D</div>
+        <div>
+          <div class="chat-bubble her">
+            <span class="sender-name">Divya</span>
+            ok so I'm doing it. I'm actually doing it. 29 years old, just started my egg freezing cycle at RMANY in NYC 🥹
+            <span class="chat-timestamp">Mar 4 · 7:14 AM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-bubble-row from-divya">
+        <div class="chat-avatar-small">D</div>
+        <div>
+          <div class="chat-bubble her">
+            I kept every scan, every bloodwork number, every medication dose. If you're about to do this — or thinking about it — I want you to have what I wish I had: a real person's real data 💛
+            <span class="chat-timestamp">Mar 4 · 7:15 AM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-bubble-row from-user">
+        <div>
+          <div class="chat-bubble me">
+            wait you tracked EVERYTHING? like actual numbers?
+            <span class="chat-timestamp">Mar 4 · 7:18 AM</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="chat-bubble-row from-divya">
+        <div class="chat-avatar-small">D</div>
+        <div>
+          <div class="chat-bubble her">
+            <span class="sender-name">Divya</span>
+            every single day. medications, follicle sizes, E2 levels, symptoms, how I felt at 11pm after my shot 😂 scroll down — it's all here
+            <span class="chat-timestamp">Mar 4 · 7:19 AM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CYCLE SUMMARY CARD -->
+    <div style="max-width:680px;margin:0 auto 28px;">
+      <div class="info-card" style="max-width:100%;">
+        <div class="info-card-label">📍 Cycle at a glance</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin-top:4px;">
+          <div><div style="font-size:11px;color:var(--text-light);margin-bottom:2px;">Clinic</div><div style="font-weight:700;color:var(--text-dark);font-size:14px;">RMANY, NYC</div></div>
+          <div><div style="font-size:11px;color:var(--text-light);margin-bottom:2px;">Dates</div><div style="font-weight:700;color:var(--text-dark);font-size:14px;">Mar 4–14, 2024</div></div>
+          <div><div style="font-size:11px;color:var(--text-light);margin-bottom:2px;">Stim days</div><div style="font-weight:700;color:var(--text-dark);font-size:14px;">10 days</div></div>
+          <div><div style="font-size:11px;color:var(--text-light);margin-bottom:2px;">Baseline AFC</div><div style="font-weight:700;color:var(--text-dark);font-size:14px;">13R · 12L</div></div>
+        </div>
+      </div>
     </div>
 
     <div class="view-toggle">
