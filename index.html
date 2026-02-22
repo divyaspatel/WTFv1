@@ -2262,7 +2262,7 @@
     const { error } = await sb.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: 'https://divyaspatel.github.io/WTFv1/'
+        redirectTo: window.location.origin + window.location.pathname
       }
     });
     if (error) {
