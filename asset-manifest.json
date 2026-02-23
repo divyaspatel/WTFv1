@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/WTFv1/static/css/main.a191502b.css",
+    "main.js": "/WTFv1/static/js/main.21333b38.js",
+    "index.html": "/WTFv1/index.html",
+    "main.a191502b.css.map": "/WTFv1/static/css/main.a191502b.css.map",
+    "main.21333b38.js.map": "/WTFv1/static/js/main.21333b38.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a191502b.css",
+    "static/js/main.21333b38.js"
+  ]
+}
