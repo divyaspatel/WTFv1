@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import insights from '../data/insights.json';
+import DivyaTab from '../components/tabs/DivyaTab';
 
 const TABS = [
   { id: 'story',   label: "✨ Start Here — Divya's Story" },
@@ -8,7 +9,7 @@ const TABS = [
 ];
 
 export default function ProductPage() {
-  const [activeTab, setActiveTab] = useState('others');
+  const [activeTab, setActiveTab] = useState('story');
 
   return (
     <>
@@ -24,30 +25,10 @@ export default function ProductPage() {
         ))}
       </div>
 
-      {activeTab === 'story'   && <StoryTab />}
+      {activeTab === 'story'   && <DivyaTab />}
       {activeTab === 'journey' && <JourneyTab />}
       {activeTab === 'others'  && <OthersTab />}
     </>
-  );
-}
-
-function StoryTab() {
-  return (
-    <div className="tab-content">
-      <div className="journey-header">
-        <h1>Divya's Story</h1>
-        <p>Her egg freezing journey — data, charts, and real talk.</p>
-      </div>
-      <div className="chat-intro">
-        <div className="chat-date-divider">Coming Soon</div>
-        <div className="chat-bubble-row from-divya">
-          <div className="chat-avatar-small">D</div>
-          <div className="chat-bubble her">
-            My full story — the meds, the monitoring, the feelings — is being ported here now. Check back soon! 🌸
-          </div>
-        </div>
-      </div>
-    </div>
   );
 }
 
