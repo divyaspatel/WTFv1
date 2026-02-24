@@ -95,19 +95,26 @@ def synthesize_cards(day: int, posts: list[dict]) -> list[dict]:
         posts=post_text,
     )
 
-    message = claude_client.messages.create(
-        model=CLAUDE_MODEL,
-        max_tokens=1024,
-        messages=[{"role": "user", "content": prompt}],
-    )
+    for attempt in range(3):
+        message = claude_client.messages.create(
+            model=CLAUDE_MODEL,
+            max_tokens=1024,
+            messages=[{"role": "user", "content": prompt}],
+        )
 
-    raw = message.content[0].text.strip()
-    # Strip markdown code fences if present
-    if raw.startswith("```"):
-        raw = raw.split("```")[1]
-        if raw.startswith("json"):
-            raw = raw[4:]
-    return json.loads(raw.strip())
+        raw = message.content[0].text.strip()
+        # Strip markdown code fences if present
+        if raw.startswith("```"):
+            raw = raw.split("```")[1]
+            if raw.startswith("json"):
+                raw = raw[4:]
+        try:
+            return json.loads(raw.strip())
+        except json.JSONDecodeError:
+            if attempt == 2:
+                raise
+            print(f"    JSON parse failed, retrying ({attempt + 1}/3)...")
+            time.sleep(2)
 
 
 def run():
