@@ -50,8 +50,13 @@ export default function JourneyTab() {
   }
 
   async function handleSaveEntry() {
-    await saveDay({ feel, notes, medInputs, monitoringInputs, hadUltrasound, protocol });
-    showToast("Today's entry saved!");
+    try {
+      await saveDay({ feel, notes, medInputs, monitoringInputs, hadUltrasound, protocol });
+      showToast("Today's entry saved!");
+    } catch (err) {
+      console.error('Save failed:', err);
+      showToast('Save failed: ' + err.message);
+    }
   }
 
   function showToast(message) {

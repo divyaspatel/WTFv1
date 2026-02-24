@@ -112,7 +112,8 @@ export function useJourneyDay(selectedDay) {
       );
     }
 
-    await Promise.all(saves);
+    const results = await Promise.all(saves);
+    results.forEach(r => { if (r?.error) throw new Error(r.error.message); });
   }
 
   return { feel, setFeel, notes, setNotes, medInputs, setMedInputs, monitoringInputs, setMonitoringInputs, loading, saveDay };
