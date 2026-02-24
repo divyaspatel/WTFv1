@@ -21,7 +21,8 @@ jobs:
         run: pip install -r scraper/requirements.txt
 
       - name: Embed posts
-        run: python scraper/embed.py
+        working-directory: scraper
+        run: python embed.py
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
@@ -29,7 +30,8 @@ jobs:
           SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
 
       - name: Synthesize day cards
-        run: python scraper/synthesize.py
+        working-directory: scraper
+        run: python synthesize.py
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
