@@ -7,6 +7,7 @@ import ProtocolSetup from '../journey/ProtocolSetup';
 import MedSpreadsheet from '../journey/MedSpreadsheet';
 import MonitoringLog from '../journey/MonitoringLog';
 import MoodSelector from '../journey/MoodSelector';
+import Toast from '../Toast';
 
 const LOG_KEY = day => `wtf_log_day_${day}`;
 
@@ -25,7 +26,7 @@ export default function JourneyTab() {
   const [medInputs, setMedInputs] = useState({});
   const [monitoringInputs, setMonitoringInputs] = useState({});
   const [images, setImages] = useState([]);
-  const [toast, setToast] = useState(false);
+  const [toast, setToast] = useState({ show: false, message: '' });
 
   // Load saved data when day changes
   useEffect(() => {
@@ -41,7 +42,7 @@ export default function JourneyTab() {
   function handleProtocolSave(meds) {
     saveProtocol(meds);
     setShowProtocol(false);
-    showToast();
+    showToast('Protocol saved!');
   }
 
   function handleMedChange(medName, field, value) {
@@ -63,12 +64,12 @@ export default function JourneyTab() {
       monitoring: hadUltrasound ? monitoringInputs : {},
     };
     localStorage.setItem(LOG_KEY(selectedDay), JSON.stringify(log));
-    showToast();
+    showToast("Today's entry saved!");
   }
 
-  function showToast() {
-    setToast(true);
-    setTimeout(() => setToast(false), 2500);
+  function showToast(message) {
+    setToast({ show: true, message });
+    setTimeout(() => setToast({ show: false, message: '' }), 2500);
   }
 
   const dayLabel = selectedDay === 7 ? 'Day 7+' : `Day ${selectedDay}`;
@@ -170,8 +171,7 @@ export default function JourneyTab() {
         </div>
       )}
 
-      {/* Toast */}
-      <div className={`toast${toast ? ' show' : ''}`}>Today's entry saved!</div>
+      <Toast show={toast.show} message={toast.message} />
     </div>
   );
 }
