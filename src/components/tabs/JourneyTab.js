@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useProtocol } from '../../hooks/useProtocol';
+import { useJourneyDay } from '../../hooks/useJourneyDay';
 import DayNav from '../journey/DayNav';
 import TimelineBanner from '../journey/TimelineBanner';
 import WhatToExpect from '../journey/WhatToExpect';
@@ -9,38 +10,30 @@ import MonitoringLog from '../journey/MonitoringLog';
 import MoodSelector from '../journey/MoodSelector';
 import Toast from '../Toast';
 
-const LOG_KEY = day => `wtf_log_day_${day}`;
-
-function loadDayLog(day) {
-  try { return JSON.parse(localStorage.getItem(LOG_KEY(day)) || 'null') || {}; }
-  catch { return {}; }
-}
-
 export default function JourneyTab() {
   const { protocol, saveProtocol } = useProtocol();
   const [showProtocol, setShowProtocol] = useState(protocol.length === 0);
   const [selectedDay, setSelectedDay] = useState(1);
-  const [feel, setFeel] = useState(null);
-  const [notes, setNotes] = useState('');
   const [hadUltrasound, setHadUltrasound] = useState(false);
-  const [medInputs, setMedInputs] = useState({});
-  const [monitoringInputs, setMonitoringInputs] = useState({});
   const [images, setImages] = useState([]);
   const [toast, setToast] = useState({ show: false, message: '' });
 
-  // Load saved data when day changes
-  useEffect(() => {
-    const saved = loadDayLog(selectedDay);
-    setFeel(saved.feel || null);
-    setNotes(saved.notes || '');
-    setMedInputs(saved.meds || {});
-    setMonitoringInputs(saved.monitoring || {});
+  const {
+    feel, setFeel,
+    notes, setNotes,
+    medInputs, setMedInputs,
+    monitoringInputs, setMonitoringInputs,
+    saveDay,
+  } = useJourneyDay(selectedDay);
+
+  function handleDayChange(day) {
+    setSelectedDay(day);
     setHadUltrasound(false);
     setImages([]);
-  }, [selectedDay]);
+  }
 
-  function handleProtocolSave(meds) {
-    saveProtocol(meds);
+  async function handleProtocolSave(meds) {
+    await saveProtocol(meds);
     setShowProtocol(false);
     showToast('Protocol saved!');
   }
@@ -56,14 +49,8 @@ export default function JourneyTab() {
     setMonitoringInputs(prev => ({ ...prev, [key]: value }));
   }
 
-  function handleSaveEntry() {
-    const log = {
-      feel,
-      notes,
-      meds: medInputs,
-      monitoring: hadUltrasound ? monitoringInputs : {},
-    };
-    localStorage.setItem(LOG_KEY(selectedDay), JSON.stringify(log));
+  async function handleSaveEntry() {
+    await saveDay({ feel, notes, medInputs, monitoringInputs, hadUltrasound, protocol });
     showToast("Today's entry saved!");
   }
 
@@ -94,7 +81,7 @@ export default function JourneyTab() {
       </div>
 
       {/* Day nav */}
-      <DayNav selectedDay={selectedDay} onSelect={setSelectedDay} />
+      <DayNav selectedDay={selectedDay} onSelect={handleDayChange} />
 
       {/* Timeline banner */}
       <TimelineBanner day={selectedDay} />
@@ -102,14 +89,14 @@ export default function JourneyTab() {
       {/* What to expect + questions */}
       <WhatToExpect day={selectedDay} />
 
-      {/* Protocol setup (shown when no protocol saved, or editing) */}
+      {/* Protocol setup */}
       {showProtocol && (
         <ProtocolSetup onSave={handleProtocolSave} />
       )}
 
-      {/* Daily log (shown when protocol exists) */}
+      {/* Daily log */}
       {!showProtocol && protocol.length > 0 && (
-        <div className="section-bottom" id="daily-log">
+        <div className="section-bottom">
           <div className="section-label" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <span>Track Your Day</span>
             <span className="edit-protocol-link" onClick={() => setShowProtocol(true)}>Edit medications</span>

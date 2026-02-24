@@ -1,24 +1,45 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { supabase } from '../lib/supabaseClient';
+import { useAuth } from '../context/AuthContext';
 
-const KEY = 'wtf_protocol';
+const LS_KEY = 'wtf_protocol';
 
-function load() {
-  try { return JSON.parse(localStorage.getItem(KEY) || 'null') || []; }
+function loadFromLS() {
+  try { return JSON.parse(localStorage.getItem(LS_KEY) || 'null') || []; }
   catch { return []; }
 }
 
 export function useProtocol() {
-  const [protocol, setProtocol] = useState(load);
+  const { user } = useAuth();
+  const [protocol, setProtocol] = useState(loadFromLS); // instant init from LS cache
+  const [loading, setLoading] = useState(true);
 
-  function saveProtocol(meds) {
+  useEffect(() => {
+    if (!user) { setLoading(false); return; }
+
+    supabase
+      .from('protocols')
+      .select('medications')
+      .eq('user_id', user.id)
+      .maybeSingle()
+      .then(({ data }) => {
+        if (data?.medications) {
+          setProtocol(data.medications);
+          localStorage.setItem(LS_KEY, JSON.stringify(data.medications));
+        }
+        setLoading(false);
+      });
+  }, [user]);
+
+  async function saveProtocol(meds) {
     setProtocol(meds);
-    localStorage.setItem(KEY, JSON.stringify(meds));
+    localStorage.setItem(LS_KEY, JSON.stringify(meds));
+    if (!user) return;
+    await supabase.from('protocols').upsert(
+      { user_id: user.id, medications: meds, updated_at: new Date().toISOString() },
+      { onConflict: 'user_id' }
+    );
   }
 
-  function clearProtocol() {
-    setProtocol([]);
-    localStorage.removeItem(KEY);
-  }
-
-  return { protocol, saveProtocol, clearProtocol };
+  return { protocol, saveProtocol, loading };
 }
