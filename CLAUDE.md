@@ -151,13 +151,17 @@ WTFv1-site/
 
 **Important: Reddit blocks data center IPs (GitHub Actions, AWS, etc.).** The scraper must be run locally. Only embed.py and synthesize.py run in CI.
 
-**Weekly workflow (manual part):**
+**How often:** Every 1–2 months is plenty — Reddit insights don't change that fast.
+
+**Manual step (run locally, then push):**
 ```bash
-cd WTFv1-site/scraper
-python3 scraper.py       # run locally
-git add posts.json && git commit -m "refresh posts" && git push
-# GitHub Actions automatically runs embed.py + synthesize.py
+cd /Users/divyasriram/Documents/Claude\ Code\ Projects/WTFv1/WTFv1-site/scraper
+python3 scraper.py
+git add posts.json
+git commit -m "refresh Reddit posts"
+git push
 ```
+After pushing, GitHub Actions automatically picks up the new posts.json and runs embed.py + synthesize.py to re-embed new posts and regenerate the day cards. Nothing else needed.
 
 ---
 
