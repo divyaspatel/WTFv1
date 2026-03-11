@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 import DivyaTab from '../components/tabs/DivyaTab';
 import JourneyTab from '../components/tabs/JourneyTab';
 import CommunityTab from '../components/tabs/CommunityTab';
+import JourneysTab from '../components/tabs/JourneysTab';
 
 const TABS = [
-  { id: 'story',   label: "✨ Start Here — Divya's Story" },
-  { id: 'journey', label: "Your Journey"                   },
-  { id: 'others',  label: "What Others Are Saying"         },
+  { id: 'story',    label: "✨ Start Here — Divya's Story" },
+  { id: 'journey',  label: "Your Journey"                   },
+  { id: 'others',   label: "What Others Are Saying"         },
+  { id: 'journeys', label: "Journeys"                       },
 ];
 
 export default function ProductPage() {
@@ -26,9 +28,10 @@ export default function ProductPage() {
         ))}
       </div>
 
-      {activeTab === 'story'   && <DivyaTab />}
-      {activeTab === 'journey' && <JourneyTab />}
-      {activeTab === 'others'  && <CommunityTab />}
+      {activeTab === 'story'    && <DivyaTab />}
+      {activeTab === 'journey'  && <JourneyTab />}
+      {activeTab === 'others'   && <CommunityTab />}
+      {activeTab === 'journeys' && <JourneysTab />}
     </>
   );
 }
