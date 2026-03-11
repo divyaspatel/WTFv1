@@ -1,173 +1,167 @@
 import React, { useState } from 'react';
+import { useJourneys } from '../../hooks/useJourneys';
 
-// Placeholder structure — to be replaced by model output
-// Each journey has steps; each step has options people chose
-const PLACEHOLDER_JOURNEYS = [
-  {
-    id: 'egg-freezing',
-    label: 'Egg Freezing',
-    steps: [
-      {
-        id: 1,
-        title: 'Getting Started',
-        description: 'How people decided to pursue egg freezing and found a clinic',
-        options: [
-          { label: 'Self-referred after personal research' },
-          { label: 'OB/GYN or PCP referral' },
-          { label: 'Prompted by life event or diagnosis' },
-        ],
-      },
-      {
-        id: 2,
-        title: 'Choosing a Clinic',
-        description: 'How people evaluated and selected a reproductive endocrinologist',
-        options: [
-          { label: 'Chose based on insurance coverage' },
-          { label: 'Prioritized success rates / lab quality' },
-          { label: 'Went with proximity or wait times' },
-        ],
-      },
-      {
-        id: 3,
-        title: 'Baseline Testing',
-        description: 'Initial bloodwork and ultrasound to assess ovarian reserve',
-        options: [
-          { label: 'AMH in typical range — proceeded directly' },
-          { label: 'Low AMH — adjusted protocol or sought 2nd opinion' },
-          { label: 'High AMH — monitored for OHSS risk' },
-        ],
-      },
-      {
-        id: 4,
-        title: 'Stimulation Protocol',
-        description: 'The medication protocol chosen by the care team',
-        options: [
-          { label: 'Antagonist protocol (most common)' },
-          { label: 'Lupron/agonist protocol' },
-          { label: 'Mini-stim / low-dose protocol' },
-        ],
-      },
-      {
-        id: 5,
-        title: 'Monitoring & Adjustments',
-        description: 'What happened during the stimulation phase',
-        options: [
-          { label: 'Smooth response — minimal adjustments' },
-          { label: 'Slow response — dose increased or cycle extended' },
-          { label: 'Over-response — dose reduced or trigger delayed' },
-        ],
-      },
-      {
-        id: 6,
-        title: 'Retrieval Outcome',
-        description: 'How the egg retrieval went and how people felt about results',
-        options: [
-          { label: 'Met or exceeded expectations' },
-          { label: 'Fewer eggs than hoped — considering another cycle' },
-          { label: 'Decided to do an additional cycle' },
-        ],
-      },
-    ],
-  },
-  {
-    id: 'ivf',
-    label: 'IVF',
-    steps: [],
-  },
-  {
-    id: 'embryo-banking',
-    label: 'Embryo Banking',
-    steps: [],
-  },
+const JOURNEY_TYPES = [
+  { id: 'egg-freezing',    label: 'Egg Freezing'    },
+  { id: 'ivf',             label: 'IVF'             },
+  { id: 'embryo-banking',  label: 'Embryo Banking'  },
 ];
 
-function StepCard({ step, index, isExpanded, onToggle }) {
+const IMPORTANCE_COLORS = {
+  critical:    { bg: 'var(--terracotta-light)', color: 'var(--terracotta)' },
+  recommended: { bg: 'var(--sage-light)',       color: 'var(--sage)'       },
+  optional:    { bg: 'var(--mauve-light)',       color: 'var(--plum)'       },
+};
+
+const OUTCOME_COLORS = {
+  positive: 'var(--sage)',
+  negative: 'var(--terracotta)',
+  mixed:    'var(--mauve)',
+  neutral:  'var(--text-light)',
+};
+
+function ImportanceBadge({ importance }) {
+  const style = IMPORTANCE_COLORS[importance] || IMPORTANCE_COLORS.optional;
+  return (
+    <span className="journey-importance-badge" style={{ background: style.bg, color: style.color }}>
+      {importance}
+    </span>
+  );
+}
+
+function FrequencyBar({ frequency }) {
+  return (
+    <div className="journey-freq-bar-wrap" title={`${Math.round(frequency * 100)}% of journeys included this step`}>
+      <div className="journey-freq-bar-track">
+        <div className="journey-freq-bar-fill" style={{ width: `${frequency * 100}%` }} />
+      </div>
+      <span className="journey-freq-label">{Math.round(frequency * 100)}%</span>
+    </div>
+  );
+}
+
+function StepCard({ node, index, isExpanded, onToggle }) {
   return (
     <div className="journey-step-card">
       <button className="journey-step-header" onClick={onToggle}>
         <div className="journey-step-number">{index + 1}</div>
         <div className="journey-step-meta">
-          <div className="journey-step-title">{step.title}</div>
-          <div className="journey-step-desc">{step.description}</div>
+          <div className="journey-step-title-row">
+            <span className="journey-step-title">{node.title}</span>
+            <ImportanceBadge importance={node.importance} />
+          </div>
+          <FrequencyBar frequency={node.frequency} />
         </div>
         <div className={`journey-step-chevron${isExpanded ? ' open' : ''}`}>›</div>
       </button>
 
       {isExpanded && (
-        <div className="journey-step-options">
-          {step.options.map((opt, i) => (
-            <div key={i} className="journey-option-row">
-              <div className="journey-option-dot" />
-              <span className="journey-option-label">{opt.label}</span>
-              <span className="journey-option-badge">coming soon</span>
+        <div className="journey-step-body">
+          <p className="journey-step-description">{node.description}</p>
+
+          {node.options?.length > 0 && (
+            <div className="journey-options-section">
+              <div className="journey-options-label">How people navigated this step</div>
+              {node.options.map((opt, i) => (
+                <div key={i} className="journey-option-row">
+                  <div
+                    className="journey-option-dot"
+                    style={{ borderColor: OUTCOME_COLORS[opt.outcome_signal] || 'var(--text-light)' }}
+                  />
+                  <div className="journey-option-content">
+                    <span className="journey-option-label">{opt.label}</span>
+                    {opt.description && (
+                      <span className="journey-option-desc">{opt.description}</span>
+                    )}
+                  </div>
+                  <span className="journey-option-freq">
+                    {Math.round((opt.frequency || 0) * 100)}%
+                  </span>
+                </div>
+              ))}
             </div>
-          ))}
+          )}
+
+          {node.community_note && (
+            <div className="journey-community-note">
+              <span className="journey-community-note-icon">💬</span>
+              {node.community_note}
+            </div>
+          )}
+
+          <div className="journey-step-stats">
+            <span>Based on {node.source_post_count} community posts</span>
+            {node.would_recommend_rate != null && (
+              <span>{Math.round(node.would_recommend_rate * 100)}% would recommend</span>
+            )}
+          </div>
         </div>
       )}
     </div>
   );
 }
 
-function ComingSoonBanner() {
+function ComingSoonState({ label }) {
   return (
     <div className="journey-coming-soon">
       <div className="journey-coming-soon-icon">⚙️</div>
-      <h3>Model in progress</h3>
+      <h3>Coming soon</h3>
       <p>
-        We're building a classifier that reads Reddit posts, identifies journey stages,
-        and extracts how different people navigated each step. The structure above is
-        the target output — real community paths are coming soon.
+        We're processing community posts for {label} journeys. Check back soon.
       </p>
     </div>
   );
 }
 
 export default function JourneysTab() {
-  const [activeJourney, setActiveJourney] = useState('egg-freezing');
+  const [activeType, setActiveType] = useState('egg-freezing');
   const [expandedStep, setExpandedStep] = useState(0);
+  const { nodes, loading } = useJourneys(activeType);
 
-  const journey = PLACEHOLDER_JOURNEYS.find(j => j.id === activeJourney);
+  const activeLabel = JOURNEY_TYPES.find(t => t.id === activeType)?.label;
 
   return (
     <div className="tab-content">
       <div className="journeys-header">
         <h1><em>Journeys</em></h1>
         <p>
-          Common paths people take — parsed from thousands of real community posts,
-          classified into steps, with the options people actually chose at each one.
+          Common paths people take — parsed from real community posts, classified
+          into steps, with the options people actually chose at each one.
         </p>
       </div>
 
-      {/* Journey type selector */}
       <div className="view-toggle" style={{ marginBottom: 28 }}>
-        {PLACEHOLDER_JOURNEYS.map(j => (
+        {JOURNEY_TYPES.map(t => (
           <button
-            key={j.id}
-            className={`view-toggle-btn${activeJourney === j.id ? ' active' : ''}`}
-            onClick={() => { setActiveJourney(j.id); setExpandedStep(0); }}
+            key={t.id}
+            className={`view-toggle-btn${activeType === t.id ? ' active' : ''}`}
+            onClick={() => { setActiveType(t.id); setExpandedStep(0); }}
           >
-            {j.label}
+            {t.label}
           </button>
         ))}
       </div>
 
-      {journey.steps.length > 0 ? (
-        <>
-          <div className="journey-steps-list">
-            {journey.steps.map((step, i) => (
-              <StepCard
-                key={step.id}
-                step={step}
-                index={i}
-                isExpanded={expandedStep === i}
-                onToggle={() => setExpandedStep(expandedStep === i ? null : i)}
-              />
-            ))}
-          </div>
-          <ComingSoonBanner />
-        </>
-      ) : (
-        <ComingSoonBanner />
+      {loading && (
+        <p style={{ color: 'var(--text-light)', fontStyle: 'italic' }}>Loading...</p>
+      )}
+
+      {!loading && nodes?.length > 0 && (
+        <div className="journey-steps-list">
+          {nodes.map((node, i) => (
+            <StepCard
+              key={node.node_id ?? i}
+              node={node}
+              index={i}
+              isExpanded={expandedStep === i}
+              onToggle={() => setExpandedStep(expandedStep === i ? null : i)}
+            />
+          ))}
+        </div>
+      )}
+
+      {!loading && (!nodes || nodes.length === 0) && (
+        <ComingSoonState label={activeLabel} />
       )}
     </div>
   );
