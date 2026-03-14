@@ -2002,6 +2002,149 @@ header {
   padding: 2px 8px;
 }
 
+/* Journey sections */
+.journey-section {
+  margin-bottom: 32px;
+}
+
+.journey-section-header {
+  margin-bottom: 12px;
+}
+
+.journey-section-title {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 2px;
+}
+
+.journey-section-subtitle {
+  font-size: 12.5px;
+  color: var(--text-light);
+}
+
+/* Choice cards */
+.journey-choice-card {
+  background: var(--white);
+  border: 2px solid var(--terracotta-light);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.journey-choice-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 16px 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
+}
+
+.journey-choice-header:hover {
+  background: var(--bubble-her);
+}
+
+.journey-choice-badge {
+  flex-shrink: 0;
+  background: var(--terracotta);
+  color: var(--white);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  border-radius: 20px;
+  padding: 4px 10px;
+}
+
+.journey-choice-meta {
+  flex: 1;
+}
+
+.journey-choice-question {
+  font-weight: 700;
+  font-size: 14.5px;
+  color: var(--text-dark);
+  margin-bottom: 3px;
+}
+
+.journey-choice-subtitle {
+  font-size: 12px;
+  color: var(--text-light);
+}
+
+.journey-choice-body {
+  border-top: 2px solid var(--terracotta-light);
+  padding: 16px 20px;
+  background: var(--bg2);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.journey-choice-options-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--text-light);
+}
+
+.journey-choice-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.journey-choice-option {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.journey-choice-option-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.journey-choice-option-label {
+  font-size: 13.5px;
+  font-weight: 700;
+}
+
+/* Importance badge variants */
+.journey-importance-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border-radius: 20px;
+  padding: 2px 8px;
+}
+
+.importance-critical {
+  background: var(--terracotta-light);
+  color: var(--terracotta);
+}
+
+.importance-recommended {
+  background: var(--sage-light);
+  color: var(--sage);
+}
+
+.importance-optional {
+  background: var(--mauve-light);
+  color: var(--plum);
+}
+
 .journey-coming-soon {
   background: var(--white);
   border: 1.5px dashed var(--terracotta-light);
