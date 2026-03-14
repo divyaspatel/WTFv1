@@ -1,0 +1,465 @@
+[
+  {
+    "node_id": 1,
+    "title": "Initial Fertility Testing and Baseline Assessment",
+    "description": "Your doctor will order baseline tests to understand your fertility picture. This typically includes AMH (ovarian reserve), antral follicle count (AFC), FSH, estradiol, and hormone panels to see how your body might respond to treatment and create a personalized protocol.",
+    "category": "diagnostics",
+    "frequency": 0.93,
+    "importance": "critical",
+    "typical_timing": "Before starting any treatment",
+    "avg_useful_to_outcome": 0.86,
+    "would_recommend_rate": 0.94,
+    "is_choice": false,
+    "choice_question": null,
+    "options": [],
+    "community_note": "These baseline tests help your RE create a personalized protocol and set realistic expectations for your cycle. The numbers can be scary at first, but they're just data points to help optimize your treatment.",
+    "source_post_count": 160,
+    "decision_point_count": 0
+  },
+  {
+    "node_id": 2,
+    "title": "Male Partner Testing",
+    "description": "Your partner will provide semen samples for analysis to check sperm count, motility, and morphology. This helps determine if ICSI will be needed and influences treatment planning.",
+    "category": "diagnostics",
+    "frequency": 0.74,
+    "importance": "critical",
+    "typical_timing": "During initial workup",
+    "avg_useful_to_outcome": 0.79,
+    "would_recommend_rate": 0.88,
+    "is_choice": false,
+    "choice_question": null,
+    "options": [],
+    "community_note": "Male factor issues are found in about 40-50% of couples, so this testing often reveals important information for your treatment approach.",
+    "source_post_count": 37,
+    "decision_point_count": 0
+  },
+  {
+    "node_id": 3,
+    "title": "Reproductive Endocrinologist Consultation",
+    "description": "You'll meet with your RE to review test results and discuss treatment options. This is when you'll learn about different protocols and make decisions about your path forward, including whether to pursue IVF, IUI, or fertility preservation.",
+    "category": "consultation",
+    "frequency": 0.88,
+    "importance": "critical",
+    "typical_timing": "After initial testing is complete",
+    "avg_useful_to_outcome": 0.83,
+    "would_recommend_rate": 0.92,
+    "is_choice": false,
+    "choice_question": null,
+    "options": [],
+    "community_note": "This consultation sets the foundation for your entire treatment plan - don't hesitate to ask lots of questions and advocate for yourself. Taking time to find the right fit with your doctor can make a huge difference.",
+    "source_post_count": 100,
+    "decision_point_count": 0
+  },
+  {
+    "node_id": 4,
+    "title": "Treatment Approach Decision",
+    "description": "You'll decide your treatment path based on your diagnosis, age, and goals. This might involve choosing between IUI first versus IVF, egg freezing versus embryo creation, or proceeding directly to advanced treatments.",
+    "category": "consultation",
+    "frequency": 0.77,
+    "importance": "critical",
+    "typical_timing": "During initial treatment planning",
+    "avg_useful_to_outcome": 0.74,
+    "would_recommend_rate": 0.83,
+    "is_choice": true,
+    "choice_question": "What treatment approach should I pursue?",
+    "options": [
+      {
+        "label": "Egg freezing for future flexibility",
+        "description": "Preserving fertility without committing to immediate family building, often chosen by single women or those wanting more time.",
+        "frequency": 0.28,
+        "outcome_signal": "positive",
+        "decision_point_rate": 0.42
+      },
+      {
+        "label": "Skip IUI and proceed to IVF",
+        "description": "Go directly to IVF based on diagnosis, age, or personal preference for more aggressive treatment.",
+        "frequency": 0.31,
+        "outcome_signal": "positive",
+        "decision_point_rate": 0.24
+      },
+      {
+        "label": "Try IUI first before IVF",
+        "description": "Start with less invasive treatment, often required by insurance before IVF coverage.",
+        "frequency": 0.14,
+        "outcome_signal": "neutral",
+        "decision_point_rate": 0.24
+      },
+      {
+        "label": "Embryo creation with current partner",
+        "description": "Creating embryos with a partner's sperm for more immediate family planning goals.",
+        "frequency": 0.18,
+        "outcome_signal": "positive",
+        "decision_point_rate": 0.32
+      }
+    ],
+    "community_note": "This decision often depends on your relationship status, timeline, diagnosis, and insurance coverage. Many women skip IUI if they have specific diagnoses or are over 35 with time concerns.",
+    "source_post_count": 93,
+    "decision_point_count": 17
+  },
+  {
+    "node_id": 5,
+    "title": "Financial Planning and Medication Procurement",
+    "description": "Getting your medications and navigating the complex world of fertility treatment costs. This includes exploring insurance coverage, applying for discounts, comparing pharmacy prices, and arranging payment plans.",
+    "category": "financial",
+    "frequency": 0.84,
+    "importance": "critical",
+    "typical_timing": "Week before starting treatment",
+    "avg_useful_to_outcome": 0.83,
+    "would_recommend_rate": 0.91,
+    "is_choice": true,
+    "choice_question": "How should I handle the financial aspects and medication procurement?",
+    "options": [
+      {
+        "label": "Insurance coverage through specialty pharmacy",
+        "description": "Using insurance benefits with designated specialty pharmacies, often with prior authorization requirements.",
+        "frequency": 0.34,
+        "outcome_signal": "positive",
+        "decision_point_rate": 0.35
+      },
+      {
+        "label": "Self-pay with discount pharmacies",
+        "description": "Comparing prices across fertility-focused pharmacies and paying out of pocket for better rates.",
+        "frequency": 0.42,
+        "outcome_signal": "positive",
+        "decision_point_rate": 0.35
+      },
+      {
+        "label": "Comprehensive financial optimization",
+        "description": "Apply for medication assistance programs, maximize FSA benefits, and explore all discount options.",
+        "frequency": 0.24,
+        "outcome_signal": "positive",
+        "decision_point_rate": 0.2
+      }
+    ],
+    "community_note": "Shop around - prices can vary dramatically between pharmacies, and self-pay is sometimes cheaper than insurance. Taking time to explore all options can save thousands of dollars.",
+    "source_post_count": 125,
+    "decision_point_count": 17
+  },
+  {
+    "node_id": 6,
+    "title": "Lifestyle and Supplement Preparation",
+    "description": "Optimizing your health in the months leading up to treatment. This typically includes starting prenatal vitamins, CoQ10, and other supplements, while reducing alcohol and improving diet and exercise habits.",
+    "category": "medication",
+    "frequency": 0.69,
+    "importance": "recommended",
+    "typical_timing": "2-3 months before treatment",
+    "avg_useful_to_outcome": 0.68,
+    "would_recommend_rate": 0.85,
+    "is_choice": false,
+    "choice_question": null,
+    "options": [],
+    "community_note": "Even small changes can make you feel more in control and potentially improve outcomes, but don't stress if you can't do everything perfectly. Many women find that preparing their body makes them feel more confident.",
+    "source_post_count": 52,
+    "decision_point_count": 1
+  },
+  {
+    "node_id": 7,
+    "title": "Cycle Preparation and Priming",
+    "description": "You'll start medications to prepare your ovaries for stimulation. This often includes birth control pills or hormone patches to synchronize your cycle and optimize your response, coordinating timing with the clinic's schedule.",
+    "category": "medication",
+    "frequency": 0.66,
+    "importance": "critical",
+    "typical_timing": "2-4 weeks before stimulation starts",
+    "avg_useful_to_outcome": 0.76,
+    "would_recommend_rate": 0.84,
+    "is_choice": false,
+    "choice_question": null,
+    "options": [],
+    "community_note": "Some women feel frustrated taking birth control when trying to get pregnant, but it's an important step to optimize your cycle timing and response. Good timing coordination makes the whole process smoother.",
+    "source_post_count": 87,
+    "decision_point_count": 0
+  },
+  {
+    "node_id": 8,
+    "title": "Stimulation Medication Start",
+    "description": "You'll begin daily injections of hormones like Gonal-F, Follistim, and Menopur to stimulate multiple eggs to develop. Your RE will customize the dosage based on your individual response profile. The first injection often feels like a big milestone.",
+    "category": "medication",
+    "frequency": 0.98,
+    "importance": "critical",
+    "typical_timing": "Start of treatment cycle",
+    "avg_useful_to_outcome": 0.88,
+    "would_recommend_rate": 0.93,
+    "is_choice": false,
+    "choice_question": null,
+    "options": [],
+    "community_note": "The first injection is often the scariest, but most women quickly get comfortable with the routine and even feel empowered doing it themselves. The injection process gets easier with practice.",
+    "source_post_count": 169,
+    "decision_point_count": 0
+  },
+  {
+    "node_id": 9,
+    "title": "Cycle Monitoring and Adjustments",
+    "description": "You'll have regular blood work and ultrasounds to track how your follicles are developing and adjust medications as needed. This typically happens every 2-3 days during stimulation and requires flexibility as your body responds.",
+    "category": "diagnostics",
+    "frequency": 0.93,
+    "importance": "critical",
+    "typical_timing": "Throughout stimulation phase",
+    "avg_useful_to_outcome": 0.87,
+    "would_recommend_rate": 0.93,
+    "is_choice": false,
+    "choice_question": null,
+    "options": [],
+    "community_note": "These appointments can feel frequent and disruptive with work schedules, but they're crucial for ensuring your cycle progresses safely and optimally. Try to stay flexible during monitoring - follicle growth rarely goes exactly according to plan.",
+    "source_post_count": 160,
+    "decision_point_count": 0
+  },
+  {
+    "node_id": 10,
+    "title": "Cycle Continuation Decision Point",
+    "description": "A critical moment when your response may not be as expected and you need to decide whether to continue with the current cycle or cancel and try again. This can be emotionally challenging but is a normal part of the process for many women.",
+    "category": "consultation",
+    "frequency": 0.31,
+    "importance": "critical",
+    "typical_timing": "Mid-stimulation phase",
+    "avg_useful_to_outcome": 0.6,
+    "would_recommend_rate": 0.7,
+    "is_choice": true,
+    "choice_question": "Should I continue this cycle or cancel and try again?",
+    "options": [
+      {
+        "label": "Continue current cycle despite poor response",
+        "description": "Proceeding with retrieval even with fewer follicles than hoped, believing some eggs are better than none.",
+        "frequency": 0.65,
+        "outcome_signal": "mixed",
+        "decision_point_rate": 0.85
+      },
+      {
+        "label": "Cancel cycle and adjust protocol",
+        "description": "Stopping the current cycle to modify the approach and try again with better chances.",
+        "frequency": 0.35,
+        "outcome_signal": "positive",
+        "decision_point_rate": 0.85
+      }
+    ],
+    "community_note": "This decision is tough, but trust your gut and your doctor's expertise. Canceling feels devastating but often leads to much better results in the next cycle with protocol adjustments.",
+    "source_post_count": 31,
+    "decision_point_count": 18
+  },
+  {
+    "node_id": 11,
+    "title": "Trigger Shot Administration",
+    "description": "When your follicles reach the right size, you'll take a precisely timed injection (usually HCG or Lupron) to trigger final egg maturation. Timing is critical - this must be done exactly as instructed, typically 36 hours before retrieval.",
+    "category": "medication",
+    "frequency": 0.95,
+    "importance": "critical",
+    "typical_timing": "36 hours before egg retrieval",
+    "avg_useful_to_outcome": 0.92,
+    "would_recommend_rate": 0.96,
+    "is_choice": false,
+    "choice_question": null,
+    "options": [],
+    "community_note": "The timing of this shot is critical - set multiple alarms and don't stress too much about being exact to the minute. Many women find the timing stressful, but clinics are very experienced at coordinating this.",
+    "source_post_count": 165,
+    "decision_point_count": 4
+  },
+  {
+    "node_id": 12,
+    "title": "Egg Retrieval Procedure",
+    "description": "Under light sedation, your RE will use a thin needle guided by ultrasound to collect eggs from your ovaries. The procedure typically takes 20-30 minutes, and you'll recover for a few hours afterward to learn your results.",
+    "category": "procedure",
+    "frequency": 0.97,
+    "importance": "critical",
+    "typical_timing": "36 hours after trigger shot",
+    "avg_useful_to_outcome": 0.9,
+    "would_recommend_rate": 0.94,
+    "is_choice": false,
+    "choice_question": null,
+    "options": [],
+    "community_note": "Most women find the procedure much easier than expected - the anticipation is often worse than the actual experience. Most are pleasantly surprised by how quick and smooth it feels.",
+    "source_post_count": 192,
+    "decision_point_count": 1
+  },
+  {
+    "node_id": 13,
+    "title": "Fertilization Method Decision",
+    "description": "For IVF cycles, the lab will fertilize your eggs using either conventional IVF (mixing sperm and eggs) or ICSI (injecting one sperm into each egg). The choice depends on sperm quality and previous fertilization results.",
+    "category": "procedure",
+    "frequency": 0.84,
+    "importance": "critical",
+    "typical_timing": "Day of egg retrieval",
+    "avg_useful_to_outcome": 0.71,
+    "would_recommend_rate": 0.79,
+    "is_choice": true,
+    "choice_question": "Should we use ICSI or conventional IVF for fertilization?",
+    "options": [
+      {
+        "label": "ICSI (Intracytoplasmic Sperm Injection)",
+        "description": "Individual sperm are injected directly into each mature egg, used for male factor issues or previous fertilization problems.",
+        "frequency": 0.76,
+        "outcome_signal": "positive",
+        "decision_point_rate": 0.18
+      },
+      {
+        "label": "Conventional IVF fertilization",
+        "description": "Sperm and eggs are mixed in a dish and fertilization happens naturally, used when sperm parameters are good.",
+        "frequency": 0.24,
+        "outcome_signal": "neutral",
+        "decision_point_rate": 0.18
+      }
+    ],
+    "community_note": "ICSI is often recommended as insurance against fertilization failure, especially for first-time IVF patients or any male factor concerns.",
+    "source_post_count": 42,
+    "decision_point_count": 9
+  },
+  {
+    "node_id": 14,
+    "title": "Embryo Development Monitoring",
+    "description": "Over 5-7 days, you'll receive updates on how your embryos are developing. The lab tracks which ones reach blastocyst stage and their quality grades. This applies to IVF cycles creating embryos.",
+    "category": "procedure",
+    "frequency": 0.92,
+    "importance": "critical",
+    "typical_timing": "Days 1-6 after egg retrieval",
+    "avg_useful_to_outcome": 0.76,
+    "would_recommend_rate": 0.84,
+    "is_choice": false,
+    "choice_question": null,
+    "options": [],
+    "community_note": "The daily calls can be emotionally intense as numbers drop each day - this is completely normal and doesn't reflect anything you did wrong.",
+    "source_post_count": 46,
+    "decision_point_count": 0
+  },
+  {
+    "node_id": 15,
+    "title": "Genetic Testing Decision",
+    "description": "You'll decide whether to do PGT-A (genetic testing) on your embryos to screen for chromosomal abnormalities. This can help select the most viable embryos but adds cost and time to the process.",
+    "category": "admin",
+    "frequency": 0.58,
+    "importance": "recommended",
+    "typical_timing": "When embryos reach blastocyst stage",
+    "avg_useful_to_outcome": 0.69,
+    "would_recommend_rate": 0.73,
+    "is_choice": true,
+    "choice_question": "Should we do PGT-A genetic testing on our embryos?",
+    "options": [
+      {
+        "label": "Do PGT-A testing on embryos",
+        "description": "Test embryos for chromosomal abnormalities to improve implantation rates and reduce miscarriage risk.",
+        "frequency": 0.62,
+        "outcome_signal": "positive",
+        "decision_point_rate": 0.21
+      },
+      {
+        "label": "Skip genetic testing",
+        "description": "Transfer embryos without testing to avoid potential damage from biopsy and reduce costs and delays.",
+        "frequency": 0.38,
+        "outcome_signal": "mixed",
+        "decision_point_rate": 0.21
+      }
+    ],
+    "community_note": "The decision often depends on your age, number of embryos, previous losses, and insurance coverage - there's no universal right answer.",
+    "source_post_count": 29,
+    "decision_point_count": 10
+  },
+  {
+    "node_id": 16,
+    "title": "Transfer Protocol Selection",
+    "description": "For those proceeding to transfer, you'll choose between a natural cycle (using your body's own ovulation) or medicated cycle (using hormones to control timing) for your frozen embryo transfer.",
+    "category": "medication",
+    "frequency": 0.72,
+    "importance": "recommended",
+    "typical_timing": "When preparing for first transfer",
+    "avg_useful_to_outcome": 0.61,
+    "would_recommend_rate": 0.67,
+    "is_choice": true,
+    "choice_question": "Should I do a natural or medicated FET cycle?",
+    "options": [
+      {
+        "label": "Medicated FET cycle",
+        "description": "Use estrogen and progesterone to control cycle timing and prepare the uterine lining for transfer.",
+        "frequency": 0.73,
+        "outcome_signal": "neutral",
+        "decision_point_rate": 0.14
+      },
+      {
+        "label": "Natural cycle FET",
+        "description": "Use your body's natural ovulation cycle with minimal medication intervention for transfer timing.",
+        "frequency": 0.27,
+        "outcome_signal": "positive",
+        "decision_point_rate": 0.14
+      }
+    ],
+    "community_note": "Natural cycles work well if you ovulate regularly, while medicated gives more control over timing - both have similar success rates.",
+    "source_post_count": 36,
+    "decision_point_count": 7
+  },
+  {
+    "node_id": 17,
+    "title": "Embryo Transfer Procedure",
+    "description": "Your embryo will be thawed (if frozen) and transferred into your uterus using a thin catheter. The procedure is usually quick and doesn't require sedation, though some cramping is normal.",
+    "category": "procedure",
+    "frequency": 0.84,
+    "importance": "critical",
+    "typical_timing": "5-6 days after ovulation or equivalent timing",
+    "avg_useful_to_outcome": 0.67,
+    "would_recommend_rate": 0.81,
+    "is_choice": false,
+    "choice_question": null,
+    "options": [],
+    "community_note": "Many women find it helpful to have a full bladder for better visualization and to plan something relaxing for after the transfer.",
+    "source_post_count": 42,
+    "decision_point_count": 0
+  },
+  {
+    "node_id": 18,
+    "title": "Two Week Wait and Testing",
+    "description": "You'll wait about 10-14 days after transfer for your beta HCG blood test to determine if the embryo implanted successfully. This period can be emotionally challenging for most women.",
+    "category": "diagnostics",
+    "frequency": 0.88,
+    "importance": "critical",
+    "typical_timing": "9-14 days after embryo transfer",
+    "avg_useful_to_outcome": 0.74,
+    "would_recommend_rate": 0.79,
+    "is_choice": false,
+    "choice_question": null,
+    "options": [],
+    "community_note": "The two week wait is universally difficult - many find it helpful to stay busy and have support systems in place for either outcome.",
+    "source_post_count": 44,
+    "decision_point_count": 0
+  },
+  {
+    "node_id": 19,
+    "title": "Results Evaluation and Next Steps Planning",
+    "description": "After receiving your results, you'll process the outcome emotionally and meet with your RE to discuss next steps. This might include preparing for another cycle, planning protocol changes, or exploring other options based on your experience.",
+    "category": "consultation",
+    "frequency": 0.86,
+    "importance": "critical",
+    "typical_timing": "After results are known",
+    "avg_useful_to_outcome": 0.74,
+    "would_recommend_rate": 0.84,
+    "is_choice": true,
+    "choice_question": "What should my next steps be?",
+    "options": [
+      {
+        "label": "Continue with same protocol",
+        "description": "Proceed with another cycle using the same medications and approach that worked reasonably well.",
+        "frequency": 0.36,
+        "outcome_signal": "neutral",
+        "decision_point_rate": 0.25
+      },
+      {
+        "label": "Modify treatment protocol",
+        "description": "Make changes to medications, timing, or procedures based on what was learned from previous cycles.",
+        "frequency": 0.29,
+        "outcome_signal": "positive",
+        "decision_point_rate": 0.3
+      },
+      {
+        "label": "Feel satisfied with current results",
+        "description": "Decide that your outcome meets your goals, whether successful pregnancy or adequate egg/embryo banking.",
+        "frequency": 0.23,
+        "outcome_signal": "positive",
+        "decision_point_rate": 0.15
+      },
+      {
+        "label": "Take a break from treatment",
+        "description": "Pause treatment to process emotionally, address health issues, or reassess goals and options.",
+        "frequency": 0.12,
+        "outcome_signal": "mixed",
+        "decision_point_rate": 0.2
+      }
+    ],
+    "community_note": "It's important to process each cycle's results and make thoughtful decisions about next steps rather than rushing. Try not to judge your results too harshly in the moment - it takes time to decide what's right for your situation.",
+    "source_post_count": 148,
+    "decision_point_count": 28
+  }
+]

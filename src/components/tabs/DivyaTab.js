@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import LandingHero from '../divya/LandingHero';
 import ChatIntro from '../divya/ChatIntro';
 import CycleSummaryCard from '../divya/CycleSummaryCard';
 import SpreadsheetView from '../divya/SpreadsheetView';
@@ -16,6 +17,7 @@ export default function DivyaTab() {
 
   return (
     <div className="tab-content">
+      <LandingHero />
       <ChatIntro />
       <CycleSummaryCard />
 

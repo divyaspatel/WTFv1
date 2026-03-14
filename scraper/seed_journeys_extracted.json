@@ -1,0 +1,3103 @@
+[
+  {
+    "post_id": "1247o79",
+    "post_title": "A detailed egg freezing experience \ud83e\udd5a\ud83e\uddca",
+    "subreddit": "eggfreezing",
+    "url": "https://reddit.com/r/eggfreezing/comments/1247o79/a_detailed_egg_freezing_experience/",
+    "journey_class": "complete_journey",
+    "steps": [
+      {
+        "step_number": 1,
+        "step": "Researched egg freezing and called to make appointment with fertility clinic.",
+        "step_category": "consultation",
+        "timing": "November, initial research phase",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Found this subreddit really helpful throughout my cycle",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 2,
+        "step": "Had initial appointment with doctor at Mass General Hospital.",
+        "step_category": "consultation",
+        "timing": "December",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          1
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "MGH was a good experience",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 3,
+        "step": "Completed ultrasound and bloodwork diagnostics during period, then had follow-up appointment with doctor.",
+        "step_category": "diagnostics",
+        "timing": "January",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          2
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Baseline levels: Estradiol 31, FSH 4.7, LH 4.6, AMH 5.48, 30 follicles",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 4,
+        "step": "Decided not to start cycle in February due to planned vacation.",
+        "step_category": "emotional",
+        "timing": "February decision",
+        "useful_to_outcome": 0.3,
+        "order_dependencies": [
+          3
+        ],
+        "importance": "optional",
+        "author_would_recommend": null,
+        "author_sentiment": "neutral",
+        "author_notes": "Chose not to start this month as had vacation",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 5,
+        "step": "Watched instructional videos on the egg freezing process and medication administration.",
+        "step_category": "admin",
+        "timing": "After deciding to move forward, before cycle",
+        "useful_to_outcome": 0.7,
+        "order_dependencies": [
+          4
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "mixed",
+        "author_notes": "Didn't pay attention to a lot because found it anxiety inducing",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 6,
+        "step": "Paid $7,000 for the egg retrieval procedure upfront.",
+        "step_category": "admin",
+        "timing": "Before ordering medications",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [
+          5
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Insurance shockingly paid for medication, only ~$200 copays",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 7,
+        "step": "Signed consent forms and designated to donate unused eggs to research rather than discard them.",
+        "step_category": "admin",
+        "timing": "Before ordering medications",
+        "useful_to_outcome": 0.2,
+        "order_dependencies": [
+          6
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Could discard or donate to research. I chose the latter",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 8,
+        "step": "Ordered all medications a couple weeks before cycle start, navigating pharmacy, insurance, and doctor coordination.",
+        "step_category": "admin",
+        "timing": "Couple weeks before cycle",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          7
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "negative",
+        "author_notes": "Found this part confusing, so much medication, different generic names",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 9,
+        "step": "Started birth control on first day of period and took it for two weeks.",
+        "step_category": "medication",
+        "timing": "End of February, cycle preparation",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          8
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Started birth control the day I got my period and took it for two weeks",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 10,
+        "step": "Had first monitoring appointment 5 days after stopping birth control and started stimulation injections that evening with Gonal F and Menopur.",
+        "step_category": "procedure",
+        "timing": "Day 1 of stims",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          9
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "mixed",
+        "author_notes": "At first overwhelming but quickly became easy, weren't painful at all",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 11,
+        "step": "Continued daily stimulation injections for 8 days with regular monitoring appointments, adding Ganirelix starting day 6.",
+        "step_category": "medication",
+        "timing": "Days 2-8 of stims",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          10
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "negative",
+        "author_notes": "Felt bloated/full by day 3-4, on day 7-8 officially uncomfortable",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 12,
+        "step": "Administered dual trigger shots with hCG and Lupron on day 9 after final monitoring appointment.",
+        "step_category": "medication",
+        "timing": "Day 9 of stims",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [
+          11
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "hCG and Lupron triggered ovulation",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 13,
+        "step": "Underwent egg retrieval procedure under anesthesia, retrieving 24 eggs with 17 successfully frozen.",
+        "step_category": "procedure",
+        "timing": "Day 11, retrieval day",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [
+          12
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Got an outcome I feel good about, really glad I did it",
+        "extraction_confidence": 1.0
+      }
+    ]
+  },
+  {
+    "post_id": "1mycye8",
+    "post_title": "From egg freezing to euploid embryos: my experience and results.",
+    "subreddit": "eggfreezing",
+    "url": "https://reddit.com/r/eggfreezing/comments/1mycye8/from_egg_freezing_to_euploid_embryos_my/",
+    "journey_class": "complete_journey",
+    "steps": [
+      {
+        "step_number": 1,
+        "step": "Underwent first egg freezing cycle at age 31, retrieving and freezing 9 eggs.",
+        "step_category": "procedure",
+        "timing": "at age 31",
+        "useful_to_outcome": 0.3,
+        "order_dependencies": [],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "froze 9 eggs at 31",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 2,
+        "step": "Chose a different clinic for the second egg freezing cycle at age 36.",
+        "step_category": "admin",
+        "timing": "before second retrieval at age 36",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          1
+        ],
+        "importance": "recommended",
+        "author_would_recommend": null,
+        "author_sentiment": "positive",
+        "author_notes": "ERs were at different clinics",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 3,
+        "step": "Added Q10 and prenatal vitamins as supplements for the second egg retrieval cycle.",
+        "step_category": "medication",
+        "timing": "before/during second retrieval at age 36",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          2
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "added Q10 and some prenatal vitamins (don't remember which ones)",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 4,
+        "step": "Completed second egg freezing cycle at age 36, retrieving and freezing 6 eggs.",
+        "step_category": "procedure",
+        "timing": "at age 36",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          3
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "then 6 more at 36",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 5,
+        "step": "Thawed 13 eggs out of the total 15 frozen eggs for fertilization.",
+        "step_category": "procedure",
+        "timing": "when ready for IVF cycle",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          4
+        ],
+        "importance": "critical",
+        "author_would_recommend": null,
+        "author_sentiment": "neutral",
+        "author_notes": "13 were thawed and fertilized",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 6,
+        "step": "Fertilized the 13 thawed eggs, resulting in 8 blastocysts.",
+        "step_category": "procedure",
+        "timing": "during IVF cycle after thawing",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          5
+        ],
+        "importance": "critical",
+        "author_would_recommend": null,
+        "author_sentiment": "positive",
+        "author_notes": "I got 8 blasts",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 7,
+        "step": "Performed PGT testing on the 8 blastocysts to check for genetic abnormalities.",
+        "step_category": "diagnostics",
+        "timing": "after blastocyst development",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          6
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Of those 8, 3 euploid and 1 low level mosaic",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 8,
+        "step": "Received PGT results showing 3 euploid embryos and 1 low level mosaic, all female.",
+        "step_category": "diagnostics",
+        "timing": "after PGT testing completion",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [
+          7
+        ],
+        "importance": "critical",
+        "author_would_recommend": null,
+        "author_sentiment": "positive",
+        "author_notes": "all the euploids embryos are from the eggs I froze at 36yo",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 9,
+        "step": "Scheduled frozen embryo transfer (FET) to occur in 3-4 weeks.",
+        "step_category": "admin",
+        "timing": "after receiving PGT results",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [
+          8
+        ],
+        "importance": "critical",
+        "author_would_recommend": null,
+        "author_sentiment": "positive",
+        "author_notes": "If all goes well, FET will be in 3/4 weeks :)",
+        "extraction_confidence": 1.0
+      }
+    ]
+  },
+  {
+    "post_id": "1klupxb",
+    "post_title": "My (30F) Detailed Egg Freezing Experience in Chicago",
+    "subreddit": "eggfreezing",
+    "url": "https://reddit.com/r/eggfreezing/comments/1klupxb/my_30f_detailed_egg_freezing_experience_in_chicago/",
+    "journey_class": "complete_journey",
+    "steps": [
+      {
+        "step_number": 1,
+        "step": "Chose OVA clinic based on a coworker's recommendation for egg freezing treatment.",
+        "step_category": "consultation",
+        "timing": "before starting cycle",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Overall experience: 7.5-8/10. I'll likely use them for my second round",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 2,
+        "step": "Completed pre-cycle baseline testing in mid-March including E2, FSH, LH, AMH, and AFC measurements.",
+        "step_category": "diagnostics",
+        "timing": "before starting cycle",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          1
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "E2: 47, FSH: 7.0, LH: 2.3, AMH: 3.31, AFC: 21",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 3,
+        "step": "Quickly completed required STD panel, pap smear, and additional bloodwork to be cleared for April start.",
+        "step_category": "diagnostics",
+        "timing": "before starting cycle",
+        "useful_to_outcome": 0.7,
+        "order_dependencies": [
+          2
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "I was able to schedule it all quickly and was cleared in time!",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 4,
+        "step": "Had final baseline appointment on 4/23 which showed only 12 follicles on ultrasound, down from 21 in March.",
+        "step_category": "diagnostics",
+        "timing": "before starting stims",
+        "useful_to_outcome": 0.6,
+        "order_dependencies": [
+          3
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "negative",
+        "author_notes": "I was really disappointed and went back and forth about delaying the cycle",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 5,
+        "step": "Made the decision to move forward with the cycle despite lower follicle count after weighing pros and cons.",
+        "step_category": "emotional",
+        "timing": "before starting stims",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          4
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "mixed",
+        "author_notes": "I had already ordered meds and cleared my schedule, insurance was covering most",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 6,
+        "step": "Started stimulation protocol with 150 IU Menopur and 150 IU Follistim injections nightly beginning Day 1.",
+        "step_category": "medication",
+        "timing": "day 1 of stims",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          5
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "No noticeable symptoms. I went to my last barre class",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 7,
+        "step": "Started Ganirelix injections in the morning beginning on Day 6 of stimulation.",
+        "step_category": "medication",
+        "timing": "day 6 of stims",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          6
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Started Ganirelix and experienced mild cramping",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 8,
+        "step": "Had medication doses reduced to 75 IU each of Menopur and Follistim on Day 8 due to response.",
+        "step_category": "medication",
+        "timing": "day 8 of stims",
+        "useful_to_outcome": 0.7,
+        "order_dependencies": [
+          7
+        ],
+        "importance": "recommended",
+        "author_would_recommend": null,
+        "author_sentiment": "neutral",
+        "author_notes": "The doctor reduced my Menopur and Follistim to 75 IU each",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 9,
+        "step": "Administered trigger shot at 12:30am on Day 12 after estrogen levels became too high to continue stims.",
+        "step_category": "medication",
+        "timing": "day 12 of stims",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          8
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "my estrogen was too high to continue the shots, so I did a final Menopur shot",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 10,
+        "step": "Underwent egg retrieval procedure on Day 14, retrieving 9 eggs with 8 viable for freezing.",
+        "step_category": "procedure",
+        "timing": "day 14 retrieval day",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          9
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "mixed",
+        "author_notes": "I was definitely deflated because I was hoping for at least 12",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 11,
+        "step": "Started 7 days of post-operative Ganirelix injections to prevent complications after retrieval.",
+        "step_category": "medication",
+        "timing": "after retrieval",
+        "useful_to_outcome": 0.7,
+        "order_dependencies": [
+          10
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "They put me on 7 days of Ganirelix post op to prev[ent complications]",
+        "extraction_confidence": 0.9
+      }
+    ]
+  },
+  {
+    "post_id": "1f2k2rr",
+    "post_title": "Egg freezing experience - Spring Fertility NY",
+    "subreddit": "eggfreezing",
+    "url": "https://reddit.com/r/eggfreezing/comments/1f2k2rr/egg_freezing_experience_spring_fertility_ny/",
+    "journey_class": "complete_journey",
+    "steps": [
+      {
+        "step_number": 1,
+        "step": "Spent 2 years wondering if they should do egg freezing and whether it was worth the cost, experiencing stress over the decision.",
+        "step_category": "emotional",
+        "timing": "2 years before starting treatment",
+        "useful_to_outcome": 0.3,
+        "order_dependencies": [],
+        "importance": "optional",
+        "author_would_recommend": false,
+        "author_sentiment": "negative",
+        "author_notes": "wish I'd done it earlier to save me two years of stressing over the decision",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 2,
+        "step": "Went in for a consultation at Spring Fertility in NY.",
+        "step_category": "consultation",
+        "timing": "before starting treatment",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          1
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "They were super responsive, took time answering questions, followed up regularly",
+        "extraction_confidence": 0.8
+      },
+      {
+        "step_number": 3,
+        "step": "Started the egg freezing process the following week after consultation.",
+        "step_category": "admin",
+        "timing": "week after consultation",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          2
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "they were quick - started the process the following week",
+        "extraction_confidence": 0.8
+      },
+      {
+        "step_number": 4,
+        "step": "Received huge box of medications and cried from being overwhelmed, scared of screwing it up, and hate of needles.",
+        "step_category": "emotional",
+        "timing": "before starting injections",
+        "useful_to_outcome": 0.2,
+        "order_dependencies": [
+          3
+        ],
+        "importance": "optional",
+        "author_would_recommend": null,
+        "author_sentiment": "negative",
+        "author_notes": "I cried when the huge box of meds showed up bc I was so overwhelmed",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 5,
+        "step": "Had nurse friend on FaceTime for the first injection to provide support and guidance.",
+        "step_category": "emotional",
+        "timing": "first injection day",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          4
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "had my nurse friend on facetime with me the first time - bring friends!",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 6,
+        "step": "Performed daily hormone injections including Gonal F, Menopur, and Ganirelix using Spring's how-to videos.",
+        "step_category": "medication",
+        "timing": "daily during stimulation cycle",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [
+          5
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "mixed",
+        "author_notes": "once I did the first shot, I stopped thinking about it",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 7,
+        "step": "Made significant lifestyle changes including cutting social commitments, taking long walks, cutting out alcohol, and working from home.",
+        "step_category": "emotional",
+        "timing": "during stimulation cycle",
+        "useful_to_outcome": 0.7,
+        "order_dependencies": [
+          6
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "had the luxury of taking it super easy - cut down on social commitments",
+        "extraction_confidence": 0.8
+      },
+      {
+        "step_number": 8,
+        "step": "Around day 5, experienced very little appetite as ovaries grew and had to force themselves to prioritize protein.",
+        "step_category": "medication",
+        "timing": "day 5 of stimulation",
+        "useful_to_outcome": 0.6,
+        "order_dependencies": [
+          7
+        ],
+        "importance": "recommended",
+        "author_would_recommend": null,
+        "author_sentiment": "neutral",
+        "author_notes": "after ~day 5 I had very little appetite as my ovaries started to grow",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 9,
+        "step": "Had one night towards the end where they felt super depressed and felt the weight of all the hormones.",
+        "step_category": "emotional",
+        "timing": "towards end of stimulation cycle",
+        "useful_to_outcome": 0.1,
+        "order_dependencies": [
+          8
+        ],
+        "importance": "optional",
+        "author_would_recommend": null,
+        "author_sentiment": "negative",
+        "author_notes": "one night towards the end where I felt super depressed",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 10,
+        "step": "Underwent the egg retrieval procedure, which they described as couldn't have been easier.",
+        "step_category": "procedure",
+        "timing": "end of stimulation cycle",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [
+          9
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Couldn't have been easier",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 11,
+        "step": "Took an Uber home after retrieval, feeling tired but fine all day.",
+        "step_category": "procedure",
+        "timing": "day of retrieval",
+        "useful_to_outcome": 0.5,
+        "order_dependencies": [
+          10
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "I took an uber home and felt tired but fine all day",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 12,
+        "step": "Spent the following two days doing nothing but hanging out on couch, chugging Gatorade and Liquid IV.",
+        "step_category": "procedure",
+        "timing": "1-2 days post-retrieval",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          11
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "spent the following two days doing nothing but hanging out on my couch",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 13,
+        "step": "By day 3 post-retrieval, besides some lingering bloating, it was like nothing had happened.",
+        "step_category": "procedure",
+        "timing": "day 3 post-retrieval",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          12
+        ],
+        "importance": "optional",
+        "author_would_recommend": null,
+        "author_sentiment": "positive",
+        "author_notes": "Day 3, it was like nothing had happened",
+        "extraction_confidence": 0.9
+      }
+    ]
+  },
+  {
+    "post_id": "1l989kt",
+    "post_title": "Egg Freezing today: My Tips + Results; 35F, Stage 3 Endo.",
+    "subreddit": "eggfreezing",
+    "url": "https://reddit.com/r/eggfreezing/comments/1l989kt/egg_freezing_today_my_tips_results_35f_stage_3/",
+    "journey_class": "complete_journey",
+    "steps": [
+      {
+        "step_number": 1,
+        "step": "Had baseline AMH testing in January showing 1.25 and AFC showing 6 & 7.",
+        "step_category": "diagnostics",
+        "timing": "January, before starting process",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "AMH in Jan: 1.25, AFC in Jan: 6 & 7",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 2,
+        "step": "Had Stage 3 endometriosis confirmed in February with suspected endometrioma in right ovary.",
+        "step_category": "diagnostics",
+        "timing": "February, during initial workup",
+        "useful_to_outcome": 0.7,
+        "order_dependencies": [],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Stage 3 confirmed in Feb, suspected endometrioma in right ovary",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 3,
+        "step": "Had follow-up AMH testing in May showing improvement to 1.83.",
+        "step_category": "diagnostics",
+        "timing": "May, before stims",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          1
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "AMH in May: 1.83",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 4,
+        "step": "Started @integrofertility program with nutritionists focused on fertility, including lifestyle plan, liver detox, inflammation support, home environment detox, and supplement protocols.",
+        "step_category": "consultation",
+        "timing": "before stims",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Game changer!",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 5,
+        "step": "Used red light therapy religiously - 20 minutes daily on lower abdomen with no underwear, especially after injections and every morning.",
+        "step_category": "procedure",
+        "timing": "throughout process",
+        "useful_to_outcome": 0.7,
+        "order_dependencies": [],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Had my panel for 2 years, used it religiously",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 6,
+        "step": "Took time off work completely - cleared calendar, no projects, no office, just focused on sleeping, eating, injecting, and staying calm.",
+        "step_category": "emotional",
+        "timing": "during stims",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Made a huge difference emotionally and logistically",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 7,
+        "step": "Did IV therapy before stims for hydration and immunity prep, adding mega-dose Vitamin C.",
+        "step_category": "procedure",
+        "timing": "before stims",
+        "useful_to_outcome": 0.6,
+        "order_dependencies": [],
+        "importance": "optional",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Hydration + immunity prep. Added mega-dose Vitamin C",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 8,
+        "step": "Started NAD+ intramuscular injections weekly a few weeks before stims and continued until after retrieval for energy, mitochondrial function, and egg quality.",
+        "step_category": "medication",
+        "timing": "few weeks before stims through retrieval",
+        "useful_to_outcome": 0.7,
+        "order_dependencies": [],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Boosted energy, mitochondrial function, egg quality, helped me stay clear-minded",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 9,
+        "step": "Adopted Chinese Medicine practices including no walking barefoot, no wet hair, no cold drinks or ice, and used warm compress on belly every night.",
+        "step_category": "procedure",
+        "timing": "throughout process",
+        "useful_to_outcome": 0.5,
+        "order_dependencies": [],
+        "importance": "optional",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Womb needs warmth",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 10,
+        "step": "Did daily meditations for ovarian response using specific YouTube video to connect with body.",
+        "step_category": "emotional",
+        "timing": "daily during process",
+        "useful_to_outcome": 0.6,
+        "order_dependencies": [],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Helped me connect with my body",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 11,
+        "step": "Implemented 'no drama policy' by telling everyone in life no stress or emotional dumping, taking a vacation from the world.",
+        "step_category": "emotional",
+        "timing": "during stims",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Just me + my little follicles",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 12,
+        "step": "Managed hydration during stims with 2 Electrolit drinks per day plus lots of water due to medication dehydration effects.",
+        "step_category": "medication",
+        "timing": "during stims",
+        "useful_to_outcome": 0.7,
+        "order_dependencies": [],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "The meds really dehydrated me. Grape flavor is life",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 13,
+        "step": "Used ice cold Coke Zero on days 2-4 of stims to manage terrible migraines.",
+        "step_category": "medication",
+        "timing": "days 2-4 of stims",
+        "useful_to_outcome": 0.6,
+        "order_dependencies": [
+          12
+        ],
+        "importance": "optional",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Ice cold Coke Zero saved me",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 14,
+        "step": "Had egg retrieval procedure early morning resulting in 23 follicles retrieved, 16 with eggs, and 14 mature eggs.",
+        "step_category": "procedure",
+        "timing": "retrieval day",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "mixed",
+        "author_notes": "Felt a little disappointed at first but doctor was very happy",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 15,
+        "step": "Started post-retrieval medications to prevent OHSS and Cetrotide for 5 days due to high estrogen levels.",
+        "step_category": "medication",
+        "timing": "after retrieval",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          14
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Taking meds to prevent OHSS due to high estrogen",
+        "extraction_confidence": 1.0
+      }
+    ]
+  },
+  {
+    "post_id": "1r3dl6y",
+    "post_title": "33 yo F, AMH 1.2-0.9, married, high stress career, first egg freezing cycle!",
+    "subreddit": "eggfreezing",
+    "url": "https://reddit.com/r/eggfreezing/comments/1r3dl6y/33_yo_f_amh_1209_married_high_stress_career_first/",
+    "journey_class": "complete_journey",
+    "steps": [
+      {
+        "step_number": 1,
+        "step": "Made the decision to see a fertility specialist for an evaluation since they didn't feel ready to be parents yet.",
+        "step_category": "emotional",
+        "timing": "after turning 33",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "made the decision to see a fertility specialist for an evaluation",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 2,
+        "step": "Attended fertility specialist consultation and received AMH testing results.",
+        "step_category": "consultation",
+        "timing": "before starting stims",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [
+          1
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "found out my AMH was on the low range for my age",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 3,
+        "step": "Had an emotional reaction and 'sort of freaked out' about discovering low AMH results.",
+        "step_category": "emotional",
+        "timing": "after receiving AMH results",
+        "useful_to_outcome": 0.3,
+        "order_dependencies": [
+          2
+        ],
+        "importance": "optional",
+        "author_would_recommend": null,
+        "author_sentiment": "negative",
+        "author_notes": "sort of freaked out",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 4,
+        "step": "Went through a period of careful consideration and thought about the decision to freeze eggs.",
+        "step_category": "emotional",
+        "timing": "before starting stims",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          3
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "after much thought I made the decision to freeze my eggs",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 5,
+        "step": "Made the final decision to freeze eggs, motivated partly by having fertility preservation benefits through work.",
+        "step_category": "emotional",
+        "timing": "before starting stims",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [
+          4
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "I get fertility preservation benefits through my job!",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 6,
+        "step": "Started stimulation medications for egg freezing cycle and is currently on day 3 of stims feeling good.",
+        "step_category": "medication",
+        "timing": "day 3 of stims",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          5
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "I'm on day 3 of stims and feeling good",
+        "extraction_confidence": 1.0
+      }
+    ]
+  },
+  {
+    "post_id": "16qi2rp",
+    "post_title": "Detailed Egg Freezing Experience (31F, PCOS, High risk OHSS + prevention tips!)",
+    "subreddit": "eggfreezing",
+    "url": "https://reddit.com/r/eggfreezing/comments/16qi2rp/detailed_egg_freezing_experience_31f_pcos_high/",
+    "journey_class": "complete_journey",
+    "steps": [
+      {
+        "step_number": 1,
+        "step": "Received recommendation from primary care doctor to do egg freezing after PCOS diagnosis.",
+        "step_category": "consultation",
+        "timing": "before starting",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Did egg freezing after recommendation from my primary care doctor",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 2,
+        "step": "Selected Stanford clinic based on insurance coverage and chose primary doctor based on her PCOS publications.",
+        "step_category": "admin",
+        "timing": "before starting",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          1
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "I selected based off of her publications around PCOS, wanted a doc very familiar",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 3,
+        "step": "Quit daily marijuana use on the first day of starting birth control.",
+        "step_category": "medication",
+        "timing": "cycle start",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          2
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Pothead (daily marijuana user) but quit on 1st day of birth control",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 4,
+        "step": "Started birth control pills and daily women's vitamin (400 mcg folic acid) 2 days after first day of period.",
+        "step_category": "medication",
+        "timing": "cycle start",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          3
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "2 days after my first day of my period, I started birth control pills",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 5,
+        "step": "Started high electrolyte intake (~40 oz/day of LiquidIV and Nuun tablets) beginning on Stim Day 1 for OHSS prevention.",
+        "step_category": "medication",
+        "timing": "day 1 of stims",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [
+          4
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "I specifically drank ~40 oz/day of LiquidIV and Nuun tablets throughout stims",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 6,
+        "step": "Started high protein diet (100g protein per day) beginning on Stim Day 1 for OHSS prevention.",
+        "step_category": "medication",
+        "timing": "day 1 of stims",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [
+          4
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "I am a petite person and was targeting 100g protein per day",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 7,
+        "step": "Started stimulation medications at low doses (Gonal-F 150 IU, Menopur 75 IU) due to high OHSS risk.",
+        "step_category": "medication",
+        "timing": "day 1 of stims",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          4
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Since I was high risk for OHSS, I was started at low doses",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 8,
+        "step": "Had Day 5 ultrasound and bloodwork showing 15 follicles per ovary and E2 of 1700, leading to Gonal-F reduction to 125 IU.",
+        "step_category": "diagnostics",
+        "timing": "day 5 of stims",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          7
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Day 5 ultrasound: about 15 follicles per ovary, ranging 7-12 mm. Estrogen was 1700",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 9,
+        "step": "Started taking cabergoline vaginally on Day 9 for OHSS prevention after E2 reached 7200.",
+        "step_category": "medication",
+        "timing": "day 9 of stims",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [
+          8
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Started cabergoline (taken vaginally; less side effects if vaginally)",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 10,
+        "step": "Triggered with lupron only instead of HCG due to high OHSS risk on Day 9 PM.",
+        "step_category": "medication",
+        "timing": "day 9 of stims",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [
+          9
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Triggered with lupron only based on OHSS risk they decided to trigger with lupron",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 11,
+        "step": "Had egg retrieval on Day 11 with 40 follicles retrieved and 34 mature eggs frozen.",
+        "step_category": "procedure",
+        "timing": "day 11",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [
+          10
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "40 follicles retrieved, 34 mature frozen. Overall felt good albeit bloated",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 12,
+        "step": "Increased electrolyte intake to ~80oz/day post-retrieval and started preventative constipation medications.",
+        "step_category": "medication",
+        "timing": "after retrieval",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          11
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "increasing to ~80oz/day post-retrieval; Started taking colace 2x daily + Miralax",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 13,
+        "step": "Called on-call doctor on Day 12 due to concerning symptoms (fever, weight gain, nausea) and was reassured.",
+        "step_category": "consultation",
+        "timing": "day 12 post-retrieval",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          11
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "mixed",
+        "author_notes": "Called the on-call doc worried, but she said everything sounded okay",
+        "extraction_confidence": 1.0
+      }
+    ]
+  },
+  {
+    "post_id": "1ksz4zr",
+    "post_title": "33F. Detailed egg freezing cycle with costs",
+    "subreddit": "eggfreezing",
+    "url": "https://reddit.com/r/eggfreezing/comments/1ksz4zr/33f_detailed_egg_freezing_cycle_with_costs/",
+    "journey_class": "complete_journey",
+    "steps": [
+      {
+        "step_number": 1,
+        "step": "Had initial bloodwork done at the clinic, during which she fainted due to nervousness.",
+        "step_category": "diagnostics",
+        "timing": "initial consultation phase",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "mixed",
+        "author_notes": "fainted during initial bloodwork",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 2,
+        "step": "Initially planned and booked flights/airbnb for egg freezing procedure at Reproclinic in Barcelona for cost savings.",
+        "step_category": "admin",
+        "timing": "months before starting treatment",
+        "useful_to_outcome": 0.0,
+        "order_dependencies": [],
+        "importance": "optional",
+        "author_would_recommend": false,
+        "author_sentiment": "negative",
+        "author_notes": "was set on doing this procedure at Reproclinic in Barcelona with flights/airbnb booked",
+        "extraction_confidence": 0.95
+      },
+      {
+        "step_number": 3,
+        "step": "Realized that doing the procedure abroad alone might not be the best choice given her tendency to faint.",
+        "step_category": "emotional",
+        "timing": "months before starting treatment",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          2
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "realized with all my fainting, that might not be the best choice for me",
+        "extraction_confidence": 0.95
+      },
+      {
+        "step_number": 4,
+        "step": "Chose RMA NJ as her clinic based on reviews from friends and posts on Reddit.",
+        "step_category": "consultation",
+        "timing": "before starting treatment",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          3
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "went with RMA NJ given reviews by friends and posts here",
+        "extraction_confidence": 0.95
+      },
+      {
+        "step_number": 5,
+        "step": "Started the stimulation medication process, initially very nervous and fainted the night before first stims from googling.",
+        "step_category": "medication",
+        "timing": "beginning of stims",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          4
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "mixed",
+        "author_notes": "fainted...the night before my first stims simply due to googling",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 6,
+        "step": "Went through daily stimulation injections, experiencing side effects like cramps, bloating, constipation, weight gain, and acne.",
+        "step_category": "medication",
+        "timing": "during stims cycle",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          5
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "mixed",
+        "author_notes": "cramps...bloating, constipation, weight gain, acne are all real",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 7,
+        "step": "Had to contact the on-call emergency doctor herself on trigger shot night when the clinic didn't call with instructions.",
+        "step_category": "procedure",
+        "timing": "trigger shot night",
+        "useful_to_outcome": 0.7,
+        "order_dependencies": [
+          6
+        ],
+        "importance": "critical",
+        "author_would_recommend": false,
+        "author_sentiment": "negative",
+        "author_notes": "clinic didn't call me. I had to contact the on-call emergency doctor myself",
+        "extraction_confidence": 0.95
+      },
+      {
+        "step_number": 8,
+        "step": "Underwent the egg retrieval procedure and struggled badly on the first day after.",
+        "step_category": "procedure",
+        "timing": "retrieval day and after",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [
+          7
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "mixed",
+        "author_notes": "After the retrieval and how badly I struggled the first day",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 9,
+        "step": "Managed post-retrieval constipation using Yerba Prima Fiber Plus Senna Capsules after avoiding pills before retrieval.",
+        "step_category": "medication",
+        "timing": "after retrieval",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          8
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Yerba Prima Fiber Plus Senna Capsules helped me",
+        "extraction_confidence": 0.95
+      },
+      {
+        "step_number": 10,
+        "step": "Got her period 5 days after retrieval, noting the accuracy of the 7-day timeline post-Lupron trigger shot.",
+        "step_category": "procedure",
+        "timing": "5 days after retrieval",
+        "useful_to_outcome": 0.5,
+        "order_dependencies": [
+          8
+        ],
+        "importance": "optional",
+        "author_would_recommend": null,
+        "author_sentiment": "neutral",
+        "author_notes": "got my period again...pretty shocked how accurate that was",
+        "extraction_confidence": 0.95
+      }
+    ]
+  },
+  {
+    "post_id": "1r9bho7",
+    "post_title": "Embryo Freezing Recap",
+    "subreddit": "eggfreezing",
+    "url": "https://reddit.com/r/eggfreezing/comments/1r9bho7/embryo_freezing_recap/",
+    "journey_class": "complete_journey",
+    "steps": [
+      {
+        "step_number": 1,
+        "step": "Stopped drinking and using tretinoin 3 months prior to the procedure, and started taking prenatal supplements.",
+        "step_category": "medication",
+        "timing": "3 months before procedure",
+        "useful_to_outcome": 0.7,
+        "order_dependencies": [],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "wanted to get the best results possible to be one and done",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 2,
+        "step": "Started taking COQ10 daily 2 months beforehand.",
+        "step_category": "medication",
+        "timing": "2 months before procedure",
+        "useful_to_outcome": 0.6,
+        "order_dependencies": [
+          1
+        ],
+        "importance": "optional",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "supplements weren't necessarily needed but we wanted best results",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 3,
+        "step": "Husband stopped drinking 2 months beforehand and took male fertility medications.",
+        "step_category": "medication",
+        "timing": "2 months before procedure",
+        "useful_to_outcome": 0.7,
+        "order_dependencies": [],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "wanted to get the best results possible",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 4,
+        "step": "Worked out (lagree) until the day before stims started.",
+        "step_category": "medication",
+        "timing": "before stims",
+        "useful_to_outcome": 0.5,
+        "order_dependencies": [],
+        "importance": "optional",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "normally work out 4-5x a week",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 5,
+        "step": "Had a standard cycle with menopur/follistim for 10 or so days.",
+        "step_category": "medication",
+        "timing": "during stims",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "procedure was as expected after the 10 or whatever days",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 6,
+        "step": "Did lots of walking during stims when bloating became uncomfortable.",
+        "step_category": "medication",
+        "timing": "during stims",
+        "useful_to_outcome": 0.4,
+        "order_dependencies": [
+          5
+        ],
+        "importance": "optional",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "bloating got pretty uncomfortable",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 7,
+        "step": "Started eating lots of extra protein and electrolytes during stims as recommended by clinic.",
+        "step_category": "medication",
+        "timing": "during stims",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          5
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "once I started doing that it turned manageable",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 8,
+        "step": "Had egg retrieval procedure which retrieved 15 eggs, all mature, with 14 fertilizing using ICSI with Zymot.",
+        "step_category": "procedure",
+        "timing": "retrieval day",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [
+          5,
+          6,
+          7
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "procedure itself was fine, you feel great after anesthesia",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 9,
+        "step": "Took it easy after procedure due to having no energy and continued drinking protein shakes with added fiber and electrolytes daily.",
+        "step_category": "medication",
+        "timing": "after retrieval",
+        "useful_to_outcome": 0.6,
+        "order_dependencies": [
+          8
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "mixed",
+        "author_notes": "day 1-5 after sucked. I think day 3 was the worst",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 10,
+        "step": "7 embryos made it to blast stage.",
+        "step_category": "diagnostics",
+        "timing": "5-6 days after retrieval",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [
+          8
+        ],
+        "importance": "critical",
+        "author_would_recommend": null,
+        "author_sentiment": "positive",
+        "author_notes": "thrilled with the results",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 11,
+        "step": "Received PGT results showing 6 euploids and 1 aneuploid embryo.",
+        "step_category": "diagnostics",
+        "timing": "weeks after retrieval",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [
+          10
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "We are thrilled with the results as we wanted enough for two kids!",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 12,
+        "step": "Got period back after 10 days and returned to lagree exercise the day after with no twisting movements.",
+        "step_category": "medication",
+        "timing": "10-11 days after retrieval",
+        "useful_to_outcome": 0.3,
+        "order_dependencies": [
+          9
+        ],
+        "importance": "optional",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "by day 2-3 of my period my body was entirely back to normal",
+        "extraction_confidence": 1.0
+      }
+    ]
+  },
+  {
+    "post_id": "1jfxhe2",
+    "post_title": "Detailed Egg Freezing Journey - NYC 29F - March 2025 (NYU Langone)",
+    "subreddit": "eggfreezing",
+    "url": "https://reddit.com/r/eggfreezing/comments/1jfxhe2/detailed_egg_freezing_journey_nyc_29f_march_2025/",
+    "journey_class": "complete_journey",
+    "steps": [
+      {
+        "step_number": 1,
+        "step": "Called NYU Langone to schedule initial consultation appointment, originally scheduled for May.",
+        "step_category": "admin",
+        "timing": "before starting process",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Dr. Blakemore's secretary called with earlier appointment available",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 2,
+        "step": "Applied for income-based medication discounts through Reunite Rx, Compassionate Care, and HeartTomorrow before filing 2024 taxes.",
+        "step_category": "admin",
+        "timing": "before starting process",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Applied before filing taxes (2023 income < 2024)",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 3,
+        "step": "Enrolled in FSA and strategically timed cycle for Feb/Mar to use both 2024 and 2025 FSA funds due to grace period.",
+        "step_category": "admin",
+        "timing": "before starting process",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Combined FSA balance from 2024 AND 2025, reimbursed quickly",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 4,
+        "step": "Opened Chase Freedom Unlimited credit card for 3% cash back on medications and 0% APR benefits.",
+        "step_category": "admin",
+        "timing": "before starting process",
+        "useful_to_outcome": 0.7,
+        "order_dependencies": [],
+        "importance": "optional",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "3% cash back on meds, 1.5% on cycle fee/anesthesia, 0% APR 12 months",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 5,
+        "step": "Completed pre-consultation bloodwork testing FSH, Estradiol, and AMH levels.",
+        "step_category": "diagnostics",
+        "timing": "December 3, 2024",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          1
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "FSH 5.7 / Estradiol 28.9 / AMH 2.17",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 6,
+        "step": "Attended initial consultation with Dr. Blakemore including vaginal ultrasound counting 18 total eggs.",
+        "step_category": "consultation",
+        "timing": "December 31, 2024",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          5
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Vag ultrasound counting 9 eggs in each ovary (18 total)",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 7,
+        "step": "Attended virtual orientation led by social worker to walk through the entire egg freezing process.",
+        "step_category": "consultation",
+        "timing": "February 4, 2025",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          6
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "After that, a nurse calls you to fill out the order for meds",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 8,
+        "step": "Received call from nurse to order medications after virtual orientation, selected Alto pharmacy over other options through price negotiation.",
+        "step_category": "medication",
+        "timing": "after February 4, 2025",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          7
+        ],
+        "importance": "critical",
+        "author_would_recommend": null,
+        "author_sentiment": "mixed",
+        "author_notes": "Chose Alto over Prima for better pricing thru negotiation",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 9,
+        "step": "Attended first monitoring appointment but did not start medications due to bloodwork and ultrasound results.",
+        "step_category": "diagnostics",
+        "timing": "February 19, 2025",
+        "useful_to_outcome": 0.6,
+        "order_dependencies": [
+          8
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "I don't get periods due to my IUD. DID NOT START.",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 10,
+        "step": "Attended second monitoring appointment but still did not start medications.",
+        "step_category": "diagnostics",
+        "timing": "February 21, 2025",
+        "useful_to_outcome": 0.6,
+        "order_dependencies": [
+          9
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Bloodwork + ultrasound. DID NOT START.",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 11,
+        "step": "Attended third monitoring appointment and finally started medications after bloodwork and ultrasound.",
+        "step_category": "medication",
+        "timing": "February 28, 2025",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [
+          10
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Bloodwork + ultrasound. FINALLY STARTED MEDS.",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 12,
+        "step": "Used medication overfill hack to extract extra doses from Gonal F pens to avoid purchasing additional medication.",
+        "step_category": "medication",
+        "timing": "during stimulation cycle",
+        "useful_to_outcome": 0.7,
+        "order_dependencies": [
+          11
+        ],
+        "importance": "optional",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Extracted 2 extra doses using overfill to avoid buying more",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 13,
+        "step": "Received call from Dr. Blakemore about drop in estrogen levels indicating potential premature ovulation.",
+        "step_category": "diagnostics",
+        "timing": "March 12, 2025",
+        "useful_to_outcome": 0.5,
+        "order_dependencies": [
+          11
+        ],
+        "importance": "critical",
+        "author_would_recommend": null,
+        "author_sentiment": "negative",
+        "author_notes": "Drop in estrogen = potentially prematurely ovulated",
+        "extraction_confidence": 1.0
+      }
+    ]
+  },
+  {
+    "post_id": "1f11pg1",
+    "post_title": "Yet another NYU fertility egg freezing journal",
+    "subreddit": "eggfreezing",
+    "url": "https://reddit.com/r/eggfreezing/comments/1f11pg1/yet_another_nyu_fertility_egg_freezing_journal/",
+    "journey_class": "complete_journey",
+    "steps": [
+      {
+        "step_number": 1,
+        "step": "Made appointment via phone at NYU fertility with Dr. Wertz for initial consulting in April.",
+        "step_category": "admin",
+        "timing": "February, before starting",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "NYU start sending emails and patient portal info (quite overwhelming)",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 2,
+        "step": "Came in Day 2 of period for bloodwork prior to the initial consultation appointment.",
+        "step_category": "diagnostics",
+        "timing": "April, before consultation",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          1
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Result will be shared at the initial consulting",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 3,
+        "step": "Had initial consulting with Dr. Wertz and decided to go for it after speaking with her.",
+        "step_category": "consultation",
+        "timing": "April, initial consultation",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          1,
+          2
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "After speaking with Dr. Wertz, I decided to go for it",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 4,
+        "step": "Read some books and decided to prepare body first rather than rush into egg freezing.",
+        "step_category": "emotional",
+        "timing": "April, after consultation decision",
+        "useful_to_outcome": 0.7,
+        "order_dependencies": [
+          3
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "At 35, more important to prepare my body and give it the best shot",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 5,
+        "step": "Started taking supplements (prenatal vitamins, coQ10, Myo-Inositol), exercising, and eating healthier meals for 2-3 months.",
+        "step_category": "medication",
+        "timing": "May-July, preparation phase",
+        "useful_to_outcome": 0.6,
+        "order_dependencies": [
+          4
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Did notice a difference taking these supplements constantly for 2-3 month",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 6,
+        "step": "Called patient coordinator and attended virtual orientation for egg freezing process.",
+        "step_category": "consultation",
+        "timing": "June, preparation phase",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          3
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "They walk you through overall process and injection instructions",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 7,
+        "step": "Nurse called to fill out the medication order after the orientation.",
+        "step_category": "admin",
+        "timing": "June, after orientation",
+        "useful_to_outcome": 0.7,
+        "order_dependencies": [
+          6
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Didn't have to go to clinic for these first 2 steps",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 8,
+        "step": "Ordered medications via Alto for about $3,000, which made it feel like a 'real commitment'.",
+        "step_category": "medication",
+        "timing": "July, before starting stims",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          7
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "mixed",
+        "author_notes": "Once I paid for first order of meds, it finally felt like 'real commitment'",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 9,
+        "step": "Visited clinic on Day 2 of cycle to start the stimulation process.",
+        "step_category": "procedure",
+        "timing": "July, start of stims",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          8
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Stims injection for 2 weeks then egg retrieval",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 10,
+        "step": "Started daily stimulation injections (Gonal F and Menopur) and daily monitoring visits for bloodwork and ultrasounds.",
+        "step_category": "procedure",
+        "timing": "Days 1-5+ of stims",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          9
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Injections still didn't hurt! Getting hard to find where to put needles",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 11,
+        "step": "Added Cetrotide injection after E2 level reached 1400, which nurse urgently called about.",
+        "step_category": "medication",
+        "timing": "Day 5 of stims",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          10
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Nurse called urgently told me to inject Cetrotide. E2 level was 1400",
+        "extraction_confidence": 1.0
+      }
+    ]
+  },
+  {
+    "post_id": "1o0o18r",
+    "post_title": "Sharing my story: 33F, AMH 1.6, AFC 8",
+    "subreddit": "eggfreezing",
+    "url": "https://reddit.com/r/eggfreezing/comments/1o0o18r/sharing_my_story_33f_amh_16_afc_8/",
+    "journey_class": "complete_journey",
+    "steps": [
+      {
+        "step_number": 1,
+        "step": "Started exploring egg freezing at age 32.",
+        "step_category": "consultation",
+        "timing": "initial exploration phase",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Starting point for the entire process",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 2,
+        "step": "Had a phone consult with a doctor in February.",
+        "step_category": "consultation",
+        "timing": "February, during initial exploration",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          1
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Essential first medical consultation",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 3,
+        "step": "Discontinued birth control pill in April after being on it for years.",
+        "step_category": "medication",
+        "timing": "April, preparation phase",
+        "useful_to_outcome": 0.7,
+        "order_dependencies": [
+          2
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Needed to be off pill for a few months before baseline testing",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 4,
+        "step": "Had baseline testing at the end of May.",
+        "step_category": "diagnostics",
+        "timing": "end of May, after months off birth control",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          3
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Required testing to determine AMH 1.6, AFC 8",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 5,
+        "step": "Had discussions with doctor after baseline and got scheduled for September cycle.",
+        "step_category": "consultation",
+        "timing": "after baseline testing results",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          4
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Doctor was able to schedule cycle based on results",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 6,
+        "step": "Called on Day 1 of period (Aug 30) to start priming protocol.",
+        "step_category": "admin",
+        "timing": "Day 1 of cycle before stims",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          5
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Doctor wanted priming protocol",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 7,
+        "step": "Started ovulation testing on day 7 and called with peak result on Sept 10.",
+        "step_category": "diagnostics",
+        "timing": "days 7-12 of priming cycle",
+        "useful_to_outcome": 0.7,
+        "order_dependencies": [
+          6
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Part of priming protocol to track ovulation",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 8,
+        "step": "Started taking estrace morning and night on Sept 17, Day 19 of cycle.",
+        "step_category": "medication",
+        "timing": "7 days after peak ovulation",
+        "useful_to_outcome": 0.7,
+        "order_dependencies": [
+          7
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Prescribed as part of priming protocol",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 9,
+        "step": "Had baseline appointment on Day 3 (Sept 24) before stim cycle.",
+        "step_category": "diagnostics",
+        "timing": "Day 3 of stim cycle",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          8
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Required baseline before starting stimulation medications",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 10,
+        "step": "Started stimulation shots on Sept 25 with Menopur AM, Clomid/Dex/Gonal-F PM protocol.",
+        "step_category": "medication",
+        "timing": "Day 1 of stims",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          9
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Doctor had me on max dosages of meds",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 11,
+        "step": "Added cetrotide and stopped clomid on day 6 of stims.",
+        "step_category": "medication",
+        "timing": "Day 6 of stims",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          10
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Protocol adjustment during stim cycle",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 12,
+        "step": "Had discouraging ultrasound on day 9 showing only 6 follicles, considered cancelling.",
+        "step_category": "emotional",
+        "timing": "Day 9 of stims",
+        "useful_to_outcome": 0.3,
+        "order_dependencies": [
+          11
+        ],
+        "importance": "optional",
+        "author_would_recommend": null,
+        "author_sentiment": "negative",
+        "author_notes": "Was told might only get 2 eggs, pretty disappointed throughout weekend",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 13,
+        "step": "Decided to continue cycle despite disappointment and low expectations.",
+        "step_category": "emotional",
+        "timing": "weekend before trigger",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [
+          12
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "mixed",
+        "author_notes": "Considered cancelling but decided to just go through it and see",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 14,
+        "step": "Did one more day of stims with additional cetrotide dose to prevent ovulation.",
+        "step_category": "medication",
+        "timing": "Day 10 of stims",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          13
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Luckily able to do one more day to get follicles up in size",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 15,
+        "step": "Triggered on Saturday night with Pregnyl HcG 10,000 IU and Lupron doses.",
+        "step_category": "medication",
+        "timing": "trigger night",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          14
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Followed by Lupron an hour later and next morning",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 16,
+        "step": "Had egg retrieval surgery Monday morning and got 8 eggs total, 7 mature.",
+        "step_category": "procedure",
+        "timing": "retrieval day",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [
+          15
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Thrilled and feeling really lucky - exceeded expectations",
+        "extraction_confidence": 1.0
+      }
+    ]
+  },
+  {
+    "post_id": "1abfq1r",
+    "post_title": "What\u2019s one thing you wish someone told you before freezing your eggs?",
+    "subreddit": "eggfreezing",
+    "url": "https://reddit.com/r/eggfreezing/comments/1abfq1r/whats_one_thing_you_wish_someone_told_you_before/",
+    "journey_class": "complete_journey",
+    "steps": [
+      {
+        "step_number": 1,
+        "step": "Researched egg freezing experiences by reading stories from others who had gone through the process.",
+        "step_category": "emotional",
+        "timing": "before starting first cycle",
+        "useful_to_outcome": 0.7,
+        "order_dependencies": [],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "mixed",
+        "author_notes": "I've seen so many stories about egg freezing, some being really good and some not so much",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 2,
+        "step": "Completed first egg freezing cycle.",
+        "step_category": "procedure",
+        "timing": "first cycle completion",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          1
+        ],
+        "importance": "critical",
+        "author_would_recommend": null,
+        "author_sentiment": "neutral",
+        "author_notes": "when I started",
+        "extraction_confidence": 0.8
+      },
+      {
+        "step_number": 3,
+        "step": "Decided to consider doing a second egg freezing cycle.",
+        "step_category": "emotional",
+        "timing": "after first cycle",
+        "useful_to_outcome": 0.6,
+        "order_dependencies": [
+          2
+        ],
+        "importance": "recommended",
+        "author_would_recommend": null,
+        "author_sentiment": "positive",
+        "author_notes": "I'm thinking of doing a second cycle this year",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 4,
+        "step": "Researched location options for second cycle, considering both London and abroad.",
+        "step_category": "consultation",
+        "timing": "planning for second cycle",
+        "useful_to_outcome": 0.5,
+        "order_dependencies": [
+          3
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "in London or all around the world, since I might even do it abroad",
+        "extraction_confidence": 0.8
+      },
+      {
+        "step_number": 5,
+        "step": "Sought advice from the egg freezing community about what to know before starting the process.",
+        "step_category": "emotional",
+        "timing": "planning for second cycle",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          3
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "I wish this existed when I started",
+        "extraction_confidence": 0.9
+      }
+    ]
+  },
+  {
+    "post_id": "1b29kra",
+    "post_title": "Egg Freezing Journey Review (34F)",
+    "subreddit": "eggfreezing",
+    "url": "https://reddit.com/r/eggfreezing/comments/1b29kra/egg_freezing_journey_review_34f/",
+    "journey_class": "complete_journey",
+    "steps": [
+      {
+        "step_number": 1,
+        "step": "Decided to freeze eggs at age 34",
+        "step_category": "emotional",
+        "timing": "initial decision point",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "decided to freeze my eggs last year",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 2,
+        "step": "Realized couldn't start immediately due to being on contraceptive pill and needing 3 months off",
+        "step_category": "admin",
+        "timing": "after initial decision",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          1
+        ],
+        "importance": "critical",
+        "author_would_recommend": null,
+        "author_sentiment": "neutral",
+        "author_notes": "I realized I couldn't just start immediately... on the contraceptive pill",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 3,
+        "step": "Went off contraceptive pill for 3 months as recommended by UK clinics",
+        "step_category": "medication",
+        "timing": "3 months before treatment",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          2
+        ],
+        "importance": "critical",
+        "author_would_recommend": null,
+        "author_sentiment": "neutral",
+        "author_notes": "3 months off-pill period",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 4,
+        "step": "Used the 3-month off-pill period to research and decide on clinic using HFEA, Amilis, Doctify, Google and Reddit",
+        "step_category": "admin",
+        "timing": "during 3-month off-pill period",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          3
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "I used this period to decide on the clinic",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 5,
+        "step": "Started taking supplements including vitamin D, B complex, CoQ10, pregnacare multivitamins, L-carnitine, omega 3, and added magnesium",
+        "step_category": "medication",
+        "timing": "before stimulation",
+        "useful_to_outcome": 0.7,
+        "order_dependencies": [
+          4
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "I'm pescatarian and was advised to take supplements... I also added magnesium myself",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 6,
+        "step": "Had baseline measurements taken including AMH (15.7 pmol/l), FSH (6 iu/l), and antral follicle counts (24 total)",
+        "step_category": "diagnostics",
+        "timing": "1 month before stimulation",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          3
+        ],
+        "importance": "critical",
+        "author_would_recommend": null,
+        "author_sentiment": "neutral",
+        "author_notes": "1 month that includes my period cycle to measure my baseline",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 7,
+        "step": "Stopped intense exercise and switched to walking an hour each day during stimulation period",
+        "step_category": "admin",
+        "timing": "during stimulation period",
+        "useful_to_outcome": 0.6,
+        "order_dependencies": [
+          8
+        ],
+        "importance": "recommended",
+        "author_would_recommend": null,
+        "author_sentiment": "neutral",
+        "author_notes": "I stopped going to my gym for about 2 weeks and just walked for an hour each day",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 8,
+        "step": "Started stimulation period with daily self-injections for approximately 10 days",
+        "step_category": "medication",
+        "timing": "stimulation period",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [
+          6
+        ],
+        "importance": "critical",
+        "author_would_recommend": null,
+        "author_sentiment": "mixed",
+        "author_notes": "it felt daunting in the beginning, but I got used to it quickly",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 9,
+        "step": "Had trigger shot modified to single trigger (GnRHa) instead of dual triggers due to 38 follicles and high estrogen level",
+        "step_category": "medication",
+        "timing": "end of stimulation",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          8
+        ],
+        "importance": "critical",
+        "author_would_recommend": null,
+        "author_sentiment": "neutral",
+        "author_notes": "clinic instructed me to use a single trigger instead of the original plan",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 10,
+        "step": "Took Cabergoline medication to help prevent OHSS due to high estrogen levels",
+        "step_category": "medication",
+        "timing": "around trigger shot",
+        "useful_to_outcome": 0.7,
+        "order_dependencies": [
+          9
+        ],
+        "importance": "recommended",
+        "author_would_recommend": null,
+        "author_sentiment": "neutral",
+        "author_notes": "They also prescribed drugs (Cabergoline) to help prevent OHSS",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 11,
+        "step": "Fasted at least 6 hours prior to egg retrieval operation",
+        "step_category": "admin",
+        "timing": "day of retrieval",
+        "useful_to_outcome": 0.5,
+        "order_dependencies": [
+          10
+        ],
+        "importance": "critical",
+        "author_would_recommend": null,
+        "author_sentiment": "negative",
+        "author_notes": "I was just very low-energy, and I guess my low-ish blood pressure didn't help",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 12,
+        "step": "Had egg retrieval operation under sedation with Propofol, retrieving 22 eggs with 17 mature eggs frozen",
+        "step_category": "procedure",
+        "timing": "retrieval day",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [
+          11
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "super easy. I was under sedation and didn't remember a thing",
+        "extraction_confidence": 1.0
+      }
+    ]
+  },
+  {
+    "post_id": "15ctlwk",
+    "post_title": "Another very detailed egg freezing recap (NYC)",
+    "subreddit": "eggfreezing",
+    "url": "https://reddit.com/r/eggfreezing/comments/15ctlwk/another_very_detailed_egg_freezing_recap_nyc/",
+    "journey_class": "complete_journey",
+    "steps": [
+      {
+        "step_number": 1,
+        "step": "Went for first consultation at age 35 but couldn't pull the trigger to proceed with egg freezing.",
+        "step_category": "consultation",
+        "timing": "2 years before starting process",
+        "useful_to_outcome": 0.3,
+        "order_dependencies": [],
+        "importance": "optional",
+        "author_would_recommend": null,
+        "author_sentiment": "mixed",
+        "author_notes": "Couldn't pull the trigger, took 1.5 years to get to final decision",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 2,
+        "step": "At age 37 without a partner, decided not to wait any longer and committed to egg freezing to give herself additional options.",
+        "step_category": "emotional",
+        "timing": "before starting process",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [
+          1
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Saw this as giving myself additional options, didn't want future regret",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 3,
+        "step": "Scheduled consultations at NYU and Kindbody in December 2022 after researching clinics and reading Fertility IQ reviews.",
+        "step_category": "consultation",
+        "timing": "December 2022",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          2
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Used Fertility IQ reviews, had friends who used both clinics",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 4,
+        "step": "Went off birth control pills in December 2022 to let ovaries 'wake up' based on Dr. Devore's previous recommendation.",
+        "step_category": "medication",
+        "timing": "December 2022",
+        "useful_to_outcome": 0.7,
+        "order_dependencies": [
+          3
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Dr. Devore recommended getting off BC for a few months to wake up ovaries",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 5,
+        "step": "Attended consultations at both NYU and Kindbody, choosing NYU over Kindbody due to better doctor interaction and confidence level.",
+        "step_category": "consultation",
+        "timing": "December 2022 - January 2023",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          3
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Underwhelmed by Kindbody, chose Dr. Blakemore at NYU NoMad location",
+        "extraction_confidence": 0.8
+      },
+      {
+        "step_number": 6,
+        "step": "Had initial consultation with Dr. Blakemore including bloodwork and ultrasound in mid-February 2023 (AMH 2.53, AFC 15).",
+        "step_category": "diagnostics",
+        "timing": "mid-February 2023",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [
+          5
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "AMH 2.53, AFC 15; cycle reservation made for end of May",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 7,
+        "step": "Started taking supplements including Ritual prenatal vitamin and 600mg of Ubiquinol during the months before cycle start.",
+        "step_category": "medication",
+        "timing": "February - May 2023",
+        "useful_to_outcome": 0.5,
+        "order_dependencies": [
+          6
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Used intervening months to regulate cycle and start supplements",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 8,
+        "step": "Maxed out FSA account to full amount (~$2800) during open enrollment period to pay for treatment with pre-tax dollars.",
+        "step_category": "admin",
+        "timing": "months before treatment",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Essentially 30% discount, didn't feel like paying out of pocket",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 9,
+        "step": "Attended Webex information session on 5/2 and received medication quantity estimates and insurance coverage information.",
+        "step_category": "admin",
+        "timing": "May 2, 2023",
+        "useful_to_outcome": 0.7,
+        "order_dependencies": [
+          6
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Sent sheet with estimated min/max med quantities and insurance coverage",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 10,
+        "step": "Researched and compared medication pricing across multiple pharmacies (Apthorp, Alto, MDR, Kings) using discount spreadsheet.",
+        "step_category": "admin",
+        "timing": "early May 2023",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          9
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Used excellent post by u/Super_Performer_3343 with discount spreadsheet",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 11,
+        "step": "Applied for medication discount programs including Heart Tomorrow Menopur discount (approved within 2 hours) and EMD Compassionate Care program.",
+        "step_category": "admin",
+        "timing": "early May 2023",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          10
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Heart Tomorrow approved within 2 hours, EMD only eligible for 10% discount",
+        "extraction_confidence": 0.9
+      },
+      {
+        "step_number": 12,
+        "step": "Called clinic on Day 1 of period (5/28) to start cycle but had to wait until Tuesday for first monitoring appointment due to weekend timing.",
+        "step_category": "procedure",
+        "timing": "May 28, 2023 - Day 1",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [
+          6,
+          9,
+          10,
+          11
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "mixed",
+        "author_notes": "Called on Sunday, felt stressful to wait but ultimately not a big deal",
+        "extraction_confidence": 1.0
+      }
+    ]
+  },
+  {
+    "post_id": "1mvxoex",
+    "post_title": "From egg freezing to euploid: my results",
+    "subreddit": "eggfreezing",
+    "url": "https://reddit.com/r/eggfreezing/comments/1mvxoex/from_egg_freezing_to_euploid_my_results/",
+    "journey_class": "complete_journey",
+    "steps": [
+      {
+        "step_number": 1,
+        "step": "Underwent first egg freezing cycle at age 31 and retrieved 9 eggs.",
+        "step_category": "procedure",
+        "timing": "age 31, first cycle",
+        "useful_to_outcome": 0.3,
+        "order_dependencies": [],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "froze 9 eggs at 31",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 2,
+        "step": "Added Q10, vitamin D, folate and a prenatal before second egg retrieval cycle.",
+        "step_category": "medication",
+        "timing": "before second cycle at age 36",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          1
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "all 3 euploids were from eggs frozen at 36yo after adding supplements",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 3,
+        "step": "Underwent second egg freezing cycle at age 36 and retrieved 6 more eggs.",
+        "step_category": "procedure",
+        "timing": "age 36, second cycle",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          1,
+          2
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "6 more at 36, all 3 euploids from this cycle",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 4,
+        "step": "Thawed and fertilized 13 of the 15 frozen eggs.",
+        "step_category": "procedure",
+        "timing": "after egg freezing, before embryo development",
+        "useful_to_outcome": 0.7,
+        "order_dependencies": [
+          1,
+          3
+        ],
+        "importance": "critical",
+        "author_would_recommend": null,
+        "author_sentiment": "neutral",
+        "author_notes": "13 were thawed and fertilized",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 5,
+        "step": "Achieved 8 blastocysts from the fertilized eggs.",
+        "step_category": "procedure",
+        "timing": "after fertilization",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          4
+        ],
+        "importance": "critical",
+        "author_would_recommend": null,
+        "author_sentiment": "positive",
+        "author_notes": "I got 8 blasts",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 6,
+        "step": "Had PGT testing performed on the 8 blasts, resulting in 3 euploid and 1 low level mosaic embryos.",
+        "step_category": "diagnostics",
+        "timing": "after blastocyst development",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [
+          5
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "3 euploid and 1 low level mosaic (all girls)",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 7,
+        "step": "Planned frozen embryo transfer (FET) for 3-4 weeks from time of posting.",
+        "step_category": "admin",
+        "timing": "after PGT results",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          6
+        ],
+        "importance": "critical",
+        "author_would_recommend": null,
+        "author_sentiment": "positive",
+        "author_notes": "FET will be in 3/4 weeks :)",
+        "extraction_confidence": 1.0
+      }
+    ]
+  },
+  {
+    "post_id": "1hs7jq7",
+    "post_title": "Freezing my eggs at 30 was a total waste ",
+    "subreddit": "IVF",
+    "url": "https://reddit.com/r/IVF/comments/1hs7jq7/freezing_my_eggs_at_30_was_a_total_waste/",
+    "journey_class": "complete_journey",
+    "steps": [
+      {
+        "step_number": 1,
+        "step": "Decided to freeze eggs at age 30 post-divorce.",
+        "step_category": "emotional",
+        "timing": "age 30, post-divorce",
+        "useful_to_outcome": 0.3,
+        "order_dependencies": [],
+        "importance": "critical",
+        "author_would_recommend": false,
+        "author_sentiment": "negative",
+        "author_notes": "calls it 'a total waste'",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 2,
+        "step": "Underwent egg retrieval and got 22 eggs in one retrieval.",
+        "step_category": "procedure",
+        "timing": "age 30",
+        "useful_to_outcome": 0.5,
+        "order_dependencies": [
+          1
+        ],
+        "importance": "critical",
+        "author_would_recommend": null,
+        "author_sentiment": "positive",
+        "author_notes": "was thrilled with 22 eggs",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 3,
+        "step": "Four years later at 34, decided to thaw and fertilize the frozen eggs with now husband.",
+        "step_category": "emotional",
+        "timing": "age 34, four years later",
+        "useful_to_outcome": 0.4,
+        "order_dependencies": [
+          2
+        ],
+        "importance": "critical",
+        "author_would_recommend": null,
+        "author_sentiment": "positive",
+        "author_notes": "was ecstatic about getting 5 embryos",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 4,
+        "step": "Underwent fertilization process and got 5 embryos from the thawed eggs.",
+        "step_category": "procedure",
+        "timing": "age 34",
+        "useful_to_outcome": 0.4,
+        "order_dependencies": [
+          3
+        ],
+        "importance": "critical",
+        "author_would_recommend": null,
+        "author_sentiment": "positive",
+        "author_notes": "I was ecstatic!",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 5,
+        "step": "Did first embryo transfer which ended in miscarriage at 11 weeks.",
+        "step_category": "procedure",
+        "timing": "first transfer attempt",
+        "useful_to_outcome": 0.0,
+        "order_dependencies": [
+          4
+        ],
+        "importance": "critical",
+        "author_would_recommend": null,
+        "author_sentiment": "negative",
+        "author_notes": "ended in a miscarriage at 11 weeks",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 6,
+        "step": "Did second embryo transfer which failed.",
+        "step_category": "procedure",
+        "timing": "second transfer attempt",
+        "useful_to_outcome": 0.0,
+        "order_dependencies": [
+          5
+        ],
+        "importance": "critical",
+        "author_would_recommend": null,
+        "author_sentiment": "negative",
+        "author_notes": "transfer failed",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 7,
+        "step": "Did third embryo transfer which failed.",
+        "step_category": "procedure",
+        "timing": "third transfer attempt",
+        "useful_to_outcome": 0.0,
+        "order_dependencies": [
+          6
+        ],
+        "importance": "critical",
+        "author_would_recommend": null,
+        "author_sentiment": "negative",
+        "author_notes": "transfer failed",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 8,
+        "step": "Did fourth transfer using the last two embryos, which resulted in miscarriage at 8 weeks.",
+        "step_category": "procedure",
+        "timing": "fourth and final transfer",
+        "useful_to_outcome": 0.0,
+        "order_dependencies": [
+          7
+        ],
+        "importance": "critical",
+        "author_would_recommend": null,
+        "author_sentiment": "negative",
+        "author_notes": "transferred my last two embryos and at 8 weeks I miscarried",
+        "extraction_confidence": 1.0
+      }
+    ]
+  },
+  {
+    "post_id": "mrh8b7",
+    "post_title": "My Experience - Embryo Freezing to Preserve Fertility",
+    "subreddit": "IVF",
+    "url": "https://reddit.com/r/IVF/comments/mrh8b7/my_experience_embryo_freezing_to_preserve/",
+    "journey_class": "complete_journey",
+    "steps": [
+      {
+        "step_number": 1,
+        "step": "Made decision to do embryo freezing to preserve fertility after COVID postponed wedding and discovered it was covered by health insurance.",
+        "step_category": "emotional",
+        "timing": "before starting",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Decision made after COVID postponed wedding - found insurance coverage",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 2,
+        "step": "Completed initial testing and baseline which came back above average for age.",
+        "step_category": "diagnostics",
+        "timing": "before starting",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          1
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Initial testing & baseline came back above average for my age",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 3,
+        "step": "Continued birth control until 5 days before stims, then stopped pills for 5 days.",
+        "step_category": "medication",
+        "timing": "before starting stims",
+        "useful_to_outcome": 0.6,
+        "order_dependencies": [
+          2
+        ],
+        "importance": "recommended",
+        "author_would_recommend": null,
+        "author_sentiment": "neutral",
+        "author_notes": "On birth control for 11 years, stopped 5 days before stims",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 4,
+        "step": "Started stims at 150 menopur and 75 Gonal-F, continued for 6 days.",
+        "step_category": "medication",
+        "timing": "start of stims",
+        "useful_to_outcome": 0.7,
+        "order_dependencies": [
+          3
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Started stims at 150 menopur 75 Gonal-F",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 5,
+        "step": "Increased medication doses to 225 Menopur and 150 Gonal-F after being identified as slow responder, continued for 3 more days.",
+        "step_category": "medication",
+        "timing": "day 6-9 of stims",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          4
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "MD said slow responder likely due to birth control for so long",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 6,
+        "step": "Started Cetrotide on day 7 of stims to prevent premature ovulation.",
+        "step_category": "medication",
+        "timing": "day 7 of stims",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          4
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Started Cetrotide on day 7",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 7,
+        "step": "Drank only electrolyte water (liquid IV) and had daily protein shakes for breakfast during stims to manage side effects.",
+        "step_category": "medication",
+        "timing": "during stims",
+        "useful_to_outcome": 0.7,
+        "order_dependencies": [
+          4
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Drank only electrolyte water (liquid IV) and had daily protein shakes",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 8,
+        "step": "Triggered ovulation on day 12 of cycle.",
+        "step_category": "medication",
+        "timing": "day 12",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [
+          5,
+          6
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Triggered on day 12",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 9,
+        "step": "Underwent egg retrieval procedure two days after trigger, retrieving 19 eggs total.",
+        "step_category": "procedure",
+        "timing": "day 14",
+        "useful_to_outcome": 1.0,
+        "order_dependencies": [
+          8
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Whole process took about an hour. Retrieved 19 eggs, 15 were mature",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 10,
+        "step": "Sent 11 resulting embryos for genetic testing.",
+        "step_category": "procedure",
+        "timing": "after retrieval",
+        "useful_to_outcome": 0.9,
+        "order_dependencies": [
+          9
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "positive",
+        "author_notes": "Ended up with 11 embryos - sent for testing - 7 normal and 1 mosaic",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 11,
+        "step": "Managed post-retrieval recovery by sleeping sitting up and taking only retrieval day off work.",
+        "step_category": "emotional",
+        "timing": "after retrieval",
+        "useful_to_outcome": 0.6,
+        "order_dependencies": [
+          9
+        ],
+        "importance": "recommended",
+        "author_would_recommend": true,
+        "author_sentiment": "neutral",
+        "author_notes": "Slept sitting up, took only retrieval day off work (work from home)",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 12,
+        "step": "Attended follow-up appointment for shoulder pain concerns and confirmed mild OHSS diagnosis.",
+        "step_category": "consultation",
+        "timing": "day 5 post retrieval",
+        "useful_to_outcome": 0.8,
+        "order_dependencies": [
+          9
+        ],
+        "importance": "critical",
+        "author_would_recommend": true,
+        "author_sentiment": "mixed",
+        "author_notes": "Shoulder pain worried MD but confirmed everything OK, mild OHSS",
+        "extraction_confidence": 1.0
+      },
+      {
+        "step_number": 13,
+        "step": "Managed anxiety and waiting period for three weeks until receiving final embryo testing results.",
+        "step_category": "emotional",
+        "timing": "3 weeks post retrieval",
+        "useful_to_outcome": 0.4,
+        "order_dependencies": [
+          10
+        ],
+        "importance": "optional",
+        "author_would_recommend": null,
+        "author_sentiment": "negative",
+        "author_notes": "Worst part was waiting & not knowing outcome. Nervous wreck for 3 weeks",
+        "extraction_confidence": 1.0
+      }
+    ]
+  }
+]
