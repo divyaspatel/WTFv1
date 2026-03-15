@@ -220,72 +220,78 @@ export default function ProfileIntake({ onComplete }) {
         )}
 
         {/* ── Step 3: Clinical (optional) ── */}
-        {step === 3 && (
-          <div className="intake-step">
-            <h2 className="intake-heading">What your doctor knows</h2>
-            <p className="intake-sub">All optional — skip anything you don't have yet.</p>
+        {step === 3 && (() => {
+          const postConsultation = ['post_consultation', 'mid_cycle', 'post_retrieval', 'transfer'].includes(form.journey_stage);
+          const showNumbers = postConsultation || form.had_consultation === true;
+          return (
+            <div className="intake-step">
+              <h2 className="intake-heading">What your doctor knows</h2>
+              <p className="intake-sub">All optional — skip anything you don't have yet.</p>
 
-            <div className="intake-field">
-              <label className="intake-label">Any known risk factors? <span className="intake-optional">(select all that apply)</span></label>
-              <div className="intake-chips">
-                {RISKS.map(r => (
-                  <ChipButton
-                    key={r.value}
-                    selected={form.risks.includes(r.value)}
-                    onClick={() => toggleRisk(r.value)}
-                  >
-                    {r.label}
-                  </ChipButton>
-                ))}
-              </div>
-            </div>
-
-            <div className="intake-field">
-              <label className="intake-label">Have you had a consultation with an RE?</label>
-              <div className="intake-options" style={{ flexDirection: 'row', gap: 8 }}>
-                <OptionButton
-                  selected={form.had_consultation === true}
-                  onClick={() => set('had_consultation', true)}
-                >
-                  Yes
-                </OptionButton>
-                <OptionButton
-                  selected={form.had_consultation === false}
-                  onClick={() => set('had_consultation', false)}
-                >
-                  Not yet
-                </OptionButton>
-              </div>
-            </div>
-
-            {form.had_consultation === true && (
-              <>
-                <div className="intake-field">
-                  <label className="intake-label">AMH level <span className="intake-optional">(ng/mL, if you know it)</span></label>
-                  <input
-                    className="intake-input"
-                    type="number"
-                    placeholder="e.g. 2.1"
-                    value={form.amh}
-                    onChange={e => set('amh', e.target.value)}
-                    step="0.1" min={0} max={20}
-                  />
+              <div className="intake-field">
+                <label className="intake-label">Any known risk factors? <span className="intake-optional">(select all that apply)</span></label>
+                <div className="intake-chips">
+                  {RISKS.map(r => (
+                    <ChipButton
+                      key={r.value}
+                      selected={form.risks.includes(r.value)}
+                      onClick={() => toggleRisk(r.value)}
+                    >
+                      {r.label}
+                    </ChipButton>
+                  ))}
                 </div>
+              </div>
+
+              {!postConsultation && (
                 <div className="intake-field">
-                  <label className="intake-label">AFC — antral follicle count <span className="intake-optional">(if you know it)</span></label>
-                  <input
-                    className="intake-input"
-                    type="number"
-                    placeholder="e.g. 12"
-                    value={form.afc}
-                    onChange={e => set('afc', e.target.value)}
-                    min={0} max={50}
-                  />
+                  <label className="intake-label">Have you had a consultation with an RE?</label>
+                  <div className="intake-options" style={{ flexDirection: 'row', gap: 8 }}>
+                    <OptionButton
+                      selected={form.had_consultation === true}
+                      onClick={() => set('had_consultation', true)}
+                    >
+                      Yes
+                    </OptionButton>
+                    <OptionButton
+                      selected={form.had_consultation === false}
+                      onClick={() => set('had_consultation', false)}
+                    >
+                      Not yet
+                    </OptionButton>
+                  </div>
                 </div>
-              </>
-            )}
-          </div>
-        )}
+              )}
+
+              {showNumbers && (
+                <>
+                  <div className="intake-field">
+                    <label className="intake-label">AMH level <span className="intake-optional">(ng/mL, if you know it)</span></label>
+                    <input
+                      className="intake-input"
+                      type="number"
+                      placeholder="e.g. 2.1"
+                      value={form.amh}
+                      onChange={e => set('amh', e.target.value)}
+                      step="0.1" min={0} max={20}
+                    />
+                  </div>
+                  <div className="intake-field">
+                    <label className="intake-label">AFC — antral follicle count <span className="intake-optional">(if you know it)</span></label>
+                    <input
+                      className="intake-input"
+                      type="number"
+                      placeholder="e.g. 12"
+                      value={form.afc}
+                      onChange={e => set('afc', e.target.value)}
+                      min={0} max={50}
+                    />
+                  </div>
+                </>
+              )}
+            </div>
+          );
+        })()}
 
         {/* ── Nav ── */}
         <div className="intake-nav">
