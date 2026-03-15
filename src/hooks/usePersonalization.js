@@ -41,7 +41,12 @@ export function usePersonalization(profile) {
       .invoke('personalize-pathway', {})
       .then(({ data, error: fnError }) => {
         if (fnError) {
-          setError(fnError.message || 'Failed to personalize pathway');
+          console.error('Personalization error:', fnError);
+          // Try to extract more detail from the error context
+          const detail = fnError.context
+            ? JSON.stringify(fnError.context)
+            : fnError.message;
+          setError(detail || 'Failed to personalize pathway');
           setLoading(false);
           return;
         }
