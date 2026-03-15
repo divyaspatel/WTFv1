@@ -1,6 +1,5 @@
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
-import Anthropic from 'https://esm.sh/@anthropic-ai/sdk@0.24.3';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -20,7 +19,6 @@ function hashProfile(profile: Record<string, unknown>): string {
     amh: profile.amh,
     afc: profile.afc,
   });
-  // Simple hash: length + char codes sampled
   let h = key.length;
   for (let i = 0; i < key.length; i += 7) {
     h = (h * 31 + key.charCodeAt(i)) >>> 0;
@@ -32,9 +30,9 @@ function buildPrompt(profile: Record<string, unknown>, nodes: unknown[]): string
   const stageLabels: Record<string, string> = {
     researching: 'just starting to research',
     pre_consultation: 'pre-consultation (looking for a specialist)',
-    post_consultation: 'post-consultation (deciding next steps)',
-    mid_cycle: 'mid-cycle (currently stimming)',
-    post_retrieval: 'post-retrieval (figuring out what\'s next)',
+    post_consultation: "post-consultation (deciding next steps)",
+    mid_cycle: "mid-cycle (currently stimming)",
+    post_retrieval: "post-retrieval (figuring out what's next)",
     transfer: 'preparing for or have done a transfer',
   };
 
@@ -73,40 +71,37 @@ function buildPrompt(profile: Record<string, unknown>, nodes: unknown[]): string
 USER PROFILE:
 ${profileSummary}
 
-CANONICAL PATHWAY (19 nodes extracted from hundreds of real community posts):
+CANONICAL PATHWAY (nodes extracted from real community posts):
 ${JSON.stringify(nodes, null, 2)}
 
-Your task: Generate a personalized pathway analysis for this specific woman. Be warm, practical, and honest. Do not be falsely reassuring. Base everything on the community data provided.
+Generate a personalized pathway analysis. Be warm, practical, and honest. Base everything on the community data provided.
 
 Return a JSON object with this exact schema:
 {
   "headline": "<8-12 word personalized headline for her situation>",
   "summary": "<2-3 sentence overview of what her journey will likely look like, specific to her profile>",
   "next_step": "<single most important concrete action she should take RIGHT NOW>",
-  "confidence": <0.0-1.0 — how well the data matches her specific situation>,
+  "confidence": <0.0-1.0>,
   "confidence_note": "<1 sentence explaining the confidence level>",
   "node_notes": {
-    "<node_id>": "<personalized 1-2 sentence note for this step/decision, relevant to her profile>"
+    "<node_id as string>": "<personalized 1-2 sentence note for this node>"
   },
   "choice_recommendations": {
-    "<node_id for is_choice=true nodes>": {
+    "<node_id as string>": {
       "recommended_option": "<label of the option most relevant to her>",
-      "reasoning": "<1-2 sentences why, grounded in her profile and the community data>",
+      "reasoning": "<1-2 sentences why>",
       "confidence": <0.0-1.0>
     }
   },
-  "watch_outs": ["<specific thing to watch out for given her profile>", ...],
-  "questions_for_re": ["<question she should ask her RE, specific to her situation>", ...]
+  "watch_outs": ["<specific watch out given her profile>"],
+  "questions_for_re": ["<question she should ask her RE>"]
 }
 
 Rules:
-- node_notes: include notes for nodes most relevant to her current stage (3-6 nodes max, not all 19)
-- choice_recommendations: only include choices where you can give meaningful personalized guidance
-- watch_outs: 2-4 items, specific to her profile (age, risks, stage)
-- questions_for_re: 3-5 questions she should actually ask, given her specific situation
-- If she has low AMH or DOR, acknowledge this directly and what it means for her options
-- If she has no male partner, omit anything about partner sperm/testing
-- Be honest about what the community data shows, including difficult realities
+- node_notes: 3-6 most relevant nodes only
+- watch_outs: 2-4 items specific to her profile
+- questions_for_re: 3-5 questions
+- If no male partner, omit anything about partner sperm/testing
 
 Return ONLY the JSON object. No other text.`;
 }
@@ -118,8 +113,16 @@ serve(async (req) => {
 
   try {
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
-    const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+    const serviceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+    const anonKey = Deno.env.get('SUPABASE_ANON_KEY')!;
     const anthropicKey = Deno.env.get('ANTHROPIC_API_KEY')!;
+
+    if (!anthropicKey) {
+      return new Response(JSON.stringify({ error: 'ANTHROPIC_API_KEY not set' }), {
+        status: 500,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
 
     const authHeader = req.headers.get('Authorization');
     if (!authHeader) {
@@ -129,19 +132,19 @@ serve(async (req) => {
       });
     }
 
-    // Use service role client for DB, user token for auth check
-    const supabase = createClient(supabaseUrl, supabaseKey);
-    const userClient = createClient(supabaseUrl, Deno.env.get('SUPABASE_ANON_KEY')!, {
+    // Verify user via anon client with their JWT
+    const userClient = createClient(supabaseUrl, anonKey, {
       global: { headers: { Authorization: authHeader } },
     });
-
     const { data: { user }, error: authError } = await userClient.auth.getUser();
     if (authError || !user) {
-      return new Response(JSON.stringify({ error: 'Unauthorized' }), {
+      return new Response(JSON.stringify({ error: 'Unauthorized', detail: authError?.message }), {
         status: 401,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
     }
+
+    const supabase = createClient(supabaseUrl, serviceKey);
 
     // Fetch user profile
     const { data: profile, error: profileError } = await supabase
@@ -151,7 +154,7 @@ serve(async (req) => {
       .maybeSingle();
 
     if (profileError || !profile) {
-      return new Response(JSON.stringify({ error: 'Profile not found' }), {
+      return new Response(JSON.stringify({ error: 'Profile not found', detail: profileError?.message }), {
         status: 404,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
@@ -171,7 +174,7 @@ serve(async (req) => {
       });
     }
 
-    // Fetch canonical pathway (egg-freezing for now)
+    // Fetch canonical pathway
     const { data: journeyRow, error: journeyError } = await supabase
       .from('journeys')
       .select('nodes')
@@ -179,33 +182,48 @@ serve(async (req) => {
       .maybeSingle();
 
     if (journeyError || !journeyRow) {
-      return new Response(JSON.stringify({ error: 'Pathway data not found' }), {
+      return new Response(JSON.stringify({ error: 'Pathway data not found', detail: journeyError?.message }), {
         status: 404,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
     }
 
-    // Call Claude
-    const anthropic = new Anthropic({ apiKey: anthropicKey });
+    // Call Claude via fetch (no SDK dependency)
     const prompt = buildPrompt(profile, journeyRow.nodes);
-
-    const message = await anthropic.messages.create({
-      model: MODEL,
-      max_tokens: 4096,
-      messages: [{ role: 'user', content: prompt }],
+    const claudeRes = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': anthropicKey,
+        'anthropic-version': '2023-06-01',
+      },
+      body: JSON.stringify({
+        model: MODEL,
+        max_tokens: 4096,
+        messages: [{ role: 'user', content: prompt }],
+      }),
     });
 
-    const raw = (message.content[0] as { text: string }).text.trim();
+    if (!claudeRes.ok) {
+      const errBody = await claudeRes.text();
+      return new Response(JSON.stringify({ error: 'Claude API error', detail: errBody }), {
+        status: 502,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
+    const claudeData = await claudeRes.json();
+    let raw = claudeData.content[0].text.trim();
+    if (raw.startsWith('```')) {
+      raw = raw.split('```')[1];
+      if (raw.startsWith('json')) raw = raw.slice(4);
+    }
+
     let personalization: Record<string, unknown>;
     try {
-      let jsonStr = raw;
-      if (jsonStr.startsWith('```')) {
-        jsonStr = jsonStr.split('```')[1];
-        if (jsonStr.startsWith('json')) jsonStr = jsonStr.slice(4);
-      }
-      personalization = JSON.parse(jsonStr.trim());
-    } catch {
-      return new Response(JSON.stringify({ error: 'Failed to parse Claude response', raw }), {
+      personalization = JSON.parse(raw.trim());
+    } catch (e) {
+      return new Response(JSON.stringify({ error: 'Failed to parse Claude response', detail: raw }), {
         status: 500,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       });
@@ -226,7 +244,7 @@ serve(async (req) => {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
   } catch (err) {
-    return new Response(JSON.stringify({ error: String(err) }), {
+    return new Response(JSON.stringify({ error: 'Unexpected error', detail: String(err) }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     });
