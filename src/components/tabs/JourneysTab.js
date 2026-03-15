@@ -30,12 +30,12 @@ function personalizeNodes(nodes, profile) {
   if (!profile || !nodes) return { prioritized: [], rest: nodes || [] };
 
   const focusCategories = STAGE_FOCUS[profile.journey_stage] || [];
-  const hasPartner = profile.partner_status === 'male_partner';
+  const hasMalePartner = profile.partner_status === 'male_partner';
 
   let filtered = nodes;
 
   // Remove male partner testing node if no male partner
-  if (!hasPartner) {
+  if (!hasMalePartner) {
     filtered = filtered.filter(n =>
       !n.title?.toLowerCase().includes('male partner') &&
       !n.title?.toLowerCase().includes('partner testing')

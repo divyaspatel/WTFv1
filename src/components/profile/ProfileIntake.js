@@ -14,8 +14,9 @@ const GOALS = [
 ];
 
 const PARTNER_OPTIONS = [
-  { value: 'male_partner',    label: 'I have a male partner'                      },
-  { value: 'no_male_partner', label: 'No male partner — going it alone or with a female partner' },
+  { value: 'male_partner',         label: 'My partner is biologically male'     },
+  { value: 'non_male_partner',     label: 'My partner is not biologically male' },
+  { value: 'no_partner',           label: "I don't have a partner"              },
 ];
 
 const JOURNEY_STAGES = [
