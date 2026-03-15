@@ -2387,6 +2387,160 @@ header {
   margin: 0 auto;
 }
 
+/* ── Personalization summary card ── */
+
+.journey-personalization-summary {
+  background: linear-gradient(135deg, #fdf0e8 0%, #f5f0ea 100%);
+  border: 1.5px solid var(--terracotta-light);
+  border-radius: 16px;
+  padding: 24px 22px 20px;
+  margin-bottom: 28px;
+}
+
+.journey-personalization-headline {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--terracotta);
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.journey-personalization-text {
+  font-size: 14px;
+  color: var(--text-dark);
+  line-height: 1.7;
+  margin: 0 0 18px;
+}
+
+.journey-next-step {
+  background: var(--white);
+  border-left: 3px solid var(--terracotta);
+  border-radius: 0 10px 10px 0;
+  padding: 12px 16px;
+  margin-bottom: 18px;
+}
+
+.journey-next-step-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--terracotta);
+  margin-bottom: 4px;
+}
+
+.journey-next-step-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.5;
+}
+
+.journey-watchouts,
+.journey-questions {
+  margin-bottom: 16px;
+}
+
+.journey-watchouts-label,
+.journey-questions-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-medium);
+  margin-bottom: 8px;
+}
+
+.journey-watchouts-list,
+.journey-questions-list {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.journey-watchouts-list li,
+.journey-questions-list li {
+  font-size: 13.5px;
+  color: var(--text-dark);
+  line-height: 1.6;
+  margin-bottom: 4px;
+}
+
+.journey-confidence {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(0,0,0,0.07);
+}
+
+.journey-confidence-note {
+  font-size: 12px;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+/* ── Personalized node note ── */
+
+.journey-personalized-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  background: rgba(106, 158, 122, 0.08);
+  border: 1px solid rgba(106, 158, 122, 0.25);
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin-bottom: 14px;
+  font-size: 13.5px;
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+.journey-personalized-note-icon {
+  color: var(--sage);
+  font-size: 12px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* ── Personalized recommendation for choices ── */
+
+.journey-recommendation {
+  background: rgba(212, 113, 74, 0.06);
+  border: 1px solid rgba(212, 113, 74, 0.2);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+}
+
+.journey-recommendation-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--terracotta);
+  margin-bottom: 6px;
+}
+
+.journey-recommendation-option {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 6px;
+}
+
+.journey-recommendation-reasoning {
+  font-size: 13.5px;
+  color: var(--text-medium);
+  line-height: 1.6;
+  margin: 0 0 8px;
+}
+
+.journey-recommendation-confidence {
+  font-size: 12px;
+  color: var(--text-light);
+  font-style: italic;
+}
+
 /* ---- MEDICAL DISCLAIMER BAR ---- */
 .disclaimer-bar {
   position: fixed;

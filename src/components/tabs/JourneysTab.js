@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useJourneys } from '../../hooks/useJourneys';
 import { useUserProfile } from '../../hooks/useUserProfile';
+import { usePersonalization } from '../../hooks/usePersonalization';
 import ProfileIntake from '../profile/ProfileIntake';
 
 const JOURNEY_TYPES = [
@@ -88,7 +89,17 @@ function FrequencyBar({ frequency, color }) {
   );
 }
 
-function ChoiceCard({ node, isExpanded, onToggle }) {
+function PersonalizedNote({ note }) {
+  if (!note) return null;
+  return (
+    <div className="journey-personalized-note">
+      <span className="journey-personalized-note-icon">✦</span>
+      {note}
+    </div>
+  );
+}
+
+function ChoiceCard({ node, isExpanded, onToggle, personalizedNote, recommendation }) {
   return (
     <div className="journey-choice-card">
       <button className="journey-choice-header" onClick={onToggle}>
@@ -106,6 +117,19 @@ function ChoiceCard({ node, isExpanded, onToggle }) {
       {isExpanded && (
         <div className="journey-choice-body">
           {node.description && <p className="journey-step-description">{node.description}</p>}
+
+          <PersonalizedNote note={personalizedNote} />
+
+          {recommendation && (
+            <div className="journey-recommendation">
+              <div className="journey-recommendation-label">Based on your profile</div>
+              <div className="journey-recommendation-option">{recommendation.recommended_option}</div>
+              <p className="journey-recommendation-reasoning">{recommendation.reasoning}</p>
+              <div className="journey-recommendation-confidence">
+                {Math.round((recommendation.confidence || 0) * 100)}% confidence based on community data
+              </div>
+            </div>
+          )}
 
           <div className="journey-choice-options-label">What women chose</div>
           <div className="journey-choice-options">
@@ -138,7 +162,7 @@ function ChoiceCard({ node, isExpanded, onToggle }) {
   );
 }
 
-function StepCard({ node, index, isExpanded, onToggle }) {
+function StepCard({ node, index, isExpanded, onToggle, personalizedNote }) {
   return (
     <div className="journey-step-card">
       <button className="journey-step-header" onClick={onToggle}>
@@ -158,6 +182,9 @@ function StepCard({ node, index, isExpanded, onToggle }) {
       {isExpanded && (
         <div className="journey-step-body">
           <p className="journey-step-description">{node.description}</p>
+
+          <PersonalizedNote note={personalizedNote} />
+
           {node.options?.length > 0 && (
             <div className="journey-options-section">
               <div className="journey-options-label">How people navigated this</div>
@@ -191,9 +218,25 @@ function StepCard({ node, index, isExpanded, onToggle }) {
   );
 }
 
-function NodeCard({ node, index, isExpanded, onToggle }) {
-  if (node.is_choice) return <ChoiceCard node={node} isExpanded={isExpanded} onToggle={onToggle} />;
-  return <StepCard node={node} index={index} isExpanded={isExpanded} onToggle={onToggle} />;
+function NodeCard({ node, index, isExpanded, onToggle, personalizedNote, recommendation }) {
+  if (node.is_choice) return (
+    <ChoiceCard
+      node={node}
+      isExpanded={isExpanded}
+      onToggle={onToggle}
+      personalizedNote={personalizedNote}
+      recommendation={recommendation}
+    />
+  );
+  return (
+    <StepCard
+      node={node}
+      index={index}
+      isExpanded={isExpanded}
+      onToggle={onToggle}
+      personalizedNote={personalizedNote}
+    />
+  );
 }
 
 function ProfileBanner({ profile, onReset }) {
@@ -205,6 +248,51 @@ function ProfileBanner({ profile, onReset }) {
         {' · '}{stageLabel(profile.journey_stage)}
       </div>
       <button className="intake-profile-reset" onClick={onReset}>Update</button>
+    </div>
+  );
+}
+
+function PersonalizationSummary({ personalization }) {
+  if (!personalization) return null;
+  return (
+    <div className="journey-personalization-summary">
+      <div className="journey-personalization-headline">{personalization.headline}</div>
+      <p className="journey-personalization-text">{personalization.summary}</p>
+
+      {personalization.next_step && (
+        <div className="journey-next-step">
+          <div className="journey-next-step-label">Your next step</div>
+          <div className="journey-next-step-text">{personalization.next_step}</div>
+        </div>
+      )}
+
+      {personalization.watch_outs?.length > 0 && (
+        <div className="journey-watchouts">
+          <div className="journey-watchouts-label">Watch out for</div>
+          <ul className="journey-watchouts-list">
+            {personalization.watch_outs.map((w, i) => (
+              <li key={i}>{w}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {personalization.questions_for_re?.length > 0 && (
+        <div className="journey-questions">
+          <div className="journey-questions-label">Questions to ask your RE</div>
+          <ul className="journey-questions-list">
+            {personalization.questions_for_re.map((q, i) => (
+              <li key={i}>{q}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      {personalization.confidence != null && (
+        <div className="journey-confidence">
+          <span className="journey-confidence-note">{personalization.confidence_note}</span>
+        </div>
+      )}
     </div>
   );
 }
@@ -228,6 +316,7 @@ export default function JourneysTab() {
 
   const { nodes, loading: journeysLoading } = useJourneys(activeType);
   const { profile, saveProfile, clearProfile, loading: profileLoading } = useUserProfile();
+  const { personalization, loading: personalizationLoading } = usePersonalization(profile);
 
   const activeLabel = JOURNEY_TYPES.find(t => t.id === activeType)?.label;
 
@@ -246,6 +335,14 @@ export default function JourneysTab() {
   const { prioritized, rest } = personalizeNodes(nodes, profile);
   const choices = rest.filter(n => n.is_choice);
   const steps   = rest.filter(n => !n.is_choice);
+
+  // Index node notes and recommendations by node_id
+  const nodeNotes = personalization?.node_notes || {};
+  const choiceRecs = personalization?.choice_recommendations || {};
+
+  function getNodeKey(node) {
+    return node.node_id != null ? String(node.node_id) : null;
+  }
 
   return (
     <div className="tab-content">
@@ -276,6 +373,16 @@ export default function JourneysTab() {
         ))}
       </div>
 
+      {/* Personalized summary card */}
+      {personalizationLoading && (
+        <p style={{ color: 'var(--text-light)', fontStyle: 'italic', marginBottom: 20 }}>
+          Personalizing your pathway…
+        </p>
+      )}
+      {!personalizationLoading && personalization && (
+        <PersonalizationSummary personalization={personalization} />
+      )}
+
       {journeysLoading && (
         <p style={{ color: 'var(--text-light)', fontStyle: 'italic' }}>Loading...</p>
       )}
@@ -299,6 +406,8 @@ export default function JourneysTab() {
                     index={i}
                     isExpanded={expandedNode === `p${i}`}
                     onToggle={() => setExpandedNode(expandedNode === `p${i}` ? null : `p${i}`)}
+                    personalizedNote={getNodeKey(node) ? nodeNotes[getNodeKey(node)] : null}
+                    recommendation={getNodeKey(node) ? choiceRecs[getNodeKey(node)] : null}
                   />
                 ))}
               </div>
@@ -320,6 +429,8 @@ export default function JourneysTab() {
                     index={i}
                     isExpanded={expandedNode === `c${i}`}
                     onToggle={() => setExpandedNode(expandedNode === `c${i}` ? null : `c${i}`)}
+                    personalizedNote={getNodeKey(node) ? nodeNotes[getNodeKey(node)] : null}
+                    recommendation={getNodeKey(node) ? choiceRecs[getNodeKey(node)] : null}
                   />
                 ))}
               </div>
@@ -341,6 +452,8 @@ export default function JourneysTab() {
                     index={i}
                     isExpanded={expandedNode === `s${i}`}
                     onToggle={() => setExpandedNode(expandedNode === `s${i}` ? null : `s${i}`)}
+                    personalizedNote={getNodeKey(node) ? nodeNotes[getNodeKey(node)] : null}
+                    recommendation={null}
                   />
                 ))}
               </div>
