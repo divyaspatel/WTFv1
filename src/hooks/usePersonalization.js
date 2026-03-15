@@ -39,14 +39,20 @@ export function usePersonalization(profile) {
 
     supabase.functions
       .invoke('personalize-pathway', {})
-      .then(({ data, error: fnError }) => {
+      .then(async ({ data, error: fnError }) => {
         if (fnError) {
           console.error('Personalization error:', fnError);
-          // Try to extract more detail from the error context
-          const detail = fnError.context
-            ? JSON.stringify(fnError.context)
-            : fnError.message;
-          setError(detail || 'Failed to personalize pathway');
+          // FunctionsHttpError has a context property that is the raw Response
+          let detail = fnError.message || 'Unknown error';
+          try {
+            if (fnError.context?.json) {
+              const body = await fnError.context.json();
+              detail = body.error || body.detail || JSON.stringify(body);
+            } else if (fnError.context?.text) {
+              detail = await fnError.context.text();
+            }
+          } catch (_) {}
+          setError(detail);
           setLoading(false);
           return;
         }
