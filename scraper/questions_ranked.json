@@ -1,0 +1,193 @@
+[
+  {
+    "rank": 1,
+    "theme": "Protocol decisions and optimization",
+    "question_count": 60,
+    "frequency_pct": 20.0,
+    "importance": "critical",
+    "why_important": "Protocol choices directly impact success rates and women need to feel confident they're maximizing their chances with appropriate medications and treatment approaches.",
+    "example_questions": [
+      "Which tests or procedures did your clinic require between giving birth and your next transfer?",
+      "Should I do a 2 ER? Help!",
+      "What is the ideal numbers for progesterone, Estradiol & Luteinizing Hormone for the egg retrieval?",
+      "Is 225 IU too high? New clinic might have prescribed without checking my chart.",
+      "Fresh vs. Frozen Embryo Transfer - which is better for my case?"
+    ],
+    "journey_stage": "protocol"
+  },
+  {
+    "rank": 2,
+    "theme": "Clinic selection and recommendations",
+    "question_count": 40,
+    "frequency_pct": 13.3,
+    "importance": "critical",
+    "why_important": "Choosing the right clinic impacts success rates, costs, and overall experience quality, making this a foundational decision for treatment success.",
+    "example_questions": [
+      "Which clinic to choose? I have had 3 IVF/ICSI cycles and have no living children",
+      "Help me choose between RMA NJ & Columbia Fertility",
+      "Clinic recommendations in London",
+      "Anyone experience with CNY in CO for egg + embryo freezing?",
+      "Stage 4 Endo + Adeno + DOR \u2014 Need RE/IVF clinic recommendations"
+    ],
+    "journey_stage": "pre-consultation"
+  },
+  {
+    "rank": 3,
+    "theme": "Medication dosing and side effects",
+    "question_count": 35,
+    "frequency_pct": 11.7,
+    "importance": "high",
+    "why_important": "Women need reassurance about medication effects and want to optimize dosing for better outcomes while managing physical side effects safely.",
+    "example_questions": [
+      "What are your doses of Follistim & Menopur if you're 35+ and usually get around 10-15 eggs?",
+      "PIO Tips for Solo?? - scared about the injection itself",
+      "Why do some not use Menopur?",
+      "Nausea and weird dreams??",
+      "When did you start feeling side effects of the stims?"
+    ],
+    "journey_stage": "stims"
+  },
+  {
+    "rank": 4,
+    "theme": "Multiple cycles and banking decisions",
+    "question_count": 30,
+    "frequency_pct": 10.0,
+    "importance": "high",
+    "why_important": "Women must decide whether to use current embryos, do additional retrievals, or bank more, balancing time, money, physical and emotional costs.",
+    "example_questions": [
+      "Trying to Decide: Another ER or FET?",
+      "Would you transfer or keep banking?",
+      "Deciding between 4th round or moving on",
+      "Do I need round 2?",
+      "How many egg freezing rounds have you done?"
+    ],
+    "journey_stage": "results"
+  },
+  {
+    "rank": 5,
+    "theme": "AMH levels and egg count expectations",
+    "question_count": 30,
+    "frequency_pct": 10.0,
+    "importance": "high",
+    "why_important": "AMH levels and expected egg counts drive critical decisions about timing, number of cycles, realistic expectations, and treatment approaches.",
+    "example_questions": [
+      "AMH normal (3), but high FSH (10), LH (11)? Can someone explain the pathophysiology?",
+      "38 year old - Low AMH (DOR) - Duo, triple stim or normal one month stim",
+      "Are 9 eggs enough?",
+      "33 year old with low AMH needs advice!",
+      "Any advice or similar experience with weird follicle count?"
+    ],
+    "journey_stage": "diagnostics"
+  },
+  {
+    "rank": 6,
+    "theme": "Transfer timing and preparation decisions",
+    "question_count": 24,
+    "frequency_pct": 8.0,
+    "importance": "critical",
+    "why_important": "Transfer timing affects success rates and women must balance medical optimization with life constraints and personal circumstances.",
+    "example_questions": [
+      "Delaying FET for a few months just for a break?",
+      "IVF Frozen Embryo Transfer Timeline/Date Questions - transfer date might conflict with brother's wedding",
+      "starting FET meds on cycle day 4 - anyone have experience?",
+      "What should we ask after 4 cancelled transfers?",
+      "Should I do an egg retrieval in early April if my wedding is in June?"
+    ],
+    "journey_stage": "transfer"
+  },
+  {
+    "rank": 7,
+    "theme": "Poor results troubleshooting and next steps",
+    "question_count": 20,
+    "frequency_pct": 6.7,
+    "importance": "critical",
+    "why_important": "Failed cycles are devastating and women desperately need guidance on what to change or try next to improve their chances of success.",
+    "example_questions": [
+      "First egg retrieval ended in zero blasts. Anyone else have successful next cycle?",
+      "Second straight zero blast round - advice for next steps?",
+      "Total embryo arrest - looking for advice from anyone who had success after",
+      "Transfer success after really hard time making euploids?",
+      "What should I do with 4 cancelled transfers back to back?"
+    ],
+    "journey_stage": "results"
+  },
+  {
+    "rank": 8,
+    "theme": "Cost, insurance, and financial options",
+    "question_count": 19,
+    "frequency_pct": 6.3,
+    "importance": "critical",
+    "why_important": "The high cost of fertility treatment is a major barrier that determines whether women can access these options and make informed decisions about care.",
+    "example_questions": [
+      "Total Costs CNY Syracuse?",
+      "How much did your egg freezing cost and how many rounds did you do?",
+      "Has anyone gotten denied for ReUnite Assist?",
+      "Financing Options for Egg freezing",
+      "Is anyone else's clinic halting medication bundles because of Trump Rx?"
+    ],
+    "journey_stage": "pre-consultation"
+  },
+  {
+    "rank": 9,
+    "theme": "Egg freezing vs embryo decisions",
+    "question_count": 16,
+    "frequency_pct": 5.3,
+    "importance": "high",
+    "why_important": "This fundamental choice affects future family building options and women need clarity on trade-offs between different preservation strategies.",
+    "example_questions": [
+      "Egg freezing vs embryo freezing - what should I choose?",
+      "Freezing vs embryos with donor sperm while in early relationship",
+      "Has anyone regretted freezing their eggs?",
+      "Born in 1999, planning to freeze eggs while moving to UK for Masters",
+      "Should I skip IUI and go straight to IVF?"
+    ],
+    "journey_stage": "pre-consultation"
+  },
+  {
+    "rank": 10,
+    "theme": "International treatment and travel",
+    "question_count": 14,
+    "frequency_pct": 4.7,
+    "importance": "high",
+    "why_important": "Many women consider going abroad for more affordable treatment but need practical guidance on logistics, quality, and travel considerations.",
+    "example_questions": [
+      "Egg freezing in Spain?",
+      "Prague versus Barcelona, which would you recommend for egg freezing?",
+      "How much time off for freezing abroad?",
+      "Egg freezing abroad: trigger timing, work, travel \u2013 real experiences?",
+      "International flight the day after egg retrieval - anything to be aware of?"
+    ],
+    "journey_stage": "pre-consultation"
+  },
+  {
+    "rank": 11,
+    "theme": "Age and timing decisions",
+    "question_count": 12,
+    "frequency_pct": 4.0,
+    "importance": "high",
+    "why_important": "Age significantly impacts egg quality and quantity, making timing decisions emotionally and medically critical for treatment success.",
+    "example_questions": [
+      "From a patient perspective, what age feels 'too late' to think about egg freezing?",
+      "Increase AFC and egg quality? I am turning 39 soon, AMH is 25",
+      "Preparing for last egg retrieval - anything else I can do to maximise it?",
+      "Looking for more info on NAD+ / precursors for IVF"
+    ],
+    "journey_stage": "pre-consultation"
+  },
+  {
+    "rank": 12,
+    "theme": "Procedure recovery and complications",
+    "question_count": 11,
+    "frequency_pct": 3.7,
+    "importance": "medium",
+    "why_important": "Women need practical guidance on recovery to plan their schedules, manage expectations, and recognize potential complications.",
+    "example_questions": [
+      "Egg retrieval is in 6 days and I am starting to feel the nerves - tips for recovery?",
+      "High Retrieval / OHSS Recovery - how long to feel normal again?",
+      "Retrieval Procedure and OHSS - Super grateful for any experience",
+      "Recovery time after retrieval",
+      "Taking a break from IVF and my body feels terrible"
+    ],
+    "journey_stage": "retrieval"
+  }
+]

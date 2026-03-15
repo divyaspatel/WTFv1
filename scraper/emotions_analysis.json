@@ -1,0 +1,216 @@
+[
+  {
+    "rank": 1,
+    "emotion": "anxiety",
+    "trigger": "uncertainty about scan results, unexpected results, protocol changes, medication timing, or procedure complications",
+    "post_count": 81,
+    "frequency_pct": 25.1,
+    "what_they_need": "reassurance and shared experiences from others who faced similar situations",
+    "what_would_help": "Stories from women who had similar numbers/situations and still succeeded, plus clear explanations of what results actually mean and what to expect.",
+    "example_posts": [
+      "Should I be worries",
+      "Disappointed in follicular scan",
+      "Day 6 of stim and only 4 follicles?",
+      "Anxious about follicle count... 6-7 Follicles on Day 8",
+      "First scan - left ovary not visible"
+    ],
+    "journey_stage": "throughout treatment, especially during monitoring and stimulation"
+  },
+  {
+    "rank": 2,
+    "emotion": "disappointment",
+    "trigger": "lower than expected egg counts, retrieval outcomes, or poor results",
+    "post_count": 28,
+    "frequency_pct": 8.7,
+    "what_they_need": "validation that their feelings are normal and reassurance about future options",
+    "what_would_help": "Stories from women with similar numbers who had successful outcomes, and realistic perspective on what their numbers mean for future family building.",
+    "example_posts": [
+      "Disappointed in how eggs many I got",
+      "33yr old, 5 eggs frozen, devastated \ud83d\udc94",
+      "I feel so defeated"
+    ],
+    "journey_stage": "post-retrieval results"
+  },
+  {
+    "rank": 3,
+    "emotion": "confusion",
+    "trigger": "conflicting medical information or lack of clear communication from clinic",
+    "post_count": 28,
+    "frequency_pct": 8.7,
+    "what_they_need": "clarity and understanding of their situation from people who've been through it",
+    "what_would_help": "Simple explanations of medical processes and validation that clinic communication is often poor.",
+    "example_posts": [
+      "Help",
+      "Modified natural a mistake?",
+      "My clinic doesn't know where my embryos are?"
+    ],
+    "journey_stage": "when receiving test results or protocol changes"
+  },
+  {
+    "rank": 4,
+    "emotion": "fear",
+    "trigger": "concerning test results, medical complications, physical symptoms, or upcoming procedures",
+    "post_count": 28,
+    "frequency_pct": 8.7,
+    "what_they_need": "reassurance about safety, normal experiences, and information about their specific situation",
+    "what_would_help": "Information about what's normal vs concerning, when to seek help, and success stories from women with similar diagnoses.",
+    "example_posts": [
+      "OHSS High Risk",
+      "Atrophic ovaries \ud83d\udc94",
+      "Scared\u2026 4 follicles",
+      "Fainted during my first time doing injections- terrified to do them again"
+    ],
+    "journey_stage": "before procedures, when experiencing symptoms, or initial testing"
+  },
+  {
+    "rank": 5,
+    "emotion": "devastation",
+    "trigger": "failed cycles, poor results, or pregnancy loss",
+    "post_count": 24,
+    "frequency_pct": 7.4,
+    "what_they_need": "emotional support and hope that they're not alone in their grief",
+    "what_would_help": "Acknowledgment of their loss and stories of eventual success after multiple failures.",
+    "example_posts": [
+      "All 5 blasts were all abnormal",
+      "6th transfer failed. What should we do next?",
+      "So sad"
+    ],
+    "journey_stage": "after receiving disappointing results or failed transfers"
+  },
+  {
+    "rank": 6,
+    "emotion": "frustration",
+    "trigger": "clinic errors, insurance issues, medical system problems, or feeling unheard",
+    "post_count": 23,
+    "frequency_pct": 7.1,
+    "what_they_need": "validation that their frustration is justified and practical advice",
+    "what_would_help": "Confirmation that their experience is not normal, actionable steps they can take, and advocacy strategies.",
+    "example_posts": [
+      "Partner not very involved",
+      "Annoyment with clinic justified?",
+      "I need to vent about insurance",
+      "Shady Grove Fertility"
+    ],
+    "journey_stage": "when dealing with systemic issues, poor care, or administrative challenges"
+  },
+  {
+    "rank": 7,
+    "emotion": "isolation",
+    "trigger": "feeling alone in their struggle, going through process alone, or lack of understanding from others",
+    "post_count": 18,
+    "frequency_pct": 5.6,
+    "what_they_need": "connection with others who understand their unique experience",
+    "what_would_help": "Acknowledgment of how isolating infertility is, connection with others in similar situations, and strategies for building support systems.",
+    "example_posts": [
+      "Everyone is getting pregnant",
+      "Going through egg freezing alone!",
+      "Anyone else dealing with unsupportive family during egg freezing?"
+    ],
+    "journey_stage": "throughout process, especially when seeing others' pregnancies or feeling unsupported"
+  },
+  {
+    "rank": 8,
+    "emotion": "overwhelm",
+    "trigger": "physical discomfort, emotional intensity, or process complexity",
+    "post_count": 18,
+    "frequency_pct": 5.6,
+    "what_they_need": "emotional support and validation that the struggle is temporary",
+    "what_would_help": "Encouragement that others survived similar feelings and practical tips for managing the emotional and physical burden.",
+    "example_posts": [
+      "Day 8- feeling overwhelmed",
+      "Overwhelmed about the Uncertainty",
+      "Day 12 of stims and so over it"
+    ],
+    "journey_stage": "mid to late stims"
+  },
+  {
+    "rank": 9,
+    "emotion": "self-blame",
+    "trigger": "lifestyle choices during treatment or past decisions affecting fertility",
+    "post_count": 15,
+    "frequency_pct": 4.6,
+    "what_they_need": "absolution and reassurance that minor mistakes don't ruin outcomes",
+    "what_would_help": "Stories from others who made similar mistakes with no negative impact, and medical perspective on what actually affects outcomes.",
+    "example_posts": [
+      "Accidentally consumed alcohol while on stims",
+      "I used nicotine gum the first five days-how bad is it?",
+      "Lost some of my Novarel"
+    ],
+    "journey_stage": "during stims"
+  },
+  {
+    "rank": 10,
+    "emotion": "hope",
+    "trigger": "preparing for procedures or seeking encouragement",
+    "post_count": 12,
+    "frequency_pct": 3.7,
+    "what_they_need": "positive stories and encouragement from the community",
+    "what_would_help": "Success stories from similar situations and genuine optimism about their chances.",
+    "example_posts": [
+      "Can you guys hype me up pre-egg retrieval, pls",
+      "Transfer day!",
+      "Need positive energy"
+    ],
+    "journey_stage": "before major procedures or when morale is low"
+  },
+  {
+    "rank": 11,
+    "emotion": "grief",
+    "trigger": "confronting fertility decline, relationship loss, or life circumstances",
+    "post_count": 11,
+    "frequency_pct": 3.4,
+    "what_they_need": "acknowledgment of their loss and hope for the future",
+    "what_would_help": "Validation of their grief as legitimate and stories of women who rebuilt their lives or found unexpected paths to motherhood.",
+    "example_posts": [
+      "38, Starting Egg Freezing\u2014Feeling Behind and Emotional",
+      "I ended a pregnancy in my youth, and now I'm upset at myself to be considering egg retrieval (36f)",
+      "At a crossroads about whether to use donor sperm"
+    ],
+    "journey_stage": "decision to start process"
+  },
+  {
+    "rank": 12,
+    "emotion": "physical discomfort",
+    "trigger": "post-retrieval pain, bloating, or unexpected symptoms",
+    "post_count": 10,
+    "frequency_pct": 3.1,
+    "what_they_need": "reassurance about recovery timeline and symptom management",
+    "what_would_help": "Clear timelines for recovery, specific symptom management advice, and confirmation of what's normal versus concerning.",
+    "example_posts": [
+      "First day post-retrieval (high-responder w/OHSS risk)",
+      "<24 hours post op and in a lot of pain",
+      "Weight gain post retrieval"
+    ],
+    "journey_stage": "post-retrieval recovery"
+  },
+  {
+    "rank": 13,
+    "emotion": "uncertainty",
+    "trigger": "medical decisions, protocol changes, or unclear next steps",
+    "post_count": 7,
+    "frequency_pct": 2.2,
+    "what_they_need": "information to help them make informed decisions",
+    "what_would_help": "Clear explanations of medical rationales and experiences from others who faced similar decisions with their outcomes.",
+    "example_posts": [
+      "Doc called and asked if I want to cancel the cycle",
+      "Am I crazy doing another round?",
+      "Cancel round?"
+    ],
+    "journey_stage": "decision points during treatment"
+  },
+  {
+    "rank": 14,
+    "emotion": "gratitude mixed with concern",
+    "trigger": "good results that still leave questions about future success",
+    "post_count": 6,
+    "frequency_pct": 1.9,
+    "what_they_need": "perspective on whether their results meet their family building goals",
+    "what_would_help": "Data-driven analysis of their specific results and realistic expectations for their desired family size.",
+    "example_posts": [
+      "How many eggs would you freeze at 38?",
+      "How many potential babies will 29 eggs give me in future?",
+      "My Egg Retrieval Update: 28 retrieved\u2026 26 mature \ud83e\udd2f\ud83d\ude2d"
+    ],
+    "journey_stage": "post-retrieval planning"
+  }
+]
