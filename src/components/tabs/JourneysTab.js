@@ -316,7 +316,7 @@ export default function JourneysTab() {
 
   const { nodes, loading: journeysLoading } = useJourneys(activeType);
   const { profile, saveProfile, clearProfile, loading: profileLoading } = useUserProfile();
-  const { personalization, loading: personalizationLoading } = usePersonalization(profile);
+  const { personalization, loading: personalizationLoading, error } = usePersonalization(profile);
 
   const activeLabel = JOURNEY_TYPES.find(t => t.id === activeType)?.label;
 
@@ -377,6 +377,11 @@ export default function JourneysTab() {
       {personalizationLoading && (
         <p style={{ color: 'var(--text-light)', fontStyle: 'italic', marginBottom: 20 }}>
           Personalizing your pathway…
+        </p>
+      )}
+      {!personalizationLoading && error && (
+        <p style={{ color: 'var(--terracotta)', fontSize: 13, marginBottom: 20 }}>
+          Personalization unavailable: {error}
         </p>
       )}
       {!personalizationLoading && personalization && (
