@@ -1749,6 +1749,219 @@ header {
   .landing-hero { padding: 40px 24px 36px; }
 }
 
+/* ---- PROFILE INTAKE ---- */
+.intake-wrap {
+  display: flex;
+  justify-content: center;
+  padding: 32px 24px 48px;
+}
+
+.intake-card {
+  background: var(--white);
+  border: 1.5px solid var(--terracotta-light);
+  border-radius: 20px;
+  padding: 36px 32px;
+  width: 100%;
+  max-width: 520px;
+  box-shadow: 0 4px 24px rgba(212,113,74,0.08);
+}
+
+.intake-dots {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 28px;
+}
+
+.intake-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--terracotta-light);
+  transition: background 0.2s;
+}
+
+.intake-dot.active { background: var(--terracotta); }
+.intake-dot.done   { background: var(--sage-light); }
+
+.intake-step {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.intake-heading {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+.intake-sub {
+  font-size: 13.5px;
+  color: var(--text-light);
+  margin-top: -12px;
+}
+
+.intake-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.intake-label {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.intake-optional {
+  font-weight: 400;
+  color: var(--text-light);
+}
+
+.intake-input {
+  padding: 10px 14px;
+  border: 1.5px solid var(--terracotta-light);
+  border-radius: 10px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  color: var(--text-dark);
+  background: var(--white);
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.intake-input:focus {
+  border-color: var(--terracotta);
+}
+
+.intake-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.intake-option {
+  padding: 12px 16px;
+  background: var(--white);
+  border: 1.5px solid var(--terracotta-light);
+  border-radius: 10px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13.5px;
+  color: var(--text-mid);
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s;
+}
+
+.intake-option:hover {
+  border-color: var(--terracotta);
+  color: var(--terracotta);
+  background: var(--bubble-her);
+}
+
+.intake-option.selected {
+  border-color: var(--terracotta);
+  background: var(--bubble-her);
+  color: var(--terracotta);
+  font-weight: 700;
+}
+
+.intake-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.intake-chip {
+  padding: 7px 14px;
+  background: var(--white);
+  border: 1.5px solid var(--terracotta-light);
+  border-radius: 20px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  color: var(--text-mid);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.intake-chip:hover {
+  border-color: var(--terracotta);
+  color: var(--terracotta);
+}
+
+.intake-chip.selected {
+  background: var(--terracotta);
+  border-color: var(--terracotta);
+  color: var(--white);
+  font-weight: 700;
+}
+
+.intake-nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.intake-back {
+  background: none;
+  border: none;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  color: var(--text-light);
+  cursor: pointer;
+  padding: 0 8px;
+}
+
+.intake-back:hover { color: var(--text-mid); }
+
+.intake-next {
+  padding: 11px 24px;
+  background: var(--terracotta);
+  color: var(--white);
+  border: none;
+  border-radius: 10px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.intake-next:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.intake-next:not(:disabled):hover { opacity: 0.88; }
+
+.intake-profile-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bubble-her);
+  border: 1px solid var(--bubble-her-border);
+  border-radius: 10px;
+  padding: 10px 16px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  color: var(--text-mid);
+}
+
+.intake-profile-reset {
+  background: none;
+  border: none;
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--terracotta);
+  cursor: pointer;
+  padding: 0;
+}
+
 /* ---- JOURNEYS TAB ---- */
 .journeys-header {
   margin-bottom: 28px;

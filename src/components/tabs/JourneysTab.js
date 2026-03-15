@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { useJourneys } from '../../hooks/useJourneys';
+import { useUserProfile } from '../../hooks/useUserProfile';
+import ProfileIntake from '../profile/ProfileIntake';
 
 const JOURNEY_TYPES = [
-  { id: 'egg-freezing',    label: 'Egg Freezing'    },
-  { id: 'ivf',             label: 'IVF'             },
-  { id: 'embryo-banking',  label: 'Embryo Banking'  },
+  { id: 'egg-freezing',   label: 'Egg Freezing'   },
+  { id: 'ivf',            label: 'IVF'            },
+  { id: 'embryo-banking', label: 'Embryo Banking' },
 ];
 
 const OUTCOME_COLORS = {
@@ -14,22 +16,79 @@ const OUTCOME_COLORS = {
   neutral:  'var(--text-light)',
 };
 
+// ── Which canonical nodes are most relevant given the user's journey stage ──
+const STAGE_FOCUS = {
+  researching:       ['pre-consultation', 'diagnostics', 'consultation'],
+  pre_consultation:  ['pre-consultation', 'diagnostics', 'consultation'],
+  post_consultation: ['consultation', 'medication', 'admin', 'financial'],
+  mid_cycle:         ['medication', 'procedure', 'diagnostics'],
+  post_retrieval:    ['procedure', 'emotional'],
+  transfer:          ['procedure', 'emotional'],
+};
+
+function personalizeNodes(nodes, profile) {
+  if (!profile || !nodes) return { prioritized: [], rest: nodes || [] };
+
+  const focusCategories = STAGE_FOCUS[profile.journey_stage] || [];
+  const hasPartner = profile.partner_status === 'male_partner';
+
+  let filtered = nodes;
+
+  // Remove male partner testing node if no male partner
+  if (!hasPartner) {
+    filtered = filtered.filter(n =>
+      !n.title?.toLowerCase().includes('male partner') &&
+      !n.title?.toLowerCase().includes('partner testing')
+    );
+  }
+
+  // If they've already done a retrieval, de-emphasize pre-retrieval steps
+  if (['post_retrieval', 'transfer'].includes(profile.journey_stage)) {
+    filtered = filtered.filter(n =>
+      !['diagnostics', 'consultation'].includes(n.category) ||
+      n.is_choice
+    );
+  }
+
+  // Split into "relevant now" vs rest, based on journey stage
+  if (focusCategories.length > 0) {
+    const prioritized = filtered.filter(n => focusCategories.includes(n.category));
+    const rest = filtered.filter(n => !focusCategories.includes(n.category));
+    return { prioritized, rest };
+  }
+
+  return { prioritized: [], rest: filtered };
+}
+
+function stageLabel(stage) {
+  const labels = {
+    researching:       'just starting to research',
+    pre_consultation:  'pre-consultation',
+    post_consultation: 'post-consultation',
+    mid_cycle:         'mid-cycle',
+    post_retrieval:    'post-retrieval',
+    transfer:          'preparing for transfer',
+  };
+  return labels[stage] || stage;
+}
+
+// ── Shared subcomponents ──
+
 function FrequencyBar({ frequency, color }) {
   return (
     <div className="journey-freq-bar-wrap">
       <div className="journey-freq-bar-track">
         <div
           className="journey-freq-bar-fill"
-          style={{ width: `${frequency * 100}%`, background: color || 'var(--terracotta)' }}
+          style={{ width: `${(frequency || 0) * 100}%`, background: color || 'var(--terracotta)' }}
         />
       </div>
-      <span className="journey-freq-label">{Math.round(frequency * 100)}%</span>
+      <span className="journey-freq-label">{Math.round((frequency || 0) * 100)}%</span>
     </div>
   );
 }
 
-// ── Choice card — visually prominent, shows the question + options as a real decision ──
-function ChoiceCard({ node, index, isExpanded, onToggle }) {
+function ChoiceCard({ node, isExpanded, onToggle }) {
   return (
     <div className="journey-choice-card">
       <button className="journey-choice-header" onClick={onToggle}>
@@ -37,7 +96,7 @@ function ChoiceCard({ node, index, isExpanded, onToggle }) {
         <div className="journey-choice-meta">
           <div className="journey-choice-question">{node.choice_question}</div>
           <div className="journey-choice-subtitle">
-            {Math.round(node.frequency * 100)}% of journeys faced this decision
+            {Math.round((node.frequency || 0) * 100)}% of journeys faced this
             {node.decision_point_count > 0 && ` · ${node.decision_point_count} explicit accounts`}
           </div>
         </div>
@@ -46,27 +105,20 @@ function ChoiceCard({ node, index, isExpanded, onToggle }) {
 
       {isExpanded && (
         <div className="journey-choice-body">
-          {node.description && (
-            <p className="journey-step-description">{node.description}</p>
-          )}
+          {node.description && <p className="journey-step-description">{node.description}</p>}
 
           <div className="journey-choice-options-label">What women chose</div>
           <div className="journey-choice-options">
             {node.options?.map((opt, i) => (
               <div key={i} className="journey-choice-option">
                 <div className="journey-choice-option-top">
-                  <span
-                    className="journey-choice-option-label"
-                    style={{ color: OUTCOME_COLORS[opt.outcome_signal] || 'var(--text-dark)' }}
-                  >
+                  <span className="journey-choice-option-label" style={{ color: OUTCOME_COLORS[opt.outcome_signal] }}>
                     {opt.label}
                   </span>
                   <span className="journey-option-freq">{Math.round((opt.frequency || 0) * 100)}%</span>
                 </div>
-                <FrequencyBar frequency={opt.frequency || 0} color={OUTCOME_COLORS[opt.outcome_signal]} />
-                {opt.description && (
-                  <p className="journey-option-desc">{opt.description}</p>
-                )}
+                <FrequencyBar frequency={opt.frequency} color={OUTCOME_COLORS[opt.outcome_signal]} />
+                {opt.description && <p className="journey-option-desc">{opt.description}</p>}
               </div>
             ))}
           </div>
@@ -77,7 +129,6 @@ function ChoiceCard({ node, index, isExpanded, onToggle }) {
               {node.community_note}
             </div>
           )}
-
           <div className="journey-step-stats">
             <span>Based on {node.source_post_count} community posts</span>
           </div>
@@ -87,7 +138,6 @@ function ChoiceCard({ node, index, isExpanded, onToggle }) {
   );
 }
 
-// ── Step card — informational, what everyone does ──
 function StepCard({ node, index, isExpanded, onToggle }) {
   return (
     <div className="journey-step-card">
@@ -108,37 +158,27 @@ function StepCard({ node, index, isExpanded, onToggle }) {
       {isExpanded && (
         <div className="journey-step-body">
           <p className="journey-step-description">{node.description}</p>
-
           {node.options?.length > 0 && (
             <div className="journey-options-section">
               <div className="journey-options-label">How people navigated this</div>
               {node.options.map((opt, i) => (
                 <div key={i} className="journey-option-row">
-                  <div
-                    className="journey-option-dot"
-                    style={{ borderColor: OUTCOME_COLORS[opt.outcome_signal] || 'var(--text-light)' }}
-                  />
+                  <div className="journey-option-dot" style={{ borderColor: OUTCOME_COLORS[opt.outcome_signal] }} />
                   <div className="journey-option-content">
                     <span className="journey-option-label">{opt.label}</span>
-                    {opt.description && (
-                      <span className="journey-option-desc">{opt.description}</span>
-                    )}
+                    {opt.description && <span className="journey-option-desc">{opt.description}</span>}
                   </div>
-                  <span className="journey-option-freq">
-                    {Math.round((opt.frequency || 0) * 100)}%
-                  </span>
+                  <span className="journey-option-freq">{Math.round((opt.frequency || 0) * 100)}%</span>
                 </div>
               ))}
             </div>
           )}
-
           {node.community_note && (
             <div className="journey-community-note">
               <span className="journey-community-note-icon">💬</span>
               {node.community_note}
             </div>
           )}
-
           <div className="journey-step-stats">
             <span>Based on {node.source_post_count} community posts</span>
             {node.would_recommend_rate != null && (
@@ -147,6 +187,24 @@ function StepCard({ node, index, isExpanded, onToggle }) {
           </div>
         </div>
       )}
+    </div>
+  );
+}
+
+function NodeCard({ node, index, isExpanded, onToggle }) {
+  if (node.is_choice) return <ChoiceCard node={node} isExpanded={isExpanded} onToggle={onToggle} />;
+  return <StepCard node={node} index={index} isExpanded={isExpanded} onToggle={onToggle} />;
+}
+
+function ProfileBanner({ profile, onReset }) {
+  return (
+    <div className="intake-profile-banner">
+      <div className="intake-profile-banner-text">
+        Showing pathway for <strong>age {profile.age}</strong>
+        {profile.location && <>, {profile.location}</>}
+        {' · '}{stageLabel(profile.journey_stage)}
+      </div>
+      <button className="intake-profile-reset" onClick={onReset}>Update</button>
     </div>
   );
 }
@@ -161,14 +219,33 @@ function ComingSoonState({ label }) {
   );
 }
 
+// ── Main tab ──
+
 export default function JourneysTab() {
   const [activeType, setActiveType] = useState('egg-freezing');
-  const [expandedNode, setExpandedNode] = useState(0);
-  const { nodes, loading } = useJourneys(activeType);
+  const [expandedNode, setExpandedNode] = useState(null);
+  const [showingIntake, setShowingIntake] = useState(false);
+
+  const { nodes, loading: journeysLoading } = useJourneys(activeType);
+  const { profile, saveProfile, clearProfile, loading: profileLoading } = useUserProfile();
 
   const activeLabel = JOURNEY_TYPES.find(t => t.id === activeType)?.label;
-  const choices = nodes?.filter(n => n.is_choice) || [];
-  const steps   = nodes?.filter(n => !n.is_choice) || [];
+
+  async function handleIntakeComplete(fields) {
+    await saveProfile(fields);
+    setShowingIntake(false);
+  }
+
+  // Show intake if no profile yet or explicitly triggered
+  if (!profileLoading && (!profile || showingIntake)) {
+    return (
+      <ProfileIntake onComplete={handleIntakeComplete} />
+    );
+  }
+
+  const { prioritized, rest } = personalizeNodes(nodes, profile);
+  const choices = rest.filter(n => n.is_choice);
+  const steps   = rest.filter(n => !n.is_choice);
 
   return (
     <div className="tab-content">
@@ -180,36 +257,64 @@ export default function JourneysTab() {
         </p>
       </div>
 
+      {profile && (
+        <ProfileBanner
+          profile={profile}
+          onReset={() => { clearProfile(); setShowingIntake(false); }}
+        />
+      )}
+
       <div className="view-toggle" style={{ marginBottom: 28 }}>
         {JOURNEY_TYPES.map(t => (
           <button
             key={t.id}
             className={`view-toggle-btn${activeType === t.id ? ' active' : ''}`}
-            onClick={() => { setActiveType(t.id); setExpandedNode(0); }}
+            onClick={() => { setActiveType(t.id); setExpandedNode(null); }}
           >
             {t.label}
           </button>
         ))}
       </div>
 
-      {loading && (
+      {journeysLoading && (
         <p style={{ color: 'var(--text-light)', fontStyle: 'italic' }}>Loading...</p>
       )}
 
-      {!loading && nodes?.length > 0 && (
+      {!journeysLoading && nodes?.length > 0 && (
         <>
-          {/* Decisions section */}
+          {/* Relevant now — personalized section */}
+          {prioritized.length > 0 && (
+            <div className="journey-section">
+              <div className="journey-section-header">
+                <div className="journey-section-title">Relevant for you now</div>
+                <div className="journey-section-subtitle">
+                  Based on where you are — {stageLabel(profile?.journey_stage)}
+                </div>
+              </div>
+              <div className="journey-steps-list">
+                {prioritized.map((node, i) => (
+                  <NodeCard
+                    key={node.node_id ?? i}
+                    node={node}
+                    index={i}
+                    isExpanded={expandedNode === `p${i}`}
+                    onToggle={() => setExpandedNode(expandedNode === `p${i}` ? null : `p${i}`)}
+                  />
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Choices */}
           {choices.length > 0 && (
             <div className="journey-section">
               <div className="journey-section-header">
                 <div className="journey-section-title">Decisions you'll face</div>
-                <div className="journey-section-subtitle">
-                  Real forks in the road — what women chose and why
-                </div>
+                <div className="journey-section-subtitle">Real forks in the road — what women chose and why</div>
               </div>
               <div className="journey-steps-list">
                 {choices.map((node, i) => (
-                  <ChoiceCard
+                  <NodeCard
                     key={node.node_id ?? i}
                     node={node}
                     index={i}
@@ -221,18 +326,16 @@ export default function JourneysTab() {
             </div>
           )}
 
-          {/* Steps section */}
+          {/* Steps */}
           {steps.length > 0 && (
             <div className="journey-section">
               <div className="journey-section-header">
                 <div className="journey-section-title">The path</div>
-                <div className="journey-section-subtitle">
-                  Steps nearly everyone takes, in order
-                </div>
+                <div className="journey-section-subtitle">Steps nearly everyone takes, in order</div>
               </div>
               <div className="journey-steps-list">
                 {steps.map((node, i) => (
-                  <StepCard
+                  <NodeCard
                     key={node.node_id ?? i}
                     node={node}
                     index={i}
@@ -246,7 +349,7 @@ export default function JourneysTab() {
         </>
       )}
 
-      {!loading && (!nodes || nodes.length === 0) && (
+      {!journeysLoading && (!nodes || nodes.length === 0) && (
         <ComingSoonState label={activeLabel} />
       )}
     </div>
