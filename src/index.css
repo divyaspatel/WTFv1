@@ -1847,6 +1847,13 @@ header {
   border-color: var(--terracotta);
 }
 
+.intake-textarea {
+  resize: vertical;
+  min-height: 72px;
+  font-family: 'Nunito', sans-serif;
+  line-height: 1.6;
+}
+
 .intake-options {
   display: flex;
   flex-direction: column;
