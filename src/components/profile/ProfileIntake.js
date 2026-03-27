@@ -413,15 +413,14 @@ export default function ProfileIntake({ onComplete, initialValues }) {
           </div>
         )}
 
-        {/* ── Step 3: What your doctor knows (post-consultation only) ── */}
+        {/* ── Step 3: Additional Info (post-consultation only) ── */}
         {step === 3 && (
           <div className="intake-step">
-            <h2 className="intake-heading">What your doctor knows</h2>
-            <p className="intake-sub">All optional — skip anything you don't have yet.</p>
+            <h2 className="intake-heading">Additional Info</h2>
 
             <div className="intake-field">
               <label className="intake-label">
-                Any known risk factors? <span className="intake-optional">(select all that apply)</span>
+                Any known risk factors? <span className="intake-optional">(optional, select all that apply)</span>
               </label>
               <div className="intake-chips">
                 {RISKS.map(r => (
@@ -452,7 +451,7 @@ export default function ProfileIntake({ onComplete, initialValues }) {
             <div className="intake-location-row">
               <div className="intake-field">
                 <label className="intake-label">
-                  AMH level <span className="intake-optional">(ng/mL)</span>
+                  AMH level <span className="intake-optional">(optional)</span>
                 </label>
                 <input
                   className="intake-input"
@@ -462,10 +461,11 @@ export default function ProfileIntake({ onComplete, initialValues }) {
                   onChange={e => set('amh', e.target.value)}
                   step="0.1" min={0} max={20}
                 />
+                <p className="intake-hint">ng/mL</p>
               </div>
               <div className="intake-field">
                 <label className="intake-label">
-                  AFC <span className="intake-optional">(follicle count)</span>
+                  AFC <span className="intake-optional">(optional)</span>
                 </label>
                 <input
                   className="intake-input"
@@ -475,6 +475,7 @@ export default function ProfileIntake({ onComplete, initialValues }) {
                   onChange={e => set('afc', e.target.value)}
                   min={0} max={50}
                 />
+                <p className="intake-hint">antral follicle count</p>
               </div>
             </div>
           </div>

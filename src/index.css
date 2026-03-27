@@ -1866,6 +1866,12 @@ select.intake-input {
   line-height: 1.6;
 }
 
+.intake-hint {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: var(--text-light);
+}
+
 .intake-options {
   display: flex;
   flex-direction: column;
