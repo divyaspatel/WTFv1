@@ -382,7 +382,7 @@ export default function JourneysTab() {
   const [showingIntake, setShowingIntake] = useState(false);
 
   const { nodes, loading: journeysLoading } = useJourneys('egg-freezing');
-  const { profile, saveProfile, clearProfile, loading: profileLoading } = useUserProfile();
+  const { profile, saveProfile, loading: profileLoading } = useUserProfile();
 
   const filteredNodes = filterNodes(nodes, profile);
   const currentNodeId = STAGE_TO_CURRENT_NODE[profile?.journey_stage] ?? null;
