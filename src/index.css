@@ -3290,3 +3290,140 @@ select.intake-input {
   cursor: pointer;
   flex-shrink: 0;
 }
+
+/* ── Feedback Widget ── */
+
+.feedback-widget {
+  margin-top: 16px;
+  border-top: 1px solid var(--terracotta-light);
+  padding-top: 12px;
+}
+
+.feedback-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.feedback-label {
+  font-size: 12px;
+  color: var(--text-light);
+  font-family: 'Nunito', sans-serif;
+}
+
+.feedback-thumbs {
+  display: flex;
+  gap: 6px;
+}
+
+.feedback-thumb-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1.5px solid var(--terracotta-light);
+  background: transparent;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.feedback-thumb-btn:hover {
+  border-color: var(--terracotta);
+  color: var(--terracotta);
+}
+
+.feedback-thumb-btn.up.selected {
+  background: var(--sage);
+  border-color: var(--sage);
+  color: #fff;
+}
+
+.feedback-thumb-btn.down.selected {
+  background: var(--terracotta);
+  border-color: var(--terracotta);
+  color: #fff;
+}
+
+.feedback-thanks {
+  font-size: 12px;
+  color: var(--sage);
+  font-family: 'Nunito', sans-serif;
+}
+
+.feedback-comment-box {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.25s ease, opacity 0.2s ease;
+  opacity: 0;
+}
+
+.feedback-comment-box.open {
+  max-height: 160px;
+  opacity: 1;
+  margin-top: 10px;
+}
+
+.feedback-comment-label {
+  display: block;
+  font-size: 12px;
+  color: var(--text-light);
+  font-family: 'Nunito', sans-serif;
+  margin-bottom: 6px;
+}
+
+.feedback-comment-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  border: 1.5px solid var(--terracotta-light);
+  border-radius: 8px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  color: var(--text-dark);
+  background: var(--white);
+  resize: none;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.feedback-comment-input:focus {
+  border-color: var(--terracotta);
+}
+
+.feedback-comment-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.feedback-submit-btn {
+  padding: 5px 14px;
+  background: var(--terracotta);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.feedback-submit-btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.feedback-skip-btn {
+  padding: 5px 10px;
+  background: transparent;
+  color: var(--text-light);
+  border: none;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: underline;
+}

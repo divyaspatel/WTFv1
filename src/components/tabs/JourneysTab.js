@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useJourneys } from '../../hooks/useJourneys';
 import { useUserProfile } from '../../hooks/useUserProfile';
 import ProfileIntake from '../profile/ProfileIntake';
+import FeedbackWidget from '../FeedbackWidget';
+import { MODEL_VERSION } from '../../data/modelVersion';
 
 const OUTCOME_COLORS = {
   positive: 'var(--sage)',
@@ -367,6 +369,13 @@ function NodeDetailCard({ node, isCurrentNode, onMarkComplete, isCompleted }) {
         />
         <span>Mark this step as complete</span>
       </label>
+
+      <FeedbackWidget
+        tab="egg_freezing_pathways"
+        stepId={String(node.node_id)}
+        stepIndex={node.node_id}
+        appVersion={MODEL_VERSION}
+      />
     </div>
   );
 }
