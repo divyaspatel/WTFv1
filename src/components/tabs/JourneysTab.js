@@ -41,13 +41,6 @@ function filterNodes(nodes, profile) {
   return filtered;
 }
 
-function getPhaseForNodeId(nodeId) {
-  for (let i = 0; i < PHASE_CONFIG.length; i++) {
-    if (PHASE_CONFIG[i].nodeIds.includes(nodeId)) return i;
-  }
-  return 0;
-}
-
 // ── Node Navigation — phase segments with one circle per node ──
 
 const PHASE_COLORS = [
