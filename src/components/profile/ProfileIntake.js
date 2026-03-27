@@ -75,14 +75,16 @@ function ChipButton({ selected, onClick, children }) {
 export default function ProfileIntake({ onComplete, initialValues }) {
   const [step, setStep] = useState(0);
   const [form, setForm] = useState({
-    name:           initialValues?.name          || '',
-    location:       initialValues?.location      || '',
+    name:           initialValues?.name           || '',
+    city:           initialValues?.city           || '',
+    state:          initialValues?.state          || '',
+    country:        initialValues?.country        || '',
     partner_status: initialValues?.partner_status || '',
-    goal:           initialValues?.goal          || '',
-    journey_stage:  initialValues?.journey_stage || '',
-    risks:          initialValues?.risks         || [],
-    amh:            initialValues?.amh != null   ? String(initialValues.amh) : '',
-    afc:            initialValues?.afc != null   ? String(initialValues.afc) : '',
+    goal:           initialValues?.goal           || '',
+    journey_stage:  initialValues?.journey_stage  || '',
+    risks:          initialValues?.risks          || [],
+    amh:            initialValues?.amh != null    ? String(initialValues.amh) : '',
+    afc:            initialValues?.afc != null    ? String(initialValues.afc) : '',
   });
 
   function set(field, value) {
@@ -99,7 +101,7 @@ export default function ProfileIntake({ onComplete, initialValues }) {
   }
 
   function canAdvance() {
-    if (step === 0) return form.name && form.location;
+    if (step === 0) return form.name && form.city && form.country;
     if (step === 1) return form.partner_status && form.goal;
     if (step === 2) return form.journey_stage;
     return true; // step 3 optional
@@ -113,8 +115,10 @@ export default function ProfileIntake({ onComplete, initialValues }) {
   function handleSubmit() {
     const showNumbers = ['post_consultation', 'mid_cycle', 'post_retrieval', 'transfer'].includes(form.journey_stage);
     onComplete({
-      name:          form.name || null,
-      location:      form.location || null,
+      name:           form.name    || null,
+      city:           form.city    || null,
+      state:          form.state   || null,
+      country:        form.country || null,
       partner_status: form.partner_status || null,
       goal:          form.goal || null,
       journey_stage: form.journey_stage || null,
@@ -147,14 +151,37 @@ export default function ProfileIntake({ onComplete, initialValues }) {
             </div>
 
             <div className="intake-field">
-              <label className="intake-label">What city are you in?</label>
+              <label className="intake-label">Country <span className="intake-required">*</span></label>
               <input
                 className="intake-input"
                 type="text"
-                placeholder="e.g. New York City, NY"
-                value={form.location}
-                onChange={e => set('location', e.target.value)}
+                placeholder="e.g. United States"
+                value={form.country}
+                onChange={e => set('country', e.target.value)}
               />
+            </div>
+
+            <div className="intake-location-row">
+              <div className="intake-field">
+                <label className="intake-label">State / Province <span className="intake-optional">(optional)</span></label>
+                <input
+                  className="intake-input"
+                  type="text"
+                  placeholder="e.g. New York"
+                  value={form.state}
+                  onChange={e => set('state', e.target.value)}
+                />
+              </div>
+              <div className="intake-field">
+                <label className="intake-label">City <span className="intake-required">*</span></label>
+                <input
+                  className="intake-input"
+                  type="text"
+                  placeholder="e.g. Brooklyn"
+                  value={form.city}
+                  onChange={e => set('city', e.target.value)}
+                />
+              </div>
             </div>
           </div>
         )}
