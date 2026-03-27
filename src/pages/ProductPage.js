@@ -8,7 +8,7 @@ const TABS = [
   { id: 'story',    label: "✨ Start Here — Divya's Story" },
   { id: 'journey',  label: "Your Journey"                   },
   { id: 'others',   label: "What Others Are Saying"         },
-  { id: 'journeys', label: "Journeys"                       },
+  { id: 'journeys', label: "Egg Freezing Pathways"           },
 ];
 
 export default function ProductPage() {

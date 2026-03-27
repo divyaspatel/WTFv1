@@ -36,8 +36,7 @@ export default function AppShell() {
           WTF <span>what the fertility</span>
         </div>
         <div className="header-right">
-          <div className="day-badge">🌸 Cycle Tracker</div>
-          <div className="avatar-menu" ref={menuRef}>
+<div className="avatar-menu" ref={menuRef}>
             <div className="avatar" onClick={() => setMenuOpen(o => !o)}>{initial}</div>
             {menuOpen && (
               <div className="avatar-dropdown">

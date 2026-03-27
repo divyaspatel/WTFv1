@@ -200,3 +200,16 @@ The React app uses the **anon key** (safe to be public) hardcoded in `src/lib/su
 - **Personalized AI guidance:** combine user's own tracking data with RAG corpus for contextual day-by-day responses
 - **More Reddit posts:** run scraper.py locally periodically and push updated posts.json
 - **Additional subreddits or keyword expansion** as the corpus grows
+
+---
+
+## Living Documentation Rules
+
+After every change in this session:
+1. If the change affects navigation, pages, tabs, or user flows — update `SITEMAP.md` with a revised Mermaid diagram
+2. For every change regardless of size — append an entry to `DECISIONS.md` with: date, what changed, why, what was considered, what it affects
+
+Keep both files committed alongside code changes.
+
+- **[SITEMAP.md](./SITEMAP.md)** — Full app architecture as Mermaid diagrams (user flow, tabs, data, deployment)
+- **[DECISIONS.md](./DECISIONS.md)** — Chronological log of every design and code decision

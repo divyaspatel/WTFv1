@@ -37,14 +37,22 @@ JOURNEY_CLASSES = {
     "single_moment",
     "question_only",
     "reaction_only",
+    "out_of_scope",
 }
 
-USABLE_CLASSES = {"complete_journey", "partial_journey"}
+USABLE_CLASSES = {"complete_journey", "partial_journey", "single_moment"}
 
-CLASSIFY_PROMPT = """You are classifying Reddit posts from r/IVF, r/eggfreezing, and r/fertility.
+CLASSIFY_PROMPT = """You are classifying Reddit posts about egg freezing and embryo freezing (fertility preservation).
 
-Classify the post below into EXACTLY ONE of these categories:
+SCOPE: We only want posts about the egg freezing / embryo freezing process — from initial research through egg retrieval, fertilization, embryo development, and genetic testing. We do NOT want posts whose primary focus is embryo transfer, the two-week wait, pregnancy outcomes, or IVF transfer protocols.
 
+First, decide if this post is IN SCOPE:
+- IN SCOPE: egg freezing, embryo freezing, ovarian stimulation, egg retrieval, fertilization, embryo development, PGT-A testing, fertility preservation, clinic selection, medications/protocols for retrieval cycles
+- OUT OF SCOPE: embryo transfer procedure, FET protocols, two-week wait, beta HCG results, pregnancy after transfer, miscarriage after transfer, transfer cancellation
+
+If OUT OF SCOPE, classify as: out_of_scope
+
+If IN SCOPE, classify into EXACTLY ONE of:
 - complete_journey: The author narrates their full experience from start to finish (e.g., deciding to freeze → clinic → stims → retrieval → results). Multi-stage narrative arc.
 - partial_journey: The author describes multiple sequential steps or decisions but not the full arc. Still has narrative progression.
 - single_moment: The post focuses on one step, one emotion, one decision, or one result only — no sequential narrative.
@@ -58,7 +66,7 @@ POST TEXT:
 
 Respond with ONLY a JSON object in this exact format:
 {{
-  "class": "<one of the five categories>",
+  "class": "<one of the six categories>",
   "confidence": <0.0-1.0>,
   "reason": "<one sentence explaining why>"
 }}"""
@@ -107,7 +115,8 @@ def run():
     with open("posts.json") as f:
         posts = json.load(f)
 
-    print(f"Loaded {len(posts)} posts from posts.json\n")
+    print(f"Loaded {len(posts)} posts from posts.json")
+    print(f"(Safe to re-run — resumes from checkpoint)\n")
 
     # Load existing results to allow resuming
     try:

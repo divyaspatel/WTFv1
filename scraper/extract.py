@@ -31,7 +31,7 @@ client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
 
 MODEL = "claude-sonnet-4-20250514"
 
-USABLE_CLASSES = {"complete_journey", "partial_journey"}
+USABLE_CLASSES = {"complete_journey", "partial_journey", "single_moment"}
 
 STEP_CATEGORIES = {
     "diagnostics",
@@ -40,6 +40,8 @@ STEP_CATEGORIES = {
     "procedure",
     "admin",
     "emotional",
+    "financial",
+    "clinic_selection",
 }
 
 EXTRACT_PROMPT = """You are extracting a structured journey map from a Reddit post written by someone who went through egg freezing or IVF.
@@ -59,7 +61,7 @@ For each step, produce a JSON object with these exact fields:
 {{
   "step_number": <integer, starting at 1>,
   "step": "<clear description of what they did, 1-2 sentences>",
-  "step_category": "<one of: diagnostics | consultation | medication | procedure | admin | emotional | financial>",
+  "step_category": "<one of: diagnostics | consultation | medication | procedure | admin | emotional | financial | clinic_selection>",
   "timing": "<when in the journey this occurred, e.g. 'before starting', 'day 3 of stims', 'after retrieval'>",
   "useful_to_outcome": <float 0.0-1.0, how much this step contributed to a positive outcome based on author's account>,
   "order_dependencies": [<list of step numbers that must precede this one, or empty list>],

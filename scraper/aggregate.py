@@ -59,7 +59,7 @@ For each node, return:
   "node_id": <integer, 1 = earliest in journey>,
   "title": "<short step title, 4-6 words>",
   "description": "<what this step involves, 2-3 sentences, warm and personal tone>",
-  "category": "<diagnostics | consultation | medication | procedure | admin | emotional | financial>",
+  "category": "<diagnostics | consultation | medication | procedure | admin | emotional | financial | clinic_selection>",
   "frequency": <float 0.0-1.0, fraction of journeys that included this step>,
   "importance": "<critical | recommended | optional>",
   "typical_timing": "<when in journey this occurs>",
