@@ -117,8 +117,16 @@ def synthesize_cards(day: int, posts: list[dict]) -> list[dict]:
             time.sleep(2)
 
 
+def load_model_version() -> str:
+    version_file = os.path.join(os.path.dirname(__file__), "model_version.txt")
+    if os.path.exists(version_file):
+        return open(version_file).read().strip()
+    return "unknown"
+
+
 def run():
-    print("Generating theme cards for Days 1–7+...\n")
+    model_version = load_model_version()
+    print(f"Generating theme cards for Days 1–7+ (model: {model_version})...\n")
 
     for day in range(1, 8):
         label = f"Day {day}" if day < 7 else "Day 7+"
@@ -132,14 +140,14 @@ def run():
         cards = synthesize_cards(day, posts)
 
         supabase.table("day_insights").upsert(
-            {"cycle_day": day, "cards": cards},
+            {"cycle_day": day, "cards": cards, "model_version": model_version},
             on_conflict="cycle_day",
         ).execute()
 
         print(f"    {len(cards)} cards saved (from {len(posts)} posts)")
         time.sleep(1)  # be polite to APIs
 
-    print("\nDone. All day insights saved to Supabase.")
+    print(f"\nDone. All day insights saved to Supabase (model: {model_version}).")
 
 
 if __name__ == "__main__":
