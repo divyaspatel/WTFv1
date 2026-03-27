@@ -53,16 +53,39 @@ export default function FeedbackWidget({ tab, stepId, stepIndex, appVersion }) {
       .select()
       .single();
 
-    if (!error && data) setFeedbackId(data.id);
+    if (error) {
+      console.error('Feedback insert failed:', error);
+    } else if (data) {
+      setFeedbackId(data.id);
+    }
   }
 
   async function handleSubmit() {
-    if (!feedbackId || !comment.trim()) return;
+    if (!comment.trim()) return;
     setSubmitting(true);
-    await supabase
-      .from('feedback')
-      .update({ comment: comment.trim() })
-      .eq('id', feedbackId);
+
+    if (feedbackId) {
+      await supabase
+        .from('feedback')
+        .update({ comment: comment.trim() })
+        .eq('id', feedbackId);
+    } else {
+      // Fallback: thumb insert failed earlier — do a full insert now with comment
+      await supabase
+        .from('feedback')
+        .insert({
+          user_id: user?.id ?? null,
+          session_id: sessionStorage.getItem('session_id'),
+          rating: selectedRating,
+          tab,
+          step_id: stepId,
+          step_index: stepIndex,
+          app_version: appVersion ?? MODEL_VERSION ?? null,
+          comment: comment.trim(),
+          created_at: new Date().toISOString(),
+        });
+    }
+
     setSubmitting(false);
     setShowComment(false);
     setDone(true);
