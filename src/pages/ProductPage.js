@@ -4,9 +4,9 @@ import JourneyTab from '../components/tabs/JourneyTab';
 import JourneysTab from '../components/tabs/JourneysTab';
 
 const TABS = [
-  { id: 'story',    label: "✨ Start Here — Divya's Story" },
-  { id: 'journey',  label: "Your Journey"                   },
-  { id: 'journeys', label: "Egg Freezing Pathways"           },
+  { id: 'story',    label: "✨ Start Here — Divya's Story"          },
+  { id: 'journeys', label: "Egg/Embryo Freezing Pathways"            },
+  { id: 'journey',  label: "Track Your Egg/Embryo Freezing Journey"  },
 ];
 
 export default function ProductPage() {
