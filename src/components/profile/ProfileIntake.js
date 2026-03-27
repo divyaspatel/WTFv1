@@ -72,17 +72,17 @@ function ChipButton({ selected, onClick, children }) {
   );
 }
 
-export default function ProfileIntake({ onComplete }) {
+export default function ProfileIntake({ onComplete, initialValues }) {
   const [step, setStep] = useState(0);
   const [form, setForm] = useState({
-    name:          '',
-    location:      '',
-    partner_status: '',
-    goal:          '',
-    journey_stage: '',
-    risks:         [],
-    amh:           '',
-    afc:           '',
+    name:           initialValues?.name          || '',
+    location:       initialValues?.location      || '',
+    partner_status: initialValues?.partner_status || '',
+    goal:           initialValues?.goal          || '',
+    journey_stage:  initialValues?.journey_stage || '',
+    risks:          initialValues?.risks         || [],
+    amh:            initialValues?.amh != null   ? String(initialValues.amh) : '',
+    afc:            initialValues?.afc != null   ? String(initialValues.afc) : '',
   });
 
   function set(field, value) {

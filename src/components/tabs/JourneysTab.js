@@ -409,7 +409,7 @@ export default function JourneysTab() {
   }
 
   if (!profileLoading && (!profile || showingIntake)) {
-    return <ProfileIntake onComplete={handleIntakeComplete} />;
+    return <ProfileIntake initialValues={profile} onComplete={handleIntakeComplete} />;
   }
 
   const isCurrentNode = selectedNode?.node_id === currentNodeId;
@@ -427,7 +427,7 @@ export default function JourneysTab() {
       <button
         className="intake-profile-reset"
         style={{ marginBottom: 24 }}
-        onClick={() => { clearProfile(); setShowingIntake(false); setSelectedNode(null); }}
+        onClick={() => { setShowingIntake(true); setSelectedNode(null); }}
       >
         Update my profile
       </button>
