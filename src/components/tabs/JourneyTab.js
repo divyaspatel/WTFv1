@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useProtocol } from '../../hooks/useProtocol';
 import { useJourneyDay } from '../../hooks/useJourneyDay';
+import { useDayInsights } from '../../hooks/useDayInsights';
 import DayNav from '../journey/DayNav';
 import TimelineBanner from '../journey/TimelineBanner';
 import WhatToExpect from '../journey/WhatToExpect';
@@ -9,6 +10,19 @@ import MedSpreadsheet from '../journey/MedSpreadsheet';
 import MonitoringLog from '../journey/MonitoringLog';
 import MoodSelector from '../journey/MoodSelector';
 import Toast from '../Toast';
+
+function InsightCard({ card, featured }) {
+  return (
+    <div className={`theme-card${featured ? ' featured' : ''}`}>
+      <div className="theme-tag tag-community">💬 Community</div>
+      <h3>{card.title}</h3>
+      <p>{card.body}</p>
+      <div className="theme-meta">
+        <span>💬 {card.source_count} community posts</span>
+      </div>
+    </div>
+  );
+}
 
 export default function JourneyTab() {
   const { protocol, saveProtocol } = useProtocol();
@@ -25,6 +39,8 @@ export default function JourneyTab() {
     monitoringInputs, setMonitoringInputs,
     saveDay,
   } = useJourneyDay(selectedDay);
+
+  const { cards: insightCards, loading: insightsLoading } = useDayInsights(selectedDay);
 
   function handleDayChange(day) {
     setSelectedDay(day);
@@ -93,6 +109,22 @@ export default function JourneyTab() {
 
       {/* What to expect + questions */}
       <WhatToExpect day={selectedDay} />
+
+      {/* Community insights for this day */}
+      {!insightsLoading && insightCards?.length > 0 && (
+        <div className="section-bottom">
+          <div className="section-label">What Others Are Saying</div>
+          <h2>Real voices from the community</h2>
+          <p style={{ color: 'var(--text-light)', fontSize: 13, marginBottom: 16 }}>
+            From r/IVF, r/eggfreezing, and r/fertility — updated weekly
+          </p>
+          <div className="themes-grid">
+            {insightCards.map((card, i) => (
+              <InsightCard key={i} card={card} featured={i === 0} />
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Protocol setup */}
       {showProtocol && (
