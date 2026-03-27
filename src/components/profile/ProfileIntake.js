@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { BIRTH_YEARS, COUNTRIES, getStates, getCities } from '../../data/locationData';
 
 const STEPS = [
   { id: 'basics',   label: 'About you'        },
@@ -88,6 +89,7 @@ function ChipButton({ selected, onClick, children }) {
 
 export default function ProfileIntake({ onComplete, initialValues }) {
   const [step, setStep] = useState(0);
+  const [cityText, setCityText] = useState(initialValues?.city || '');
   const [form, setForm] = useState({
     name:                  initialValues?.name                  || '',
     birth_year:            initialValues?.birth_year != null    ? String(initialValues.birth_year) : '',
@@ -109,7 +111,12 @@ export default function ProfileIntake({ onComplete, initialValues }) {
   });
 
   function set(field, value) {
-    setForm(f => ({ ...f, [field]: value }));
+    setForm(f => {
+      const next = { ...f, [field]: value };
+      if (field === 'country') { next.state = ''; next.city = ''; setCityText(''); }
+      if (field === 'state')   { next.city = '';  setCityText(''); }
+      return next;
+    });
   }
 
   function toggleRisk(value) {
@@ -122,7 +129,10 @@ export default function ProfileIntake({ onComplete, initialValues }) {
   }
 
   function canAdvance() {
-    if (step === 0) return form.name && form.birth_year && form.country && form.state;
+    if (step === 0) {
+      const statesAvailable = getStates(form.country).length > 0;
+      return form.name && form.birth_year && form.country && (!statesAvailable || form.state);
+    }
     if (step === 1) return form.journey_stage && form.blood_test_status;
     if (step === 2) return (
       form.has_children &&
@@ -157,7 +167,7 @@ export default function ProfileIntake({ onComplete, initialValues }) {
       birth_year:            form.birth_year            ? parseInt(form.birth_year) : null,
       country:               form.country               || null,
       state:                 form.state                 || null,
-      city:                  form.city                  || null,
+      city:                  (form.city === '__other__' ? cityText : form.city) || null,
       journey_stage:         form.journey_stage         || null,
       blood_test_status:     form.blood_test_status     || null,
       has_children:          form.has_children          || null,
@@ -197,49 +207,110 @@ export default function ProfileIntake({ onComplete, initialValues }) {
 
             <div className="intake-field">
               <label className="intake-label">Birth year <span className="intake-required">*</span></label>
-              <input
+              <select
                 className="intake-input"
-                type="number"
-                placeholder="e.g. 1992"
                 value={form.birth_year}
                 onChange={e => set('birth_year', e.target.value)}
-                min={1960} max={2005}
-              />
+              >
+                <option value="">Select year</option>
+                {BIRTH_YEARS.map(y => (
+                  <option key={y} value={y}>{y}</option>
+                ))}
+              </select>
             </div>
 
             <div className="intake-field">
               <label className="intake-label">Country <span className="intake-required">*</span></label>
-              <input
+              <select
                 className="intake-input"
-                type="text"
-                placeholder="e.g. United States"
                 value={form.country}
                 onChange={e => set('country', e.target.value)}
-              />
+              >
+                <option value="">Select country</option>
+                {COUNTRIES.map(c => (
+                  <option key={c.value} value={c.value}>{c.label}</option>
+                ))}
+              </select>
             </div>
 
-            <div className="intake-location-row">
-              <div className="intake-field">
-                <label className="intake-label">State / Province <span className="intake-required">*</span></label>
-                <input
-                  className="intake-input"
-                  type="text"
-                  placeholder="e.g. New York"
-                  value={form.state}
-                  onChange={e => set('state', e.target.value)}
-                />
-              </div>
-              <div className="intake-field">
-                <label className="intake-label">City <span className="intake-optional">(optional)</span></label>
-                <input
-                  className="intake-input"
-                  type="text"
-                  placeholder="e.g. Brooklyn"
-                  value={form.city}
-                  onChange={e => set('city', e.target.value)}
-                />
-              </div>
-            </div>
+            {form.country && (() => {
+              const states = getStates(form.country);
+              return (
+                <div className="intake-location-row">
+                  <div className="intake-field">
+                    <label className="intake-label">
+                      State / Province{states.length > 0 && <span className="intake-required"> *</span>}
+                      {states.length === 0 && <span className="intake-optional"> (optional)</span>}
+                    </label>
+                    {states.length > 0 ? (
+                      <select
+                        className="intake-input"
+                        value={form.state}
+                        onChange={e => set('state', e.target.value)}
+                      >
+                        <option value="">Select state</option>
+                        {states.map(s => (
+                          <option key={s.value} value={s.value}>{s.label}</option>
+                        ))}
+                      </select>
+                    ) : (
+                      <input
+                        className="intake-input"
+                        type="text"
+                        placeholder="e.g. Bavaria"
+                        value={form.state}
+                        onChange={e => set('state', e.target.value)}
+                      />
+                    )}
+                  </div>
+                  <div className="intake-field">
+                    <label className="intake-label">City <span className="intake-optional">(optional)</span></label>
+                    {(() => {
+                      const cities = getCities(form.country, form.state);
+                      if (cities.length > 0) {
+                        return (
+                          <>
+                            <select
+                              className="intake-input"
+                              value={form.city}
+                              onChange={e => {
+                                set('city', e.target.value);
+                                if (e.target.value !== '__other__') setCityText('');
+                              }}
+                            >
+                              <option value="">Select city</option>
+                              {cities.map(c => (
+                                <option key={c} value={c}>{c}</option>
+                              ))}
+                              <option value="__other__">Other</option>
+                            </select>
+                            {form.city === '__other__' && (
+                              <input
+                                className="intake-input"
+                                style={{ marginTop: 6 }}
+                                type="text"
+                                placeholder="Enter your city"
+                                value={cityText}
+                                onChange={e => setCityText(e.target.value)}
+                              />
+                            )}
+                          </>
+                        );
+                      }
+                      return (
+                        <input
+                          className="intake-input"
+                          type="text"
+                          placeholder="e.g. Brooklyn"
+                          value={form.city}
+                          onChange={e => set('city', e.target.value)}
+                        />
+                      );
+                    })()}
+                  </div>
+                </div>
+              );
+            })()}
           </div>
         )}
 
