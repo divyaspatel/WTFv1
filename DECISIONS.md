@@ -143,3 +143,55 @@ Format:
 **Considered:** Keeping age for personalization logic — decided personalization can be done without it
 
 **Affects:** `components/profile/ProfileIntake.js`, `hooks/useUserProfile.js` (profile schema)
+
+---
+
+## 2026-03-28 — Redesigned DivyaTab: editorial narrative layout replaces chat bubble UI
+
+**Why:** Chat bubble UI felt too playful/informal for serious medical journey content. Editorial layout (narrative text + meta bar + data visualizations) feels more trustworthy and personal.
+
+**Considered:** Keeping chat bubbles with style updates (still feels gimmicky), full editorial layout (chosen)
+
+**Affects:** `src/components/tabs/DivyaTab.js` (full rewrite), `src/index.css` (story-page, story-lede, story-meta-bar, story-day-card, story-closing CSS classes), `src/pages/ProductPage.js` (onNavigate prop added to DivyaTab)
+
+---
+
+## 2026-03-28 — Restored SpreadsheetView/ChartView/FollicleViz below narrative in DivyaTab
+
+**Why:** User rejected the plain collapsible data table — the original interactive visualizations (spreadsheet, line chart, follicle bubble viz) are more useful and already existed.
+
+**Considered:** Plain HTML table (rejected by user), view-toggle with original components (chosen)
+
+**Affects:** `src/components/tabs/DivyaTab.js` (replaced FullDataTable with view toggle + SpreadsheetView/ChartView/FollicleViz)
+
+---
+
+## 2026-03-28 — Added Divya's retrieval day photo + "Hey, I'm Divya" heading to DivyaTab
+
+**Why:** Personal photo makes the story feel human and real. Heading gives the tab a clear personal introduction before the narrative paragraphs.
+
+**Affects:** `src/components/tabs/DivyaTab.js`, `public/divya-retrieval.jpg` (new), `src/index.css` (.story-intro-heading, .story-intro-photo)
+
+---
+
+## 2026-03-28 — Removed monitoring day cards (Day 1/3/5/7/9/10) from DivyaTab
+
+**Why:** Redundant with the SpreadsheetView already shown below. Cards added visual clutter without adding information.
+
+**Affects:** `src/components/tabs/DivyaTab.js` (removed MONITORING_DAYS, DayCard component, story-day-grid)
+
+---
+
+## 2026-03-28 — Added AMH to meta bar; split into top row (clinical stats) + bottom row (outcomes)
+
+**Why:** AMH is a key baseline stat users relate to. Separating clinical inputs (top) from outcomes (eggs retrieved, embryos frozen) creates a cleaner narrative arc.
+
+**Affects:** `src/components/tabs/DivyaTab.js` (META_TOP + META_BOTTOM), `src/index.css` (.story-meta-row)
+
+---
+
+## 2026-03-28 — Updated CTA button copy and added subtext below
+
+**Why:** "See your roadmap →" is more action-oriented. Subtext "created from experiences of women who've been there" sets expectations about the data source without cluttering the button itself.
+
+**Affects:** `src/components/tabs/DivyaTab.js`, `src/index.css` (.story-cta-sub)
