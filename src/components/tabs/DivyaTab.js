@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
 import { DIVYA_DATA } from '../../data/divyaData';
+import SpreadsheetView from '../divya/SpreadsheetView';
+import ChartView from '../divya/ChartView';
+import FollicleViz from '../divya/FollicleViz';
+
+const VIEWS = [
+  { id: 'spreadsheet', label: 'Spreadsheet'    },
+  { id: 'chart',       label: 'Line Chart'      },
+  { id: 'follicles',   label: 'Follicle Growth' },
+];
 
 // ── Cycle meta ────────────────────────────────────────────────────────────────
 
@@ -66,22 +75,6 @@ const MONITORING_DAYS = [
   },
 ];
 
-// ── Full 10-day table rows ────────────────────────────────────────────────────
-// Sources: SpreadsheetView MedsSheet + HormonesSheet
-
-const ALL_DAYS = [
-  { day: 'D1',  date: 'Mar 4',  e2: '31',    follicles: '4',  meds: 'Gonal-F 200 IU'                                       },
-  { day: 'D2',  date: 'Mar 5',  e2: '—',     follicles: '—',  meds: 'Gonal-F 200 IU'                                       },
-  { day: 'D3',  date: 'Mar 6',  e2: '82.84', follicles: '1',  meds: 'Gonal-F 150 IU · Menopur 1 vial'                      },
-  { day: 'D4',  date: 'Mar 7',  e2: '—',     follicles: '—',  meds: 'Gonal-F 150 IU · Menopur 1 vial'                      },
-  { day: 'D5',  date: 'Mar 8',  e2: '328.6', follicles: '5',  meds: 'Gonal-F 150 IU · Menopur 2 vials · Cetrotide 250 mcg' },
-  { day: 'D6',  date: 'Mar 9',  e2: '—',     follicles: '—',  meds: 'Gonal-F 150 IU · Menopur 2 vials · Cetrotide 250 mcg' },
-  { day: 'D7',  date: 'Mar 10', e2: '673.2', follicles: '8',  meds: 'Gonal-F 225 IU · Menopur 2 vials · Cetrotide 250 mcg' },
-  { day: 'D8',  date: 'Mar 11', e2: '—',     follicles: '—',  meds: 'Gonal-F 225 IU · Menopur 2 vials · Cetrotide 250 mcg' },
-  { day: 'D9',  date: 'Mar 12', e2: '1,464', follicles: '14', meds: 'Gonal-F 225 IU · Menopur 2 vials · Cetrotide 250 mcg' },
-  { day: 'D10', date: 'Mar 13', e2: '1,992', follicles: '14', meds: 'Trigger: Gonal-F 40U + hCG 1.2mL'                     },
-];
-
 // ── Sub-components ────────────────────────────────────────────────────────────
 
 function DayCard({ day, date, e2, follicles, meds, feeling }) {
@@ -103,39 +96,10 @@ function DayCard({ day, date, e2, follicles, meds, feeling }) {
   );
 }
 
-function FullDataTable() {
-  return (
-    <div className="story-table-wrap">
-      <table className="story-data-table">
-        <thead>
-          <tr>
-            <th>Day</th>
-            <th>Date</th>
-            <th>E2 (pg/mL)</th>
-            <th>Follicles</th>
-            <th>Medications</th>
-          </tr>
-        </thead>
-        <tbody>
-          {ALL_DAYS.map(row => (
-            <tr key={row.day}>
-              <td>{row.day}</td>
-              <td>{row.date}</td>
-              <td>{row.e2}</td>
-              <td>{row.follicles}</td>
-              <td>{row.meds}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-}
-
 // ── Main tab ──────────────────────────────────────────────────────────────────
 
 export default function DivyaTab({ onNavigate }) {
-  const [tableOpen, setTableOpen] = useState(false);
+  const [view, setView] = useState('spreadsheet');
 
   return (
     <div className="story-page">
@@ -175,15 +139,20 @@ export default function DivyaTab({ onNavigate }) {
         ))}
       </div>
 
-      <div className="story-table-section">
-        <button
-          className="story-table-toggle-btn"
-          onClick={() => setTableOpen(o => !o)}
-        >
-          {tableOpen ? '▼' : '▶'} Full data table (all 10 days)
-        </button>
-        {tableOpen && <FullDataTable />}
+      <div className="view-toggle" style={{ marginTop: 32 }}>
+        {VIEWS.map(v => (
+          <button
+            key={v.id}
+            className={`view-toggle-btn${view === v.id ? ' active' : ''}`}
+            onClick={() => setView(v.id)}
+          >
+            {v.label}
+          </button>
+        ))}
       </div>
+      {view === 'spreadsheet' && <SpreadsheetView />}
+      {view === 'chart'       && <ChartView />}
+      {view === 'follicles'   && <FollicleViz />}
 
       <div className="story-closing">
         <p className="story-closing-quote">
