@@ -3427,3 +3427,241 @@ select.intake-input {
   cursor: pointer;
   text-decoration: underline;
 }
+
+/* ── Story / Editorial Layout (DivyaTab) ── */
+
+.story-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 8px 24px 72px;
+}
+
+.story-lede {
+  font-family: 'Lora', serif;
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--text-dark);
+  margin: 0 0 20px;
+}
+
+.story-transition {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 15px;
+  color: var(--terracotta);
+  margin: 36px 0 28px;
+  line-height: 1.7;
+}
+
+/* Cycle meta bar */
+
+.story-meta-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 32px;
+  border-top: 1px solid var(--terracotta-light);
+  border-bottom: 1px solid var(--terracotta-light);
+  padding: 20px 0;
+  margin-bottom: 32px;
+}
+
+.story-meta-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.story-meta-label {
+  font-family: 'Nunito', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-light);
+}
+
+.story-meta-value {
+  font-family: 'Nunito', sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+
+/* Day cards */
+
+.story-day-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 36px;
+}
+
+.story-day-card {
+  background: #fff;
+  border: 0.5px solid var(--terracotta-light);
+  border-radius: 12px;
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 14px;
+  align-items: start;
+}
+
+.day-card-left {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-top: 2px;
+}
+
+.day-card-label {
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--terracotta);
+}
+
+.day-card-date {
+  font-family: 'Nunito', sans-serif;
+  font-size: 11px;
+  color: var(--text-light);
+}
+
+.day-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stat-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.stat-pill {
+  background: #FAF0EB;
+  color: #8B3A1A;
+  font-family: 'Nunito', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.day-feeling {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 12px;
+  color: var(--text-light);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Full data table */
+
+.story-table-section {
+  margin: 4px 0 40px;
+}
+
+.story-table-toggle-btn {
+  background: none;
+  border: none;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--terracotta);
+  cursor: pointer;
+  padding: 6px 0;
+  letter-spacing: 0.01em;
+}
+
+.story-table-toggle-btn:hover {
+  text-decoration: underline;
+}
+
+.story-table-wrap {
+  overflow-x: auto;
+  margin-top: 12px;
+}
+
+.story-data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 12px;
+  color: var(--text-dark);
+}
+
+.story-data-table th {
+  text-align: left;
+  padding: 8px 12px;
+  border-bottom: 1.5px solid var(--terracotta-light);
+  font-family: 'Nunito', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--text-light);
+  white-space: nowrap;
+}
+
+.story-data-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #F0E8E2;
+  vertical-align: top;
+}
+
+/* Closing block */
+
+.story-closing {
+  background: #FAF0EB;
+  border-radius: 16px;
+  padding: 40px 36px;
+  text-align: center;
+  margin-top: 48px;
+}
+
+.story-closing-quote {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.75;
+  color: var(--text-dark);
+  margin: 0 0 28px;
+}
+
+.story-cta-btn {
+  display: inline-block;
+  background: var(--terracotta);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 14px 28px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.story-cta-btn:hover {
+  opacity: 0.88;
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+  .story-day-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .story-closing {
+    padding: 28px 20px;
+  }
+
+  .story-closing-quote {
+    font-size: 16px;
+  }
+}

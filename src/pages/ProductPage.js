@@ -26,7 +26,7 @@ export default function ProductPage() {
         ))}
       </div>
 
-      {activeTab === 'story'    && <DivyaTab />}
+      {activeTab === 'story'    && <DivyaTab onNavigate={setActiveTab} />}
       {activeTab === 'journey'  && <JourneyTab />}
       {activeTab === 'journeys' && <JourneysTab />}
     </>
