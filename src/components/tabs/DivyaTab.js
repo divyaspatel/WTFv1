@@ -103,7 +103,8 @@ export default function DivyaTab({ onNavigate }) {
           className="story-cta-btn"
           onClick={() => onNavigate && onNavigate('journeys')}
         >
-          Your roadmap, from women who've been there →
+          See your roadmap →
+          <span className="story-cta-sub">created from experiences of women who've been there</span>
         </button>
       </div>
 

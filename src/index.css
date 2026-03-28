@@ -3660,7 +3660,9 @@ select.intake-input {
 }
 
 .story-cta-btn {
-  display: inline-block;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
   background: var(--terracotta);
   color: #fff;
   border: none;
@@ -3675,6 +3677,15 @@ select.intake-input {
 
 .story-cta-btn:hover {
   opacity: 0.88;
+}
+
+.story-cta-sub {
+  display: block;
+  font-size: 11px;
+  font-weight: 400;
+  opacity: 0.85;
+  margin-top: 4px;
+  letter-spacing: 0.01em;
 }
 
 /* Mobile */
