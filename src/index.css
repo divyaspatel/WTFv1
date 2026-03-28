@@ -3436,6 +3436,23 @@ select.intake-input {
   padding: 8px 24px 72px;
 }
 
+.story-intro-heading {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: 28px;
+  color: var(--text-dark);
+  margin: 0 0 20px;
+}
+
+.story-intro-photo {
+  width: 100%;
+  max-height: 380px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 12px;
+  margin-bottom: 32px;
+}
+
 .story-lede {
   font-family: 'Lora', serif;
   font-size: 17px;
@@ -3457,8 +3474,8 @@ select.intake-input {
 
 .story-meta-bar {
   display: flex;
-  flex-wrap: wrap;
-  gap: 24px 32px;
+  flex-wrap: nowrap;
+  gap: 0 24px;
   border-top: 1px solid var(--terracotta-light);
   border-bottom: 1px solid var(--terracotta-light);
   padding: 20px 0;
