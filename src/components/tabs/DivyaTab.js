@@ -11,13 +11,17 @@ const VIEWS = [
 
 // ── Cycle meta ────────────────────────────────────────────────────────────────
 
-const META_STATS = [
-  { label: 'Clinic',         value: 'RMANY, NYC'     },
-  { label: 'Dates',          value: 'Mar 4–14, 2024' },
-  { label: 'Stim days',      value: '10 days'        },
-  { label: 'Baseline AFC',   value: '13R · 12L'      },
-  { label: 'Eggs retrieved', value: '14'             },
-  { label: 'Embryos frozen', value: '5'              },
+const META_TOP = [
+  { label: 'Clinic',       value: 'RMANY, NYC'     },
+  { label: 'Dates',        value: 'Mar 4–14, 2024' },
+  { label: 'Stim days',    value: '10 days'        },
+  { label: 'Baseline AFC', value: '13R · 12L'      },
+  { label: 'AMH',          value: '3.52 ng/mL'     },
+];
+
+const META_BOTTOM = [
+  { label: 'Eggs retrieved', value: '14' },
+  { label: 'Embryos frozen', value: '5'  },
 ];
 
 // ── Main tab ──────────────────────────────────────────────────────────────────
@@ -56,12 +60,22 @@ export default function DivyaTab({ onNavigate }) {
       </p>
 
       <div className="story-meta-bar">
-        {META_STATS.map(s => (
-          <div key={s.label} className="story-meta-stat">
-            <div className="story-meta-label">{s.label}</div>
-            <div className="story-meta-value">{s.value}</div>
-          </div>
-        ))}
+        <div className="story-meta-row">
+          {META_TOP.map(s => (
+            <div key={s.label} className="story-meta-stat">
+              <div className="story-meta-label">{s.label}</div>
+              <div className="story-meta-value">{s.value}</div>
+            </div>
+          ))}
+        </div>
+        <div className="story-meta-row story-meta-row--bottom">
+          {META_BOTTOM.map(s => (
+            <div key={s.label} className="story-meta-stat">
+              <div className="story-meta-label">{s.label}</div>
+              <div className="story-meta-value">{s.value}</div>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="view-toggle" style={{ marginTop: 32 }}>

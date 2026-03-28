@@ -3474,12 +3474,22 @@ select.intake-input {
 
 .story-meta-bar {
   display: flex;
-  flex-wrap: nowrap;
-  gap: 0 24px;
+  flex-direction: column;
+  gap: 16px;
   border-top: 1px solid var(--terracotta-light);
   border-bottom: 1px solid var(--terracotta-light);
   padding: 20px 0;
   margin-bottom: 32px;
+}
+
+.story-meta-row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0 24px;
+}
+
+.story-meta-row--bottom {
+  gap: 0 48px;
 }
 
 .story-meta-stat {
